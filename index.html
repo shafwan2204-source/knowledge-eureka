@@ -299,6 +299,7 @@
       color: #ffffff;
     }
 
+    /* Single Random Button Toolbar */
     .prompt-toolbar {
       max-width: 820px;
       margin: 0 auto 10px auto;
@@ -428,6 +429,7 @@
   </main>
 
   <footer>
+    <!-- Single Random Prompt Option -->
     <div class="prompt-toolbar">
       <button id="random-prompt-btn" class="random-btn" title="Trigger a random operational question">
         <span>🎲</span>
@@ -444,13 +446,11 @@
   <script>
     const GITHUB_KB_BASE_URL = "https://raw.githubusercontent.com/shafwan2204-source/knowledge-eureka/refs/heads/main/changi_recommends_travel_services_master_knowledge_base.txt";
     
-    // Explicit Gemini 3.5 (default) and Gemini 3.8 (fallback) model targets
     const MODEL_PRIMARY = "gemini-3.5-flash";
     const MODEL_FALLBACK = "gemini-3.8-flash";
-
     const TIMEOUT_LIMIT_MS = 30000;
-    const MAX_HISTORY_TURNS = 6;
-    
+    let activeModel = MODEL_PRIMARY;
+
     let systemKnowledgeBase = "";
     let runtimeApiKey = "";
     let conversationLog = [];
@@ -500,6 +500,7 @@
     const sendBtn = document.getElementById('send-btn');
     const randomBtn = document.getElementById('random-prompt-btn');
 
+    // Trigger one random prompt from the bank
     randomBtn.addEventListener('click', () => {
       if (isRequestActive) return;
       const randomPrompt = QUICK_CHIPS_BANK[Math.floor(Math.random() * QUICK_CHIPS_BANK.length)];
@@ -660,50 +661,18 @@
 
     sendBtn.addEventListener('click', () => handleSend());
 
-    function validateUserQueryConstraints(text) {
-      const lower = text.toLowerCase();
-
-      const dumpKeywords = [
-        "whole knowledge base", "entire knowledge base", "all knowledge base", 
-        "full knowledge base", "print everything", "dump knowledge base", 
-        "show everything in knowledge", "display all sections", "show all kb"
-      ];
-      if (dumpKeywords.some(phrase => lower.includes(phrase))) {
-        return {
-          valid: false,
-          reason: "Notice: To conserve bandwidth and ensure precision, please specify the exact product, rate, or troubleshooting topic you need."
-        };
-      }
-
-      const qMarks = (text.match(/\?/g) || []).length;
-      const numberedQuestions = (text.match(/(?:^|\n)\s*(?:\d+[\.\)]|[a-c][\.\)])\s+/gi) || []).length;
-      const estimatedQuestions = Math.max(qMarks, numberedQuestions);
-
-      if (estimatedQuestions > 3) {
-        return {
-          valid: false,
-          reason: "Notice: Please limit your inquiry to a maximum of 3 questions per message so I can give you a clear, thorough response."
-        };
-      }
-
-      return { valid: true };
-    }
-
-    // Call REST endpoint using target model identifier
-    async function executeGeminiCallWithTimeout(modelIdentifier, contents) {
+    async function executeGeminiCallWithTimeout(modelName, contents) {
       const controller = new AbortController();
       const timeoutTimer = setTimeout(() => {
         controller.abort();
       }, TIMEOUT_LIMIT_MS);
 
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelIdentifier}:generateContent?key=${runtimeApiKey}`;
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${runtimeApiKey}`;
       
       const systemInstructionText = `You are the dedicated, supportive, and formal personal assistant to customer support agents during their work shift.
-Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity, precision, and complete detail.
+Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity and precision.
 
-ANSWER GUIDELINES:
-- Provide comprehensive, complete, and thoroughly detailed answers to all questions asked.
-- Answer ONLY the specific questions asked by the agent.
+FORMATTING AND TYPOGRAPHY INSTRUCTIONS:
 - DO NOT use markdown symbols like ###, ##, **, __, or markdown tables.
 - Write clean, human-readable plain text.
 - For sections or headings, use neat UPPERCASE titles or clear line breaks instead of ### or **.
@@ -725,14 +694,10 @@ CORE OPERATIONAL RULES:
 [KNOWLEDGE BASE CONTEXT]
 ${systemKnowledgeBase}`;
 
-      const trimmedContents = contents.slice(-MAX_HISTORY_TURNS);
-
       const payload = {
-        contents: trimmedContents,
+        contents: contents,
         systemInstruction: { parts: [{ text: systemInstructionText }] },
-        generationConfig: { 
-          temperature: 0.2
-        }
+        generationConfig: { temperature: 0.2 }
       };
 
       try {
@@ -745,12 +710,7 @@ ${systemKnowledgeBase}`;
 
         clearTimeout(timeoutTimer);
 
-        if (!res.ok) {
-          const errDetail = await res.json().catch(() => ({}));
-          console.error(`Gemini API Error for ${modelIdentifier}:`, errDetail);
-          throw new Error(`API ${res.status}: ${res.statusText}`);
-        }
-        
+        if (!res.ok) throw new Error(`API error ${res.status}`);
         const data = await res.json();
         return cleanMarkdownSymbols(data.candidates[0].content.parts[0].text);
       } catch (err) {
@@ -785,23 +745,23 @@ ${systemKnowledgeBase}`;
       assistantBubble.textContent = "Checking the notes for you...";
 
       try {
-        // Attempt Primary Model: Gemini 3.5 (LM 3.5 Connected)
+        activeModel = MODEL_PRIMARY;
         modelBadge.textContent = "LM 3.5 Connected";
         const reply = await executeGeminiCallWithTimeout(MODEL_PRIMARY, conversationLog);
         assistantBubble.textContent = reply;
         conversationLog.push({ role: 'model', parts: [{ text: reply }] });
       } catch (err) {
-        console.warn(`Primary model (${MODEL_PRIMARY}) failed or timed out:`, err);
+        console.warn("LM 3.5 attempt failed or timed out:", err);
 
-        // Fallback to Gemini 3.8 (LM 3.8 Connected)
         try {
+          activeModel = MODEL_FALLBACK;
           modelBadge.textContent = "LM 3.8 Connected";
-          assistantBubble.textContent = "Primary model unavailable. Re-routing to fallback...";
+          assistantBubble.textContent = "LM 3.5 did not respond. Re-routing to LM 3.8...";
           const fallbackReply = await executeGeminiCallWithTimeout(MODEL_FALLBACK, conversationLog);
           assistantBubble.textContent = fallbackReply;
           conversationLog.push({ role: 'model', parts: [{ text: fallbackReply }] });
         } catch (fallbackErr) {
-          console.error(`Both models (${MODEL_PRIMARY} and ${MODEL_FALLBACK}) failed:`, fallbackErr);
+          console.error("Both models timed out or encountered an error:", fallbackErr);
 
           if (fallbackErr.name === 'AbortError' || err.name === 'AbortError') {
             assistantBubble.textContent = "Request timed out (exceeded 30 seconds limit). The assistant took too long to formulate a response.";
@@ -821,16 +781,6 @@ ${systemKnowledgeBase}`;
     async function handleSend() {
       const text = queryInput.value.trim();
       if (!text || !runtimeApiKey || isRequestActive) return;
-
-      const check = validateUserQueryConstraints(text);
-      if (!check.valid) {
-        appendMessageToDOM('agent', text);
-        appendMessageToDOM('assistant', check.reason);
-        queryInput.value = "";
-        queryInput.style.height = '48px';
-        validateInputState();
-        return;
-      }
 
       queryInput.value = "";
       queryInput.style.height = '48px';
