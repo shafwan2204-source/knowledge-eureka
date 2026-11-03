@@ -1,7 +1,7 @@
 ================================================================================
 CHANGI RECOMMENDS TRAVEL SERVICES MASTER KNOWLEDGE BASE & SOP
 ================================================================================
-Document Version  : 9.3
+Document Version  : 9.4
 Author / Creator  : Shafwan
 Disclaimer        : Unofficial knowledge base created for hobby and learning
                     purposes. Designed to assist with daily operational context,
@@ -16,8 +16,9 @@ System Scope      : Overseas Physical SIMs, Travel eSIMs, ChangiWiFi Routers,
                     Manual Booking SOP, Oasis PMS Cancellation SOP & OTA Warning, 
                     ChangiAssure Inbound Insurance, ChangiAssure Outbound Insurance, 
                     Japan Rail (JR) Passes (Physical MCO & Electronic EO),
-                    Xplore SG Walking Tours & River Cruise Experiences, and
-                    Standard CRM Case Logging Templates.
+                    Xplore SG Walking Tours & River Cruise Experiences,
+                    Standard CRM Case Logging Templates, and Real-World
+                    Scenario Case Studies & Exception Handling Workflows.
 Primary Operating : Singapore Changi Airport (SIN)
 Time Zone Base    : Singapore Time (SGT / UTC+08:00)
 Currency Standard : Singapore Dollar (SGD)
@@ -125,9 +126,15 @@ PART XI: CRM SYSTEM CASE LOGGING TEMPLATES & AGENT WORKFLOWS
   Section 73: ChangiWiFi & Changi SG WiFi Logging Template
   Section 74: Changi Transit Hotel Network Logging Template
 
-PART XII: MASTER DIRECTORY & AIRPORT COUNTER MAP
-  Section 75: 24/7 Hotlines, Self-Service Portals & Department Directories
-  Section 76: Comprehensive Terminal Counter Map & Operational Hours
+PART XII: REAL-WORLD SCENARIO CASE STUDIES & EXCEPTION HANDLING WORKFLOWS
+  Section 75: SIM Card Operational Scenarios (Non-Working & Unilateral Repurchase)
+  Section 76: Transit Hotel Scenarios (Flight Delays vs Reserved Check-In & Wheelchairs)
+  Section 77: ChangiWiFi Scenarios (Online Extension vs 1-Day Late Return Waiver in Doric)
+  Section 78: Gateway Refund Failure SOP & Overseas Remittance Banking Template
+
+PART XIII: MASTER DIRECTORY & AIRPORT COUNTER MAP
+  Section 79: 24/7 Hotlines, Self-Service Portals & Department Directories
+  Section 80: Comprehensive Terminal Counter Map & Operational Hours
 
 
 ================================================================================
@@ -1683,10 +1690,110 @@ Agent's name :
 
 
 ================================================================================
-PART XII: MASTER DIRECTORY & AIRPORT COUNTER MAP
+PART XII: REAL-WORLD SCENARIO CASE STUDIES & EXCEPTION HANDLING WORKFLOWS
 ================================================================================
 
-Section 75: 24/7 Hotlines, Self-Service Portals & Department Directories
+Section 75: SIM Card Operational Scenarios (Non-Working & Unilateral Repurchase)
+--------------------------------------------------------------------------------
+* Scenario Definition:
+  A customer travels overseas and claims their Changi Recommends prepaid SIM card 
+  did not work. Without contacting customer service for troubleshooting while abroad, 
+  the customer independently purchased a replacement local SIM card and now demands 
+  a full refund for the original purchase.
+
+* Standard Escalation & Resolution SOP:
+  1. Internal WhatsApp Escalation:
+     - Agents do NOT have the authority to grant immediate refunds for un-troubleshot SIMs.
+     - Escalate the case details (Order Number, SIM ICCID, customer summary) to the 
+       official internal Operations WhatsApp Group to obtain formal refund approval 
+       from the Business Unit (BU).
+  2. BU Approval Verification:
+     - Await written approval from the BU Manager or Team Lead in the group chat.
+  3. Customer Follow-up & Documentation:
+     - Once BU approves the refund, generate and assign the official CRM Case Number.
+     - Dispatch the standard Refund Application Form to the customer's email address.
+     - Ensure the email explicitly includes the assigned Case Number for reference.
+
+
+Section 76: Transit Hotel Scenarios (Flight Delays vs Reserved Check-In & Wheelchairs)
+--------------------------------------------------------------------------------
+* Case Study 1: Flight Delays vs. Confirmed Hourly Block Check-In Time
+  - Scenario: A customer fears flight delays and inquires whether their stay duration 
+    will follow their actual delayed arrival time or stick strictly to the preferred 
+    check-in time booked in the system.
+  - Operational Rule:
+    * Default Standard: By default, the reservation clock strictly follows the 
+      confirmed preferred check-in time as recorded in the Oasis PMS.
+    * Availability-Based Concession: If room inventory permits, front desk staff 
+      may adjust the check-in window to accommodate the delayed flight arrival time.
+    * Concrete Example:
+      - Default Booking: 6-hour block reserved from 22:00 to 04:00.
+      - Delay Incident : Incoming flight is delayed by 2 hours; guest lands at 00:00.
+      - Default Rule   : The booking is still counted from 22:00 (only 4 hours remaining 
+                         unless an extension fee is paid).
+      - Concession Rule: If the room is confirmed available for the subsequent hours 
+                         (05:00 and 06:00), front desk staff may adjust the check-in 
+                         window to 00:00 – 06:00 without charging extra fees.
+
+* Case Study 2: Airport Transit Wheelchair Requests
+  - Scenario: A transit hotel guest requests wheelchair assistance for arrival at 
+    the hotel or departure to their onward boarding gate.
+  - Operational Boundary:
+    * Changi Transit Hotel does NOT operate internal wheelchair transport escorts.
+    * Protocol: The customer must request special passenger mobility assistance (WCHR/WCHS) 
+      directly from their operating airline originating their flight to Singapore 
+      or departing from Singapore. Airline ground handlers provide the wheelchair escort.
+
+
+Section 77: ChangiWiFi Scenarios (Online Extension vs 1-Day Late Return Waiver in Doric)
+--------------------------------------------------------------------------------
+* Case Study 1: Self-Service Rental Extension
+  - Link: Direct travelers to the official online management link:
+    https://www.changirecommends.com/owifi_manage.aspx
+  - Function: Allows customers to manage, extend, and settle rental duration adjustments.
+
+* Case Study 2: 1-Day Late Return Fee Waiver Request
+  - Scenario: A customer returns the pocket Wi-Fi router 1 calendar day late and 
+    requests an administrative waiver of the 1-day late return fee.
+  - Operational Action:
+    * Support agents must log into the Doric system.
+    * Create a formal case ticket in Doric requesting approval to waive the 1-day late return penalty.
+    * Tag the case with relevant order numbers and customer justification for supervisor sign-off.
+
+
+Section 78: Gateway Refund Failure SOP & Overseas Remittance Banking Template
+--------------------------------------------------------------------------------
+* Operational Context:
+  When a refund has been approved by the Business Unit (BU) or management, but 
+  CANNOT be processed back to the customer's original credit/debit card, e-wallet, 
+  or payment gateway (due to expired cards, closed bank accounts, gateway rejections, 
+  or cross-border processing limits), a manual bank transfer / remittance must be executed.
+
+* Mandatory Information Collection Schema:
+  Agents must request and collect the following exact beneficiary banking details 
+  from the customer:
+
+--- START OF BENEFICIARY REMITTANCE SCHEMA (COPY BELOW) ---
+Beneficiary Full Name (as per Bank record): 
+Beneficiary Address: 
+
+Beneficiary Bank Details
+Bank Name: 
+SWIFT/BIC Code: 
+Bank Branch (if applicable): 
+Beneficiary Account Number (or IBAN for countries such as EU): 
+Beneficiary Country: 
+
+For overseas account remittance, does the customer's account able to accept SGD or only (their country's currency)?
+*Note: If only can receive the local currency, the refund amount will be equivalent based on our corporate FX rate.
+--- END OF BENEFICIARY REMITTANCE SCHEMA ---
+
+
+================================================================================
+PART XIII: MASTER DIRECTORY & AIRPORT COUNTER MAP
+================================================================================
+
+Section 79: 24/7 Hotlines, Self-Service Portals & Department Directories
 --------------------------------------------------------------------------------
 * Central Changi Recommends Customer Care:
   - 24/7 Telephone Hotline    : +65 6701 1185 (SGT / UTC+08:00)
@@ -1732,7 +1839,7 @@ Section 75: 24/7 Hotlines, Self-Service Portals & Department Directories
   - Terminal 3 Front Desk Phone : +65 9477 6709
 
 
-Section 76: Comprehensive Terminal Counter Map & Operational Hours
+Section 80: Comprehensive Terminal Counter Map & Operational Hours
 --------------------------------------------------------------------------------
 Service Division       | Terminal Locations & Counter Information
 -----------------------+--------------------------------------------------------
