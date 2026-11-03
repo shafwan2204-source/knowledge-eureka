@@ -6,22 +6,21 @@
   <title>Changi Travel Concierge Operations Portal</title>
   <style>
     :root {
-      /* Dark Grey & Red Palette */
-      --bg-main: #111418;           /* Deep dark grey base */
-      --surface: #181c22;          /* Header & footer dark slate container */
-      --surface-elevated: #20252d; /* Assistant response bubble / text input */
-      --border: #2c333e;           /* Subtle dark grey divider */
-      --border-focus: #e11d48;     /* Focused red outline */
+      --bg-main: #111418;
+      --surface: #181c22;
+      --surface-elevated: #20252d;
+      --border: #2c333e;
+      --border-focus: #e11d48;
       
-      --text-primary: #f1f5f9;     /* Off-white readable text */
-      --text-secondary: #94a3b8;   /* Muted grey for subheaders / timestamps */
-      --text-muted: #64748b;       /* Darker grey placeholder / metadata */
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
       
-      --accent-red: #e11d48;       /* Primary crimson accent */
-      --accent-red-hover: #be123c; /* Darker red hover state */
+      --accent-red: #e11d48;
+      --accent-red-hover: #be123c;
       --accent-red-glow: rgba(225, 29, 72, 0.25);
       
-      --user-msg: #9f1239;         /* Rich burgundy/crimson for agent prompt */
+      --user-msg: #9f1239;
       --user-msg-text: #ffffff;
       
       --status-green: #10b981;
@@ -45,7 +44,6 @@
       overflow: hidden;
     }
 
-    /* Header Bar */
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -103,17 +101,12 @@
       border-radius: 50%;
       background-color: var(--status-red);
       box-shadow: 0 0 6px var(--status-red);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
     .dot.connected {
       background-color: var(--status-green);
       box-shadow: 0 0 6px var(--status-green);
-    }
-
-    .dot.syncing {
-      background-color: var(--status-amber);
-      box-shadow: 0 0 6px var(--status-amber);
     }
 
     .badge {
@@ -122,20 +115,18 @@
       color: #fda4af;
       padding: 3px 8px;
       border-radius: 4px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: ui-monospace, monospace;
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
     }
 
-    /* KB Sync Timestamp Badge */
     .kb-sync-button {
       background: #1a202c;
       border: 1px solid var(--border);
       color: var(--text-secondary);
       padding: 3px 9px;
       border-radius: 4px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: ui-monospace, monospace;
       font-size: 0.72rem;
       display: inline-flex;
       align-items: center;
@@ -154,7 +145,6 @@
     .kb-sync-button .refresh-icon {
       display: inline-block;
       font-size: 0.78rem;
-      line-height: 1;
     }
 
     .kb-sync-button.refreshing .refresh-icon {
@@ -166,7 +156,6 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Chat Stream Area */
     main {
       flex: 1;
       overflow-y: auto;
@@ -255,7 +244,6 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    /* Footer & Input Controls */
     footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -284,11 +272,7 @@
       border-radius: 6px;
       background-color: var(--surface-elevated);
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    textarea::placeholder {
-      color: var(--text-muted);
+      transition: border-color 0.2s;
     }
 
     textarea:focus {
@@ -310,7 +294,6 @@
       align-items: center;
       justify-content: center;
       transition: background-color 0.2s ease;
-      letter-spacing: 0.01em;
     }
 
     button.send-btn:hover:not(:disabled) {
@@ -332,10 +315,9 @@
       <div class="brand-sub">Changi Recommends Agent Knowledge Engine</div>
     </div>
     <div class="status-panel">
-      <!-- Last Refreshed Time Button -->
-      <button id="kb-sync-btn" class="kb-sync-button" title="Click to force check and reload the latest Knowledge Base">
+      <button id="kb-sync-btn" class="kb-sync-button" title="Auto-refreshes every 3 minutes. Click to force sync immediately.">
         <span class="refresh-icon">↻</span>
-        <span id="kb-sync-text">KB: Checking...</span>
+        <span id="kb-sync-text">KB: Initializing...</span>
       </button>
 
       <div class="indicator-group">
@@ -350,10 +332,7 @@
 
   <main id="chat-stream">
     <div class="chat-container" id="chat-messages">
-      <div class="message assistant">
-        <div class="message-meta">Operations Assistant</div>
-        <div class="message-bubble">System online. Ready to support operational inquiries regarding Changi Recommends travel services.</div>
-      </div>
+      <!-- Chat bubbles render here -->
     </div>
   </main>
 
@@ -367,16 +346,14 @@
   <script>
     const GITHUB_KB_BASE_URL = "https://raw.githubusercontent.com/shafwan2204-source/knowledge-eureka/refs/heads/main/changi_recommends_travel_services_master_knowledge_base.txt";
     
-    // Model configuration with automatic fallback
     const MODEL_PRIMARY = "gemini-3.5-flash";
     const MODEL_FALLBACK = "gemini-3.8-flash";
     let activeModel = MODEL_PRIMARY;
 
     let systemKnowledgeBase = "";
     let runtimeApiKey = "";
-    const conversationLog = [];
+    let conversationLog = [];
 
-    // UI Elements
     const connDot = document.getElementById('conn-dot');
     const connText = document.getElementById('conn-text');
     const modelBadge = document.getElementById('model-badge');
@@ -387,22 +364,39 @@
     const queryInput = document.getElementById('query-input');
     const sendBtn = document.getElementById('send-btn');
 
-    function updateBadge(name) {
-      modelBadge.textContent = name;
-    }
-
-    // Format human-friendly time (e.g. "12:10:45 PM")
     function formatTime(date) {
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
-    // Fetch Knowledge Base from GitHub with Cache-Buster
+    // Persist conversation so launcher updates don't wipe agent chats
+    function saveHistory() {
+      sessionStorage.setItem('cr_agent_chat_log', JSON.stringify(conversationLog));
+    }
+
+    function restoreHistory() {
+      const saved = sessionStorage.getItem('cr_agent_chat_log');
+      if (saved) {
+        try {
+          conversationLog = JSON.parse(saved);
+          chatContainer.innerHTML = "";
+          conversationLog.forEach(msg => {
+            appendMessageToDOM(msg.role === 'user' ? 'agent' : 'assistant', msg.parts[0].text);
+          });
+          return;
+        } catch(e) {
+          console.warn("Could not parse saved history:", e);
+        }
+      }
+      // Initial default greeting if brand new session
+      appendMessageToDOM('assistant', "System online. Ready to support operational inquiries regarding Changi Recommends travel services.");
+    }
+
+    // Fetch Knowledge Base with anti-cache query
     async function loadKnowledgeBase() {
       kbSyncBtn.classList.add('refreshing');
       kbSyncText.textContent = "KB: Fetching...";
 
       try {
-        // Appending timestamp to bypass GitHub's ~5-minute raw CDN caching window
         const cacheBusterUrl = `${GITHUB_KB_BASE_URL}?t=${Date.now()}`;
         const response = await fetch(cacheBusterUrl, { cache: 'no-store' });
         
@@ -412,25 +406,22 @@
         const now = new Date();
         const timeString = formatTime(now);
         kbSyncText.textContent = `KB: ${timeString}`;
-        kbSyncBtn.title = `Knowledge Base updated on ${now.toLocaleDateString()} at ${timeString} (${systemKnowledgeBase.length.toLocaleString()} characters). Click to re-sync.`;
+        kbSyncBtn.title = `Auto-refreshes every 3 mins. Last synchronized at ${timeString}. Total chars: ${systemKnowledgeBase.length.toLocaleString()}`;
       } catch (err) {
-        console.warn("Direct KB fetch failed. Using fallback context:", err);
+        console.warn("Direct KB fetch failed:", err);
         kbSyncText.textContent = "KB: Sync Failed";
-        kbSyncBtn.title = "Could not reach GitHub raw content. Using offline fallback.";
-        if (!systemKnowledgeBase) {
-          systemKnowledgeBase = "Refer to official Changi Recommends guidelines.";
-        }
       } finally {
         kbSyncBtn.classList.remove('refreshing');
       }
     }
 
-    // Manual Re-sync Click Event
-    kbSyncBtn.addEventListener('click', () => {
-      loadKnowledgeBase();
-    });
+    // Manual reload click
+    kbSyncBtn.addEventListener('click', () => loadKnowledgeBase());
 
-    // Secure Handshake Listener for launcher.html
+    // Auto-refresh knowledge base every 3 minutes (180,000 ms)
+    setInterval(loadKnowledgeBase, 180000);
+
+    // Handshake reception from launcher.html
     window.addEventListener('message', (e) => {
       if (e.data && e.data.type === 'SET_CREDENTIALS') {
         if (e.data.apiKey && e.data.apiKey.trim().length > 0) {
@@ -442,18 +433,17 @@
       }
     });
 
-    // Request key from launcher upon load
-    function initHandshake() {
+    function init() {
+      restoreHistory();
       loadKnowledgeBase();
       if (window.parent && window.parent !== window) {
         window.parent.postMessage({ type: 'REQUEST_CREDENTIALS' }, '*');
       }
     }
-    initHandshake();
+    init();
 
     function validateInputState() {
-      const ready = runtimeApiKey.length > 0 && queryInput.value.trim().length > 0;
-      sendBtn.disabled = !ready;
+      sendBtn.disabled = !(runtimeApiKey.length > 0 && queryInput.value.trim().length > 0);
     }
 
     queryInput.addEventListener('input', () => {
@@ -471,7 +461,7 @@
 
     sendBtn.addEventListener('click', handleSend);
 
-    function appendMessage(sender, text) {
+    function appendMessageToDOM(sender, text) {
       const msgDiv = document.createElement('div');
       msgDiv.className = `message ${sender}`;
 
@@ -503,12 +493,8 @@ ${systemKnowledgeBase}`;
 
       const payload = {
         contents: contents,
-        systemInstruction: {
-          parts: [{ text: systemInstructionText }]
-        },
-        generationConfig: {
-          temperature: 0.2
-        }
+        systemInstruction: { parts: [{ text: systemInstructionText }] },
+        generationConfig: { temperature: 0.2 }
       };
 
       const res = await fetch(endpoint, {
@@ -517,10 +503,7 @@ ${systemKnowledgeBase}`;
         body: JSON.stringify(payload)
       });
 
-      if (!res.ok) {
-        throw new Error(`API error ${res.status}: ${res.statusText}`);
-      }
-
+      if (!res.ok) throw new Error(`API error ${res.status}`);
       const data = await res.json();
       return data.candidates[0].content.parts[0].text;
     }
@@ -533,34 +516,32 @@ ${systemKnowledgeBase}`;
       queryInput.style.height = '48px';
       validateInputState();
 
-      appendMessage('agent', text);
+      appendMessageToDOM('agent', text);
       conversationLog.push({ role: 'user', parts: [{ text: text }] });
+      saveHistory();
 
-      const assistantBubble = appendMessage('assistant', "Formulating response...");
+      const assistantBubble = appendMessageToDOM('assistant', "Formulating response...");
 
       try {
-        // Attempt Primary Model (Gemini 3.5)
         activeModel = MODEL_PRIMARY;
-        updateBadge("Gemini 3.5");
+        modelBadge.textContent = "Gemini 3.5";
         const reply = await executeGeminiCall(MODEL_PRIMARY, conversationLog);
         assistantBubble.textContent = reply;
         conversationLog.push({ role: 'model', parts: [{ text: reply }] });
-      } catch (primaryError) {
-        console.warn("Gemini 3.5 encountered an error. Initiating fallback to Gemini 3.8...", primaryError);
-        
+      } catch (err) {
+        console.warn("Primary model failure, triggering fallback:", err);
         try {
-          // Fallback to Gemini 3.8
           activeModel = MODEL_FALLBACK;
-          updateBadge("Gemini 3.8");
+          modelBadge.textContent = "Gemini 3.8";
           const fallbackReply = await executeGeminiCall(MODEL_FALLBACK, conversationLog);
           assistantBubble.textContent = fallbackReply;
           conversationLog.push({ role: 'model', parts: [{ text: fallbackReply }] });
-        } catch (fallbackError) {
-          console.error("Critical failure on model fallback:", fallbackError);
-          assistantBubble.textContent = "Service unavailable. An error occurred while communicating with the operations language model. Please consult your Team Lead or duty supervisor.";
-          updateBadge("Connection Failure");
+        } catch (fErr) {
+          assistantBubble.textContent = "Service unavailable. An error occurred while communicating with the model. Please consult your Team Lead or supervisor.";
+          modelBadge.textContent = "Failure";
         }
       } finally {
+        saveHistory();
         validateInputState();
         chatStream.scrollTop = chatStream.scrollHeight;
       }
