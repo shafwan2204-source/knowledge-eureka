@@ -1,0 +1,1348 @@
+================================================================================
+CHANGI RECOMMENDS TRAVEL SERVICES MASTER KNOWLEDGE BASE & SOP
+================================================================================
+Document Version  : 8.5
+Author / Creator  : Shafwan
+Disclaimer        : Unofficial knowledge base created for hobby and learning
+                    purposes. Designed to assist with daily operational context,
+                    but may not be 100% accurate. If in doubt, always consult
+                    and verify with Team Leads, Duty Managers, or official SOPs.
+System Purpose    : Comprehensive Operations Manual & Retrieval-Augmented 
+                    Generation (RAG) Corpus for Changi Recommends Customer Care,
+                    Airport Concierge, Front Office & Automated Bot Workflows.
+System Scope      : Overseas Physical SIMs, Travel eSIMs, ChangiWiFi Routers,
+                    Private Limousines, Meet & Greet Concierge, PRM Mobility 
+                    Companion, Changi Transit Hotels (T1, T2, T3), ChangiAssure 
+                    Inbound Insurance, ChangiAssure Outbound Insurance, and 
+                    Japan Rail (JR) Passes (Physical MCO & Electronic EO).
+Primary Operating : Singapore Changi Airport (SIN)
+Time Zone Base    : Singapore Time (SGT / UTC+08:00)
+Currency Standard : Singapore Dollar (SGD)
+Last Recompiled   : 2026-11-03
+================================================================================
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+PART I: OVERSEAS PHYSICAL PREPAID SIM CARDS & TRAVEL ESIMS
+  Section 01: Physical Prepaid SIM Specifications & Compatibility
+  Section 02: Physical SIM Activation Protocols & APN Configuration
+  Section 03: Travel eSIM Overview, Installation Rules & Single-Scan Mandate
+  Section 04: Destination eSIM APN Configuration Matrix
+  Section 05: Step-by-Step Device Setup & Manual APN Entry (iOS & Android)
+  Section 06: Data Bundles, FUP Throttling & Live Balance Enquiry Portal
+  Section 07: Collection Counters, Local Delivery & Refund Terms
+
+PART II: CHANGIWIFI PORTABLE POCKET ROUTER
+  Section 08: Product Overview & Hardware Specifications
+  Section 09: Startup Workflow & Device Connection SOP
+  Section 10: Data Allowances, FUP Restrictions & Carrier Throttling
+  Section 11: Regional Network Controls & Firewalls (Mainland China & UAE)
+  Section 12: Booking Checklist, Change Requests & Online Extension Portal
+  Section 13: Airport Logistics (Departure Pickup vs. Arrival Return)
+  Section 14: Rental Billing Rules, Deposit Exemption & Late Return Fees
+  Section 15: Hardware Replacement Penalties & Optional Loss Coverage
+
+PART III: SINGAPORE PRIVATE LIMOUSINE TRANSFERS & CHARTERS
+  Section 16: Vehicle Fleet Comparison & Service Overview
+  Section 17: 6-Seater Point-to-Point City Transfer
+  Section 18: 6-Seater Limousine Hourly Charter (City & Airport)
+  Section 19: 13-Seater Minibus Hourly Charter (City & Airport)
+  Section 20: 13-Seater Airport Arrival Limousine Transfer
+  Section 21: Fare Inclusions, Exclusions & Peak Hour Surcharges
+  Section 22: Grace Periods, Waiting Surcharges & Booking Lead Times
+  Section 23: Statutory Child Seat Regulations & Height Requirements
+  Section 24: Territorial Exclusions, Amendment Rules & Cancellation Terms
+  Section 25: 24/7 Limousine Counter Redemption Desks
+
+PART IV: CHANGI AIRPORT MEET & GREET CONCIERGE
+  Section 26: Service Overview, Age Limits & Immigration Boundaries
+  Section 27: Service Tier Comparison: Classic vs. Deluxe
+  Section 28: End-to-End Service Itineraries (Arrival, Departure & Transit)
+  Section 29: Pricing Structure & Operational Surcharge Matrix
+  Section 30: Booking Cut-Offs, Real-Time Flight Tracking & Early Standby
+  Section 31: Billing Schedules, Cancellation Penalties & Code of Conduct
+
+PART V: CHANGI MOBILITY COMPANION (PRM SPECIALIZED ESCORT)
+  Section 32: Service Purpose, PRM Guidelines & Wheelchair Protocols
+  Section 33: Package Tiers, Pricing Breakdown & Luggage Thresholds
+  Section 34: Overtime Hourly Charges, Minimum Transit Time & Advance SLAs
+
+PART VI: CHANGI TRANSIT HOTEL NETWORK (CTH / CTS FRONT OFFICE)
+  Section 35: Airside Isolation Rules, Eligibility & Stay Prerequisites
+  Section 36: Terminal 1 (T1 CTH): Location, Facilities, Rooms & BAR Rates
+  Section 37: Terminal 2 (CTS T2): Location, Facilities, Rooms & BAR Rates
+  Section 38: Terminal 3 (CTS T3): Location, Facilities, Rooms & BAR Rates
+  Section 39: Stay Extensions, Additional Guests, Extra Beds & Room Upgrades
+  Section 40: Terminal 1 Swimming Pool, Gym & Non-Guest Shower Rates
+  Section 41: Inter-Terminal Transit Logistics (Skytrain, Shuttles & Walking)
+  Section 42: Comprehensive Hotel Operational FAQs
+
+PART VII: CHANGIASSURE INBOUND TRAVEL INSURANCE (TO SINGAPORE)
+  Section 43: Underwriting Framework, Sales Portal & Payment Modes
+  Section 44: Eligibility Boundaries, Vaccine Rules & Excluded Residency
+  Section 45: Child & Adult Definitions, Policy Duration & Family Plans
+  Section 46: Policy Extensions, Upgrade Restrictions & Coverage Continuity
+  Section 47: Inbound Claims Submission, Assessment SLAs & Refund Policy
+
+PART VIII: CHANGIASSURE OUTBOUND TRAVEL INSURANCE (FROM SINGAPORE)
+  Section 48: Pre-Departure Mandate, Trip Validity & Geographic Scope
+  Section 49: Overseas & Post-Trip Medical Care Rules in Singapore
+  Section 50: Medical Exclusions, Pregnancy Rules & Sanctioned Countries
+  Section 51: Rateable Contribution (Double Insurance) & Extension Protocols
+  Section 52: Mandatory Claims Documentation Matrix by Benefit Category
+
+PART IX: JAPAN RAIL (JR) PASS (PHYSICAL MCO & ELECTRONIC EO)
+  Section 53: Product Overview, Pass Durations & Car Classes (Ordinary vs Green)
+  Section 54: Eligibility Criteria, Dual Nationality & Third-Party Purchases
+  Section 55: Physical MCO vs. Electronic EO Booking & Fulfillment Workflows
+  Section 56: Collection Rescheduling, 6-Month Extensions & Amendment Fees
+  Section 57: Japan Rail Office Exchange SOP, 30-Day Window & Calendar Days
+  Section 58: Rail Scope, Bullet Train Exclusions, Ferry & Local Bus Lines
+  Section 59: Station Entry, Free Seat Reservations & Wheelchair Bookings
+  Section 60: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
+
+PART X: MASTER DIRECTORY & AIRPORT COUNTER MAP
+  Section 61: 24/7 Hotlines, Self-Service Portals & Department Directories
+  Section 62: Comprehensive Terminal Counter Map & Operational Hours
+
+
+================================================================================
+PART I: OVERSEAS PHYSICAL PREPAID SIM CARDS & TRAVEL ESIMS
+================================================================================
+
+Section 01: Physical Prepaid SIM Specifications & Compatibility
+--------------------------------------------------------------------------------
+* Product Name       : Changi Recommends Prepaid Overseas Travel SIM Card.
+* Primary Function   : Provides low-cost cellular data connectivity on local 
+                       telecommunication networks abroad without international 
+                       roaming fees.
+* Card Form Factor   : 3-in-1 multi-fit punch card (Standard, Micro, and Nano).
+* Hardware Support   : Factory-unlocked smartphones, cellular tablets, and mobile 
+                       hotspots. Carrier-locked devices cannot be used.
+* Supported Services :
+  - Mobile Data       : Full high-speed 4G / 5G connectivity for apps and web.
+  - Cellular Voice/SMS: Not supported. SIMs are data-only.
+  - VoIP / OTT Calling: Fully supported (WhatsApp, FaceTime, LINE, WeChat, 
+                        Telegram, Zoom, Skype).
+  - Social Media Apps : Fully supported (including TikTok, subject to local 
+                        country regulations).
+* Personal Hotspot   : Tethering permissions vary by individual destination 
+                       package. Verify packaging before tethering multiple devices.
+* Plan Continuity    : Once activated abroad, the calendar-day validity counter 
+                       runs continuously and cannot be paused or split.
+* Shelf Life         : Unactivated physical SIM cards expire 1 year from the 
+                       date of purchase.
+
+
+Section 02: Physical SIM Activation Protocols & APN Configuration
+--------------------------------------------------------------------------------
+* Critical Rule: DO NOT insert or test the SIM card inside Singapore or during 
+  layovers. Insert the SIM ONLY after physical landing in the destination country.
+* Dual-SIM Handsets:
+  - Always place the Travel SIM into SIM Slot 1.
+  - Temporarily turn off or disable your domestic primary SIM to prevent accidental 
+    background data roaming charges from your home carrier.
+
+* Step-by-Step Activation for iOS (Apple iPhone / iPad):
+  1. Insert SIM into the SIM tray upon arrival at your overseas destination.
+  2. Open "Settings" > "Cellular" (or "Mobile Data").
+  3. Toggle ON "Cellular Data" and select the Travel SIM line.
+  4. Tap "Cellular Data Options" and toggle ON "Data Roaming".
+  5. Manual APN Setup (if no connection appears within 3 minutes):
+     - Navigate to: "Settings" > "Mobile Data" > "Mobile Data Network".
+     - In the "APN" field under Cellular Data, enter: mobiledata
+     - Leave Username and Password completely blank.
+     - Toggle Airplane Mode ON for 10 seconds, then toggle OFF.
+
+* Step-by-Step Activation for Android (Samsung, Google Pixel, Xiaomi, Oppo, etc.):
+  1. Insert SIM into Slot 1 upon arrival.
+  2. Open "Settings" > "Connections" (or "Network & Internet") > "SIM Manager".
+  3. Verify SIM 1 is enabled and set as the Preferred SIM for Mobile Data.
+  4. Tap "Mobile Networks" and toggle ON "Data Roaming".
+  5. Manual APN Setup (if no connection appears within 3 minutes):
+     - Navigate to: "Settings" > "Connections" > "Mobile Networks" > "Access Point Names".
+     - Tap "Add" or the "+" icon to create a new APN.
+     - Name: mobiledata
+     - APN : mobiledata
+     - Leave Proxy, Port, Username, and Password blank (Not Set).
+     - Tap the three dots (top right) > "Save".
+     - Select the new "mobiledata" APN profile to make it active.
+     - Toggle Airplane Mode ON for 10 seconds, then toggle OFF.
+
+
+Section 03: Travel eSIM Overview, Installation Rules & Single-Scan Mandate
+--------------------------------------------------------------------------------
+* Product Category   : Digital Embedded SIM (eSIM).
+* Delivery Method    : Sent via email immediately upon payment confirmation. 
+                       Includes an installation QR code and ICCID number.
+* Hardware Pre-Check : The customer's smartphone must be carrier-unlocked and 
+                       support eSIM hardware (e.g., iPhone XS or newer, Google 
+                       Pixel 3 or newer, Samsung Galaxy S20/Fold/Flip or newer).
+* CRITICAL SINGLE-SCAN POLICY:
+  - Each eSIM QR code is strictly SINGLE-USE.
+  - NEVER remove or delete an eSIM profile from device settings during troubleshooting.
+  - A deleted eSIM profile CANNOT be reinstalled, re-scanned, or recovered.
+  - If a user deletes the profile, an entirely new eSIM must be purchased.
+* Installation Timing:
+  - The QR code profile can be installed via a stable Wi-Fi connection prior to 
+    departure or upon arrival.
+  - Data Roaming and Cellular Data switching for the eSIM line should be turned 
+    ON ONLY upon arrival in the destination country.
+
+
+Section 04: Destination eSIM APN Configuration Matrix
+--------------------------------------------------------------------------------
+Destination Country  | Mandatory APN Value | Partner Roaming Network | Special Operational Rules
+---------------------+---------------------+-------------------------+------------------------------------
+Japan                | vmobile.jp          | NTT Docomo / SoftBank   | Case-sensitive; lowercase only.
+South Korea          | ctm-mobile          | SK Telecom / KT Roaming | Lowercase; no trailing spaces.
+Mainland China       | CTM-mobile          | China Mobile / CTM      | Exact case-sensitive CTM-mobile.
+Hong Kong            | CTM-mobile          | CTM / Local HK Networks | Enter in both Name and APN fields.
+Malaysia             | mobiledata          | CelcomDigi / Maxis      | Standard roaming profile APN.
+Indonesia            | plus                | Telkomsel / Indosat     | Lowercase; no spaces.
+---------------------+---------------------+-------------------------+------------------------------------
+* Unlisted Destinations:
+  - For destinations not listed in the matrix above (e.g., Taiwan, Thailand, 
+    Australia, USA, Europe, regional bundles), support agents and users must check 
+    the setup instructions on the official website: www.changirecommends.com.
+
+
+Section 05: Step-by-Step Device Setup & Manual APN Entry (iOS & Android)
+--------------------------------------------------------------------------------
+* iOS Configuration SOP (Apple Devices):
+  1. Primary Setup:
+     - Open "Settings" > "Cellular" (or "Mobile Data").
+     - Tap "Cellular Data" and select the Travel eSIM line.
+     - Turn OFF "Allow Cellular Data Switching".
+     - Turn OFF Data Roaming on your primary domestic SIM line.
+     - Select the Travel eSIM profile and toggle ON "Data Roaming".
+  2. Manual APN Entry (if no internet connection appears):
+     - Tap "Settings" > "Mobile Data" > select the Travel eSIM line.
+     - Tap "Mobile Data Network" (or "Cellular Data Network").
+     - In the APN field under "Cellular Data", type the destination APN value 
+       (e.g., vmobile.jp, ctm-mobile, CTM-mobile, mobiledata, plus).
+     - Leave Username and Password blank.
+     - Restart device or toggle Airplane Mode ON for 10 seconds, then OFF.
+
+* Android Configuration SOP (Samsung, Pixel, Xiaomi, etc.):
+  1. Primary Setup:
+     - Open "Settings" > "Connections" > "SIM Manager".
+     - Ensure the Travel eSIM is toggled ON and set as the Preferred SIM for Mobile Data.
+     - Open "Mobile Networks" and ensure "Data Roaming" is enabled for the eSIM.
+  2. Manual APN Entry (if no internet connection appears):
+     - Open "Settings" > "Connections" > "Mobile Networks" > "Access Point Names".
+     - Select the Travel eSIM tab.
+     - Tap "Add" or "+" to create a new profile.
+     - Set "Name" to the specified APN value.
+     - Set "APN" to the exact matching string.
+     - Leave Username, Password, Proxy, and Port blank (Not Set).
+     - Tap the three dots (top right) > "Save".
+     - Tap the radio button next to the new APN to select it.
+     - Toggle Airplane Mode ON for 10 seconds, then OFF.
+
+
+Section 06: Data Bundles, FUP Throttling & Live Balance Enquiry Portal
+--------------------------------------------------------------------------------
+* Day Calculation & Reset Cycles:
+  - Daily data quotas reset every night at 00:00 Hrs (midnight) destination local time.
+  - Validity is billed by calendar days, not 24-hour periods.
+  - Example: A 5-day package activated at 4:00 PM on 10 May expires at 11:59 PM on 14 May.
+* Fair Usage Policy (FUP) & Throttling:
+  - Daily Quotas: 500MB, 1GB, 2GB, or 3GB high-speed data per day.
+  - Fixed Quotas: Fixed total high-speed volume for the full duration (e.g., 10GB for 15 days).
+  - Throttled Speed: When high-speed data is exhausted, speeds drop to an unlimited 
+    128 kbps for basic messaging and maps until the next daily midnight reset.
+* Live Data Balance Check Portal:
+  - Enquiry Portal URL: https://www.changirecommends.com/esim_enquiry.aspx
+  - Verification Method: Input the 19- or 20-digit SIM / eSIM ICCID number to 
+    view live data usage, remaining high-speed data, and expiry dates.
+* Dedicated Support Channels:
+  - Travel eSIM WhatsApp Support: +65 8790 0737 (Text Only)
+  - Customer Service Email     : call@changirecommends.com.sg
+
+
+Section 07: Collection Counters, Local Delivery & Refund Terms
+--------------------------------------------------------------------------------
+* Singapore Changi Airport Counter Collection:
+  - Location: Departure Halls (Public Area) in Terminals 1, 2, 3, and 4.
+  - Verification: Present the digital or printed confirmation voucher email.
+  - Redemption Window: Physical SIM vouchers are redeemable up to 60 days from purchase.
+* Doorstep Delivery in Singapore:
+  - Delivery Fee: Flat fee of SGD $15.00 per dispatch within mainland Singapore.
+* Cancellation & Return Terms:
+  - Physical SIM vouchers cancelled before collection are subject to a 20% admin fee.
+  - Delivered, scanned, or activated eSIM profiles are strictly non-refundable.
+
+
+================================================================================
+PART II: CHANGIWIFI PORTABLE POCKET ROUTER
+================================================================================
+
+Section 08: Product Overview & Hardware Specifications
+--------------------------------------------------------------------------------
+* Product Name       : ChangiWiFi Pocket Router.
+* Primary Function   : Encrypted, portable Wi-Fi hotspot providing international 
+                       cellular data overseas.
+* Standard Pouch Contents:
+  - 1 x ChangiWiFi mobile router unit
+  - 1 x Universal travel power adapter
+  - 1 x USB charging cable
+  - 1 x Protective travel case
+* Technical Specifications:
+  - Concurrent Devices : Connects up to 5 devices simultaneously.
+  - Compatibility      : Works with all Wi-Fi-enabled devices (smartphones, 
+                         laptops, tablets, e-readers).
+  - Effective Range    : Up to 10 meters line-of-sight without physical obstructions.
+  - Battery Endurance  : Approximately 5 to 8 hours of continuous use on a full charge.
+  - SIM Slot Policy    : Hardware is pre-configured; inserting personal SIM cards is 
+                         strictly prohibited.
+
+
+Section 09: Startup Workflow & Device Connection SOP
+--------------------------------------------------------------------------------
+1. Power On: Press and hold the power button for 3 seconds until the display lights up.
+2. Signal Acquisition: Allow 1 to 2 minutes for the router to find and register on 
+   the local partner network.
+3. Enable Wi-Fi: Open Wi-Fi settings on your personal device.
+4. Select Network: Locate the Wi-Fi network name (SSID) printed on the device label or screen.
+5. Enter Security Key: Enter the case-sensitive Wi-Fi password printed on the router.
+6. Connected: The device connects automatically. Data speeds depend on local network infrastructure.
+
+
+Section 10: Data Allowances, FUP Restrictions & Carrier Throttling
+--------------------------------------------------------------------------------
+* Standard Unlimited Package:
+  - Daily High-Speed Tier: Includes 500MB of high-speed 4G data per calendar day.
+  - Throttled Tier: Once 500MB is used within a day, speeds drop to an unlimited 
+    512 kbps connection until the midnight reset.
+* Fair Usage Policy (FUP) Rules:
+  - Destination telcos monitor network traffic to prevent congestion.
+  - Excessive peer-to-peer sharing, continuous high-definition video streaming, 
+    or massive file downloads may trigger carrier-level throttling or temporary suspension.
+  - Changi Recommends is not liable for carrier-enforced restrictions caused by FUP abuse.
+* Tracking Data Usage:
+  - Check the router's front LCD display to view current session usage.
+  - Contact customer care (+65 6701 1185) for detailed account status.
+
+
+Section 11: Regional Network Controls & Firewalls (Mainland China & UAE)
+--------------------------------------------------------------------------------
+* Mainland China Restrictions & VPN Support:
+  - Blocked Services: Google apps, Gmail, Google Maps, WhatsApp, Facebook, Instagram, X.
+  - Built-In VPN Bypass: ChangiWiFi China routers feature built-in hardware VPN routing 
+    to provide access to blocked services.
+  - TikTok App Access: TikTok is unavailable in Mainland China, Hong Kong, and 
+    Macau due to application-level regional restrictions.
+  - Disclaimer: Firewall policies change frequently; occasional brief connection drops 
+    may occur beyond Changi Recommends' control.
+
+* United Arab Emirates (UAE) Regulations:
+  - Blocked Services: VoIP voice and video calls (WhatsApp Calls, FaceTime Audio, 
+    Skype, Messenger Calls) are blocked nationwide by UAE regulatory authorities.
+  - No VPN Router: ChangiWiFi UAE units do NOT feature built-in VPN software.
+  - Personal VPN Use: Travelers installing third-party VPN software do so at their own risk.
+
+
+Section 12: Booking Checklist, Change Requests & Online Extension Portal
+--------------------------------------------------------------------------------
+* Booking Recommendations: Reserve well in advance during peak travel periods 
+  (June, November, December) to ensure device availability.
+* Walk-in Bookings: Walk-ins are accepted at airport counters, subject to stock on hand.
+* Multi-Country Bundles: Multi-Asia, Europe, and Worldwide packages are available online.
+* Online Extension & Booking Management Portal:
+  - Direct Link: https://www.changirecommends.com/owifi_manage.aspx
+  - Function: Allows customers to view, update, manage, and extend their active 
+    ChangiWiFi reservations online without calling or visiting a counter.
+* Booking Checklist:
+  1. Collection Date and Time
+  2. Collection Terminal
+  3. Return Date and Time
+  4. Travel Destination(s)
+  5. Full Name
+  6. Mobile Contact Number
+  7. Email Address
+  8. Promotional Code (if applicable)
+  9. Loss Coverage Selection (SGD $10 flat fee per trip)
+* Modification & Cancellation Deadlines:
+  - Amendments / Extensions: Update via https://www.changirecommends.com/owifi_manage.aspx 
+    or email call@changirecommends.com.sg at least 3 working days before collection.
+  - Cancellations: Notify support via email or WhatsApp (+65 8790 0737) before the collection date.
+
+
+Section 13: Airport Logistics (Departure Pickup vs. Arrival Return)
+--------------------------------------------------------------------------------
+* Device Collection Points:
+  - Locations: Terminals 1, 2, 3, and 4 Departure Halls (Public Area, before immigration).
+  - Requirements: Present your booking confirmation email and passport.
+* Device Return Points:
+  - Locations: Terminals 1, 2, 3, and 4 Arrival Halls ONLY (Public Area, after baggage claim).
+  - Strict Rule: ChangiWiFi devices CANNOT be returned at Departure Hall counters.
+
+
+Section 14: Rental Billing Rules, Deposit Exemption & Late Return Fees
+--------------------------------------------------------------------------------
+* Calendar Day Billing:
+  - Rental charges are calculated per calendar day based on Singapore Time (UTC+08:00), 
+    from the date of collection to the date the unit is returned at the airport counter.
+  - Example: Collected on 1 May (23:30) and returned on 4 May (01:15) = 4 billable days.
+* Security Deposit: SGD $0. No deposit or credit card pre-authorization hold is required.
+* Payment Collection: Full rental payment is collected at the airport counter when picking up the router.
+* Accepted Payments: Visa, Mastercard, UnionPay, American Express, and major debit cards.
+* Late Return Penalties:
+  - Devices returned after the scheduled date without prior extension are billed 
+    at the standard daily rental rate for each overdue day until returned.
+
+
+Section 15: Hardware Replacement Penalties & Optional Loss Coverage
+--------------------------------------------------------------------------------
+* Hardware Replacement Penalties (without Loss Coverage):
+  - ChangiWiFi Router & Built-in SIM : SGD $300.00
+  - Universal Travel Power Adapter     : SGD $25.00
+  - USB Charging Cable                 : SGD $25.00
+  - Protective Carrying Case           : SGD $25.00
+  - Total Package Replacement Fee      : SGD $375.00
+
+* Optional Loss Coverage Insurance:
+  - Cost: SGD $10.00 flat fee per router per rental trip.
+  - Coverage: Fully waives replacement penalties if the router is lost, stolen, or damaged abroad.
+  - Mandatory Claim Requirements:
+    1. Report the loss to Changi Recommends customer support immediately (+65 6701 1185).
+    2. Email call@changirecommends.com.sg within 48 hours of the incident.
+    3. Submit a copy of the official local Police Report detailing the loss.
+
+
+================================================================================
+PART III: SINGAPORE PRIVATE LIMOUSINE TRANSFERS & CHARTERS
+================================================================================
+
+Section 16: Vehicle Fleet Comparison & Service Overview
+--------------------------------------------------------------------------------
+Service Category         | Fleet Model          | Max Passenger & Luggage Load
+-------------------------+----------------------+---------------------------------------------------
+6-Seater Point-to-Point  | Alphard / Vellfire   | Max 5 Passengers + 2 Large Bags (28-inch)
+6-Seater Hourly Charter  | Alphard / Vellfire   | Max 5 Passengers + 2 Large Bags (Min. 2 Hours)
+13-Seater Hourly Charter | Toyota Hiace         | Max 9 Passengers + 9 Large Bags (Min. 2 Hours)
+13-Seater Arrival Pickup | Toyota Hiace         | Max 9 Passengers + 9 Large Bags (Airport -> City)
+
+
+Section 17: 6-Seater Point-to-Point City Transfer
+--------------------------------------------------------------------------------
+* Service Scope      : Private transfer between any two addresses within Singapore.
+* Availability       : 24 Hours daily, 7 days a week.
+* Vehicle Fleet      : Luxury MPV (Toyota Alphard, Toyota Vellfire, or equivalent).
+* Maximum Load       : Up to 5 passengers and 2 standard check-in suitcases.
+* Booking Workflow   : Requires advance reservation via Changi Recommends concierge.
+
+
+Section 18: 6-Seater Limousine Hourly Charter (City & Airport)
+--------------------------------------------------------------------------------
+* Service Scope      : Dedicated chauffeur charter for business meetings, city tours, 
+                       or multiple flexible stops.
+* Minimum Booking    : Minimum booking requirement of 2 consecutive hours.
+* Vehicle Fleet      : Luxury MPV (Toyota Alphard, Toyota Vellfire, or equivalent).
+* Maximum Capacity   : Up to 5 passengers and 2 suitcases.
+* Fulfillment Modes  :
+  a) On-Demand Airport Redemption: Redeem at any airport arrival counter 24/7; vehicle 
+     dispatches to the pickup bay within 15–20 minutes.
+  b) Advance Concierge Booking: Pre-book exact pickup time and itinerary in advance.
+
+
+Section 19: 13-Seater Minibus Hourly Charter (City & Airport)
+--------------------------------------------------------------------------------
+* Service Scope      : Dedicated chauffeur charter for large families, corporate groups, 
+                       or passengers with oversized luggage.
+* Minimum Booking    : Minimum booking requirement of 2 consecutive hours.
+* Vehicle Fleet      : High-roof passenger minibus (Toyota Hiace or equivalent).
+* Maximum Capacity   : Up to 9 passengers and 9 standard check-in suitcases.
+* Fulfillment Modes  : On-demand airport arrival counter redemption or advance booking.
+
+
+Section 20: 13-Seater Airport Arrival Limousine Transfer
+--------------------------------------------------------------------------------
+* Service Scope      : Direct arrival transfer from Changi Airport to any Singapore hotel or home.
+* Redemption Point   : Changi Recommends counters across Terminals 1, 2, 3, and 4 (Arrival Halls).
+* Dispatch SLA       : Vehicle arrives at the terminal pickup bay within 15–20 minutes 
+                       of counter voucher presentation.
+* Vehicle Fleet      : Toyota Hiace minibus (or equivalent).
+* Maximum Capacity   : Up to 9 passengers and 9 standard check-in suitcases.
+
+
+Section 21: Fare Inclusions, Exclusions & Peak Hour Surcharges
+--------------------------------------------------------------------------------
+* Inclusions (All-Inclusive Base Fare):
+  - Chauffeur driving services and gratuities
+  - Vehicle fuel and parking charges
+  - Electronic Road Pricing (ERP) / highway gantries
+  - Midnight service surcharges
+  - Comprehensive commercial passenger motor insurance
+* Standard Exclusions:
+  - Additional unscheduled stops along the route
+  - Waiting time fees past the complimentary grace period
+  - Daily peak hour surcharges
+* Peak Hour Surcharge:
+  - Time Window: 5:00 PM – 8:00 PM (17:00 – 20:00 Hrs) daily.
+  - Surcharge Rate: SGD $5.00 per hour.
+  - Collection: Payable at the Changi Recommends airport counter upon redemption.
+
+
+Section 22: Grace Periods, Waiting Surcharges & Booking Lead Times
+--------------------------------------------------------------------------------
+* Complimentary Grace Period:
+  - A complimentary grace period of 15 minutes is provided from the confirmed pickup time.
+* Waiting Time Surcharges:
+  - Waiting fees accrue at SGD $10.00 (or up to $15.00 depending on contract tier) 
+    per subsequent 15-minute block.
+  - Payment: Paid directly in cash to the chauffeur inside the vehicle.
+  - Example: Pickup booked at 14:00; boarding at 14:18 incurs a 15-minute waiting charge.
+* Booking Lead Times: Advance bookings require at least 24 hours notice.
+
+
+Section 23: Statutory Child Seat Regulations & Height Requirements
+--------------------------------------------------------------------------------
+* Legal Height Requirement: Under Singapore Traffic Law, passengers under 1.35 meters 
+  in height must be secured in an approved child safety restraint or booster seat.
+* Service Exclusion: Limousine fleet vehicles do NOT provide child booster seats or 
+  infant carriers. Children under 1.35 meters cannot be accommodated unless the parent 
+  provides an approved portable booster seat.
+
+
+Section 24: Territorial Exclusions, Amendment Rules & Cancellation Terms
+--------------------------------------------------------------------------------
+* Territorial Exclusions:
+  - Pickups and drop-offs within the Tuas industrial district are strictly excluded.
+  - Inaccessible offshore locations (e.g., Jurong Island, Sentosa coves requiring 
+    permits) drop off at the nearest mainland ferry terminal or security gate.
+* Amendment Notices:
+  - Notice $\ge 24$ Hours: Date, time, and address changes are processed without penalty.
+  - Notice $< 24$ Hours: A late change fee of SGD $20.00 applies.
+* Validity & Cancellation Policy:
+  - Limousine vouchers are valid for 12 days from the date of purchase.
+  - All limousine bookings and vouchers are strictly non-refundable and non-cancellable.
+
+
+Section 25: 24/7 Limousine Counter Redemption Desks
+--------------------------------------------------------------------------------
+- Terminal 1: Arrival Hall, near Information Counter (Public Area)
+- Terminal 2: Arrival Hall, near Information Counter (Public Area)
+- Terminal 3: Arrival Hall, near Paris Baguette (Public Area)
+- Terminal 4: Arrival Hall, near Paris Baguette (Public Area)
+
+
+================================================================================
+PART IV: CHANGI AIRPORT MEET & GREET CONCIERGE
+================================================================================
+
+Section 26: Service Overview, Age Limits & Immigration Boundaries
+--------------------------------------------------------------------------------
+* Description: Personalized airport concierge escort guiding passengers through 
+  airport formal procedures (check-in, security, immigration, baggage, customs) 
+  for Arrival, Departure, and Transit at Changi Airport.
+* Age Restriction: Available strictly to adults aged 19 years and older. 
+  Unaccompanied minors aged 18 and below must book via their operating airline.
+* No Fast-Track Queue Privileges: Changi Airport does not operate commercial fast-track 
+  immigration lines. Concierges escort guests to standard security and passport queues.
+* Immigration Security Clearance: Under airport security regulations, concierges cannot 
+  enter active immigration booths; they brief guests and wait on the other side.
+* Gratuities: Tipping is strictly voluntary.
+
+
+Section 27: Service Tier Comparison: Classic vs. Deluxe
+--------------------------------------------------------------------------------
+Feature                 | Classic Meet & Greet           | Deluxe Meet & Greet
+------------------------+--------------------------------+---------------------------------
+Dedicated Concierge     | Non-exclusive (Grouped by flt) | Dedicated private concierge
+Available Flows         | Arrival ONLY                   | Arrival, Departure, and Transit
+Minimum Group Size      | No minimum (Solo pax accepted) | No minimum
+Meeting Point           | Arrival Gate                   | Aerobridge / Departure Curb Door
+Porterage Allowance     | No luggage assistance          | Up to 3 Check-in + 1 Cabin Bag
+Add-On Arrangements     | Not eligible                   | Limousines, flower bouquets, etc.
+Buggy Service Included  | No buggy included              | No buggy included
+
+
+Section 28: End-to-End Service Itineraries (Arrival, Departure & Transit)
+--------------------------------------------------------------------------------
+* Deluxe Arrival Itinerary:
+  1. Aerobridge Greeting: Concierge meets passenger at arrival gate holding name placard.
+  2. Passport Clearance Escort: Guides guest to standard immigration queue.
+  3. Baggage Collection: Assists with up to 3 check-in bags + 1 cabin bag on 1 trolley.
+  4. Handover: Escorts guest to limousine counter, taxi queue, coach bay, or private driver.
+
+* Deluxe Departure Itinerary:
+  1. Curbside Meeting: Concierge meets traveler at airline departure door 2 hours 
+     before departure (car license plate must be shared in advance).
+  2. Check-In Escort: Assists with luggage handling to the airline check-in counter.
+  3. Security Escort: Guides passenger to immigration entry and waits on the airside.
+  4. Gate Delivery: Escorts traveler to departure lounge or boarding gate. Service 
+     concludes at the gate; staff do not wait for flight takeoff.
+
+* Deluxe Transit Itinerary:
+  1. Gate Reception: Concierge meets the passenger at the incoming arrival gate.
+  2. Transfer Logistics: Escorts traveler through airside transit areas, Skytrain, 
+     or shuttle bus to their connecting flight terminal.
+  3. Layover Escort: Guides traveler to transit hotel, airline lounge, or shopping areas.
+  4. Boarding Gate Delivery: Escorts traveler to the departing flight gate.
+
+
+Section 29: Pricing Structure & Operational Surcharge Matrix
+--------------------------------------------------------------------------------
+* Deluxe Meet & Greet Pricing (Taxes included):
+  - Arrival & Departure: 1st Pax: SGD $100 | 2nd Pax: $20 | 3rd Pax: $20 | 4th Pax: $100
+  - Transit Services   : 1st Pax: SGD $200 | 2nd Pax: $40 | 3rd Pax: $40 | 4th Pax: $200
+
+* Classic Meet & Greet Pricing (Arrival Only):
+  - Flat rate of SGD $100 for up to 4 passengers on the same flight.
+
+* Mandatory Operational Surcharges:
+  - Overnight Service (23:31 – 07:00 Hrs): SGD $20 surcharge per booking.
+  - Last-Minute Booking (< 24 Hours): SGD $20 surcharge per booking.
+  - Early Departure Standby (Standard standby is 2 hours before flight):
+    * 30 Minutes Early (2.5h prior): SGD $30 fee
+    * 60 Minutes Early (3.0h prior): SGD $60 fee
+
+
+Section 30: Booking Cut-Offs, Real-Time Flight Tracking & Early Standby
+--------------------------------------------------------------------------------
+* Booking Lead Times: Minimum 48 hours notice via changirecommends.com/meetandgreet.aspx. 
+  For bookings under 24 hours, email changimeetgreet@changirecommends.com.sg.
+* Terminal Booking Field: Enter "Terminal 1" on the web portal; flight tracking 
+  automatically dispatches the greeter to the correct operational terminal.
+* Flight Delays: Monitored in real time. Concierges adjust meeting times automatically 
+  without customer delay surcharges.
+* Flight Cancellations: Contact +65 8051 9119 or changimeetgreet@changirecommends.com.sg. 
+  Handled case-by-case; approved cancellations incur a 20% admin fee.
+
+
+Section 31: Billing Schedules, Cancellation Penalties & Code of Conduct
+--------------------------------------------------------------------------------
+* Payment Modes: Credit/Debit card (Visa, Mastercard) online, or PayNow/bank transfer via email.
+* Card Processing SLA: Cards are billed within 7 business days of confirmation.
+* Cancellation Penalties:
+  - Cancellations < 48 Hours: 100% cancellation charge (strictly non-refundable).
+  - Modifications / Cancellations < 24 Hours: 100% fee forfeiture.
+  - Approved Refunds: Subject to a 20% administrative fee deduction.
+* Passenger Conduct Code: Service will be terminated immediately if a passenger is 
+  intoxicated, verbally abusive, or poses a safety risk. Police will be alerted, 
+  fees are forfeited, and damages remain billable.
+
+
+================================================================================
+PART V: CHANGI MOBILITY COMPANION (PRM SPECIALIZED ESCORT)
+================================================================================
+
+Section 32: Service Purpose, PRM Guidelines & Wheelchair Protocols
+--------------------------------------------------------------------------------
+* Service Purpose    : Specialized concierge escort for Persons with Reduced 
+                       Mobility (PRM), senior travelers, and recuperating patients.
+* Mobility Equipment : Wheelchairs provided upon request with minimum 48 hours notice.
+* Escort Support     : Includes physical guidance, navigation through airport corridors, 
+                       and baggage handling from luggage belts.
+
+
+Section 33: Package Tiers, Pricing Breakdown & Luggage Thresholds
+--------------------------------------------------------------------------------
+Package Category         | Price (GST Incl) | Base Window | Included Luggage Allowance
+-------------------------+------------------+-------------+---------------------------------
+PRM Companion: Arrival   | SGD $150.00 Nett | 1.5 Hours   | 3 Checked bags + 1 Cabin bag
+PRM Companion: Departure | SGD $150.00 Nett | 1.5 Hours   | 3 Checked bags + 1 Cabin bag
+PRM Companion: Transit 2H| SGD $180.00 Nett | 2.0 Hours   | 1 Cabin bag
+PRM Companion: Transit 4H| SGD $380.00 Nett | 4.0 Hours   | 1 Cabin bag (Up to 3h Lounge)
+
+
+Section 34: Overtime Hourly Charges, Minimum Transit Time & Advance SLAs
+--------------------------------------------------------------------------------
+* Overtime Surcharge : Extended service is billed at SGD $120.00 per additional hour.
+* Minimum Layover    : Transit packages require a minimum layover of 2.0 hours.
+* Buggy Service      : Electric buggy transport is not included in base packages; 
+                       available upon request subject to airport operational availability.
+* Booking SLA        : Advance reservation of at least 48 hours is mandatory:
+  - Phone / WhatsApp : +65 8051 9119
+  - Operations Email : changimeetgreet@changirecommends.com.sg
+
+
+================================================================================
+PART VI: CHANGI TRANSIT HOTEL NETWORK (CTH / CTS FRONT OFFICE)
+================================================================================
+
+Section 35: Airside Isolation Rules, Eligibility & Stay Prerequisites
+--------------------------------------------------------------------------------
+* Physical Isolation: Located strictly airside within the secure transit areas 
+  of Terminals 1, 2, and 3.
+* Access Rule: Accessible ONLY to travelers who remain inside the transit area 
+  without clearing Singapore immigration.
+* Eligibility Requirements:
+  1. Transit Travelers: Must remain airside and hold a valid onward boarding pass.
+  2. Singapore City Departures: Permitted only if the passenger's airline provides 
+     Early Check-In (ECI), allowing them to collect a boarding pass and pass immigration into the transit area.
+  3. Minors: Guests under 18 years must be accompanied by an adult.
+* Luggage Restriction: Checked baggage CANNOT be accessed in the transit hotel; 
+  guests must keep all clothing and medications in carry-on cabin bags.
+* Room Upgrade Fee: Flat fee of SGD $100.00 Nett between eligible room tiers.
+
+
+Section 36: Terminal 1 (T1 CTH): Location, Facilities, Rooms & BAR Rates
+--------------------------------------------------------------------------------
+* Physical Location : Level 3, Near Departure Gate D40 (via escalator), Departure 
+                      Transit Area, Terminal 1, Singapore Changi Airport, Singapore 819642.
+* Direct Contacts   : Front Desk: +65 6054 7330 | WhatsApp: +65 9477 6617 | 
+                      Email: TransitHotel@changirecommends.com.sg
+* Facilities        : Outdoor pool, jacuzzi, 24/7 fitness corner, poolside bar, The Hub Lounge.
+* Room Configurations:
+  - Standard (8 sqm)    : 1 Single Bed, 1 pax, private bathroom located in common hallway.
+  - Deluxe (24.5-34 sqm): 2 Double Beds, up to 3 pax, private ensuite bathroom.
+  - Family (45 sqm)     : 1 Double + 3 Single Beds, up to 5 pax, lounge area, 42" TV, ensuite bathroom.
+
+* Terminal 1 Best Available Rates (BAR) (W.E.F. 11 September 2026):
+Room Category        | Block Duration | BAR 1 Rate    | BAR 2 Rate    | BAR 3 Rate
+---------------------+----------------+---------------+---------------+---------------
+Standard (8 sqm)     | 6 Hours        | SGD $160 Nett | SGD $155 Nett | SGD $150 Nett
+Standard (8 sqm)     | 12 Hours       | SGD $317 Nett | SGD $312 Nett | SGD $307 Nett
+Standard (8 sqm)     | 24 Hours       | SGD $396 Nett | SGD $391 Nett | SGD $386 Nett
+Deluxe (24.5-34 sqm) | 6 Hours        | SGD $260 Nett | SGD $255 Nett | SGD $250 Nett
+Deluxe (24.5-34 sqm) | 12 Hours       | SGD $355 Nett | SGD $350 Nett | SGD $345 Nett
+Deluxe (24.5-34 sqm) | 24 Hours       | SGD $500 Nett | SGD $495 Nett | SGD $490 Nett
+Family Room (5 Pax)  | 6 Hours        | SGD $522 Nett | N/A           | N/A
+Family Room (5 Pax)  | 24 Hours       | SGD $790 Nett | N/A           | N/A
+Deluxe Day-Use Slot  | 3h (0900-1700) | SGD $180 Nett | SGD $180 Nett | SGD $180 Nett
+
+
+Section 37: Terminal 2 (CTS T2): Location, Facilities, Rooms & BAR Rates
+--------------------------------------------------------------------------------
+* Physical Location : Level 3, Near The Sunflower Garden, Departure Transit Lounge South, 
+                      Terminal 2, Singapore Changi Airport, Singapore 819643.
+* Direct Contacts   : Front Desk: +65 9477 5621 | WhatsApp: +65 9477 6617 | 
+                      Email: TransitHotel@changirecommends.com.sg
+* Facilities        : Wake-up calls, pillow selection, complimentary Wi-Fi, non-smoking premises.
+* Room Configurations:
+  - Standard (11 sqm)     : 1 Single Bed, 1 pax, private bathroom located in hallway.
+  - Standard Twin (15 sqm): 2 Single Beds, 2 pax, private bathroom located in hallway.
+  - Deluxe Twin/Queen     : 2 Singles OR 1 Queen Bed, 2 pax, private ensuite bathroom.
+  - Deluxe Triple (27 sqm): 3 Singles OR 1 Double + 1 Single, 3 pax, private ensuite.
+  - Family Room (27-31sqm): 1 Double + 2 Single Beds, 4 pax, private ensuite bathroom.
+
+* Terminal 2 Best Available Rates (BAR) (W.E.F. 3 November 2026):
+Room Category        | Block Duration | BAR 1 Rate    | BAR 2 Rate    | BAR 3 Rate
+---------------------+----------------+---------------+---------------+---------------
+Standard (11 sqm)    | 6 Hours        | SGD $160 Nett | SGD $155 Nett | SGD $150 Nett
+Standard (11 sqm)    | 12 Hours       | SGD $317 Nett | SGD $312 Nett | SGD $307 Nett
+Standard (11 sqm)    | 24 Hours       | SGD $396 Nett | SGD $391 Nett | SGD $386 Nett
+Standard Twin (15m2) | 6 Hours        | SGD $200 Nett | SGD $195 Nett | SGD $190 Nett
+Standard Twin (15m2) | 12 Hours       | SGD $317 Nett | SGD $312 Nett | SGD $307 Nett
+Standard Twin (15m2) | 24 Hours       | SGD $396 Nett | SGD $391 Nett | SGD $386 Nett
+Deluxe Twin / Queen  | 6 Hours        | SGD $260 Nett | SGD $255 Nett | SGD $250 Nett
+Deluxe Twin / Queen  | 12 Hours       | SGD $355 Nett | SGD $350 Nett | SGD $345 Nett
+Deluxe Twin / Queen  | 24 Hours       | SGD $500 Nett | SGD $495 Nett | SGD $490 Nett
+Deluxe Triple (27m2) | 6 Hours        | SGD $330 Nett | SGD $325 Nett | SGD $320 Nett
+Deluxe Triple (27m2) | 12 Hours       | SGD $415 Nett | SGD $410 Nett | SGD $405 Nett
+Deluxe Triple (27m2) | 24 Hours       | SGD $580 Nett | SGD $575 Nett | SGD $570 Nett
+Family Room (4 Pax)  | 6 Hours        | SGD $452 Nett | SGD $447 Nett | SGD $442 Nett
+Family Room (4 Pax)  | 12 Hours       | SGD $523 Nett | SGD $518 Nett | SGD $513 Nett
+Family Room (4 Pax)  | 24 Hours       | SGD $720 Nett | SGD $715 Nett | SGD $710 Nett
+Deluxe Day-Use Slot  | 3h (0900-1700) | SGD $180 Nett | SGD $180 Nett | SGD $180 Nett
+Triple Day-Use Slot  | 3h (0900-1700) | SGD $250 Nett | SGD $250 Nett | SGD $250 Nett
+
+
+Section 38: Terminal 3 (CTS T3): Location, Facilities, Rooms & BAR Rates
+--------------------------------------------------------------------------------
+* Physical Location : Level 3, Beside Movie Theatre, Departure Transit Lounge North, 
+                      Terminal 3, Singapore Changi Airport, Singapore 819642.
+* Direct Contacts   : Front Desk: +65 9477 6709 | WhatsApp: +65 9477 6617 | 
+                      Email: TransitHotel@changirecommends.com.sg
+* Facilities        : Wake-up calls, pillow selection, complimentary Wi-Fi, non-smoking premises.
+* Room Configurations:
+  - Deluxe Twin/Queen (18-19 sqm): 2 Singles OR 1 Queen Bed, 2 pax, private ensuite.
+  - Deluxe Triple (23-27 sqm)    : 3 Singles OR 1 Double + 1 Single, 3 pax, private ensuite.
+  - Family Room (27-34 sqm)      : 4 Singles OR 1 Double + 2-3 Singles, 4 pax, private ensuite.
+
+* Terminal 3 Best Available Rates (BAR) (W.E.F. 1 October 2026):
+Room Category        | Block Duration | BAR 1 Rate    | BAR 2 Rate    | BAR 3 Rate
+---------------------+----------------+---------------+---------------+---------------
+Deluxe Twin / Queen  | 6 Hours        | SGD $260 Nett | SGD $255 Nett | SGD $250 Nett
+Deluxe Twin / Queen  | 12 Hours       | SGD $355 Nett | SGD $350 Nett | SGD $345 Nett
+Deluxe Twin / Queen  | 24 Hours       | SGD $500 Nett | SGD $495 Nett | SGD $490 Nett
+Deluxe Triple (27m2) | 6 Hours        | SGD $330 Nett | SGD $325 Nett | SGD $320 Nett
+Deluxe Triple (27m2) | 12 Hours       | SGD $415 Nett | SGD $410 Nett | SGD $405 Nett
+Deluxe Triple (27m2) | 24 Hours       | SGD $580 Nett | SGD $575 Nett | SGD $570 Nett
+Family Room (4 Pax)  | 6 Hours        | SGD $452 Nett | SGD $447 Nett | SGD $442 Nett
+Family Room (4 Pax)  | 12 Hours       | SGD $523 Nett | SGD $518 Nett | SGD $513 Nett
+Family Room (4 Pax)  | 24 Hours       | SGD $720 Nett | SGD $715 Nett | SGD $710 Nett
+Deluxe Day-Use Slot  | 3h (0900-1700) | SGD $180 Nett | SGD $180 Nett | SGD $180 Nett
+Triple Day-Use Slot  | 3h (0900-1700) | SGD $250 Nett | SGD $250 Nett | SGD $250 Nett
+
+
+Section 39: Stay Extensions, Additional Guests, Extra Beds & Room Upgrades
+--------------------------------------------------------------------------------
+* Hourly Extension Charges (Per Additional Hour):
+  - Standard Single / Twin Room : SGD $32.00 Nett per hour
+  - Deluxe Twin / Queen Room    : SGD $45.00 Nett per hour
+  - Deluxe Triple Room          : SGD $50.00 Nett per hour
+  - Family Room (4 or 5 Pax)    : SGD $55.00 Nett per hour
+* Extra Occupant Fees (Per Person):
+  - Additional Child (Aged 2 to 11): SGD $36.00 Nett
+  - Additional Adult (Aged 12+)    : SGD $70.00 Nett
+* Extra Bed Rollaway Charge: SGD $90.00 Nett per unit.
+* Room Tier Upgrade Surcharge: SGD $100.00 Nett flat rate.
+
+
+Section 40: Terminal 1 Swimming Pool, Gym & Non-Guest Shower Rates
+--------------------------------------------------------------------------------
+* Shower Availability by Terminal:
+  - Terminal 1 : Non-guest shower facilities are AVAILABLE.
+  - Terminal 2 : NO non-guest shower facilities available.
+  - Terminal 3 : NO non-guest shower facilities available.
+* In-House Hotel Resident Privileges:
+  - Guests with confirmed reservations enjoy complimentary access to the pool 
+    and fitness corner on their day of arrival.
+  - Privileges continue after checkout on the same calendar day.
+  - Includes 1 pool towel per guest, changing rooms, and lockers (subject to availability).
+* Operating Hours: Pool & Poolside Bar open 10:00 AM – 10:00 PM (10:00 – 22:00 Hrs) daily.
+
+* Non-Hotel Guest Pool Admission:
+  - Adult (Aged 12+)             : SGD $27.58 Nett
+  - Child (Aged 2 to 11)         : SGD $11.99 Nett
+  - Infant (Under 2 years old)   : Free of charge
+  - Inclusions: Outdoor pool, unheated jacuzzi, gym corner, changing rooms, lockers, 
+    towel, shower facilities (shampoo/body wash), hair dryer, sun loungers.
+  - Booking Rule: Walk-in only; payment made at pool bar counter.
+
+* Non-Hotel Guest Shower Only (Terminal 1 Only):
+  - Admission Fee: SGD $19.18 Nett per person (single entry).
+  - Inclusions: Private shower stall, clean towel, shampoo/body wash, lockers, hair dryer.
+  - Restriction: Pool access is strictly prohibited for shower-only admissions.
+
+* Poolside Bar Menu: Serves light snacks and beverages only; no full/heavy meals.
+
+
+Section 41: Inter-Terminal Transit Logistics (Skytrain, Shuttles & Walking)
+--------------------------------------------------------------------------------
+* Walking Durations Between Terminals:
+  - Terminal 1 <-> Terminal 2: ~10 to 15 minutes on foot (with moving walkways).
+  - Terminal 1 <-> Terminal 3: ~10 to 15 minutes on foot (Terminal 3 is elongated; 
+    walking times can vary depending on gate location).
+  - Terminal 2 <-> Terminal 3: ~5 minutes on foot via the direct Mezzanine Link Bridge.
+
+* Free Automated Skytrain (Terminals 1, 2, and 3):
+  - Operating Hours: Daily from 5:00 AM to 2:00 AM (05:00 – 02:00 Hrs).
+  - Train Journey: ~1 to 3 minutes transit time between terminal stations.
+  - Total Transfer Window: ~5 to 10 minutes total (factoring in waiting and boarding).
+  - Recommended Buffer: Allow an additional 20–30 minutes walking time from 
+    the Skytrain station to your departure gate.
+
+* Complimentary Inter-Terminal Shuttle Bus (All Terminals including T4):
+  - Operating Hours: 24 Hours daily (All Day).
+  - Connects Terminal 4 airside and landside with Terminals 1, 2, and 3.
+
+
+Section 42: Comprehensive Hotel Operational FAQs
+--------------------------------------------------------------------------------
+A. Geography, Boundaries & Immigration:
+   - What are Airside and Landside?
+     Airside is the secure passenger transit area after departure immigration and 
+     security. Only ticketed passengers with valid boarding passes can enter. 
+     Checked luggage cannot be brought airside. Landside is the public area 
+     before passport control.
+   - Where are the transit hotels located?
+     Inside the airside transit areas of Terminals 1, 2, and 3.
+   - Do transit passengers clear Singapore immigration to access the hotel?
+     No. Transiting passengers stay airside without clearing immigration.
+   - Can travelers arriving from Singapore city stay at the hotel?
+     Yes, provided their airline provides Early Check-In (ECI), allowing them to 
+     collect a boarding pass and pass immigration into the transit area.
+   - Is a Singapore entry visa required?
+     Passengers remaining strictly in the airside transit area do not need a visa.
+   - Can guests stay here if their flight departs from Terminal 4?
+     Yes. Guests can stay in T1, T2, or T3 and transfer to Terminal 4 via the 
+     complimentary 24/7 airside shuttle bus.
+
+B. Bookings, Payments & Identification:
+   - Are walk-in guests accepted?
+     Yes, walk-ins are accepted subject to real-time room availability.
+   - How are reservations confirmed?
+     Confirmation emails are issued by Changi Recommends or your booking agent.
+   - How do I amend or cancel an OTA booking?
+     Contact your third-party booking agent directly under their terms.
+   - What payment modes are accepted at the front desk?
+     Major credit cards, debit cards, cash (SGD), and selected foreign currencies.
+   - Why is a credit card guarantee required?
+     A credit card pre-authorization guarantee secures the room inventory.
+   - Why must passports and boarding passes be presented?
+     Verification is required under Singapore aviation security regulations.
+   - Why are flight details required at booking?
+     Flight numbers and arrival times allow front office staff to track delays 
+     and prepare rooms accordingly.
+
+C. Stay Durations, Extensions & Flight Delays:
+   - How are check-in and check-out times scheduled?
+     Stays are booked in flexible hourly blocks based on your confirmation.
+   - What is the minimum stay duration?
+     Standard minimum block is 6 hours (or 3-hour day-use slots from 09:00 to 17:00).
+   - Can I extend my stay while at the hotel?
+     Yes, requests can be made at the front desk subject to room availability 
+     and applicable hourly extension fees.
+   - Are early check-ins or late check-outs permitted?
+     Subject to room availability and standard hourly extension charges.
+   - What happens if my flight is delayed or cancelled?
+     Bookings cover the confirmed hourly blocks. Contact the hotel front desk 
+     or support to adjust times based on airline schedule changes.
+
+D. Luggage, Accessibility, Families & Pets:
+   - Can I access checked-in luggage during my stay?
+     No. Checked bags remain in the airport baggage handling system. Guests can 
+     only access hand-carry cabin baggage.
+   - Does the hotel store cabin bags before check-in or after check-out?
+     No. For airport security reasons, luggage holding and storage services are 
+     not provided.
+   - Are wheelchair-accessible rooms available?
+     Yes, accessible rooms are available. Request at least 48 hours in advance.
+   - What is the policy regarding children?
+     Children under 18 must be accompanied by an adult, subject to room occupancy limits.
+   - Are family rooms available?
+     Yes, but inventory is limited. Advance booking is strongly recommended.
+   - Are pets permitted?
+     No. Animals and pets are strictly prohibited from hotel premises.
+   - Where do I report lost personal belongings?
+     Items left behind are logged and handed over to the central Changi Airport 
+     Information Counter.
+
+
+================================================================================
+PART VII: CHANGIASSURE INBOUND TRAVEL INSURANCE (TO SINGAPORE)
+================================================================================
+
+Section 43: Underwriting Framework, Sales Portal & Payment Modes
+--------------------------------------------------------------------------------
+* Product Name       : ChangiAssure Inbound Travel Insurance (To Singapore).
+* Insurer / Underwriter: HL Assurance Pte. Ltd.
+* Master Distributor: Changi Travel Services Pte. Ltd. (Changi Recommends).
+* Policy Scope       : COVID-19 medical coverage, accidental hospitalization, and 
+                       travel inconvenience protection for foreign travelers visiting Singapore.
+* Purchase Platform  : https://changiassure.changirecommends.com
+* Payment Methods    : Credit cards (Visa, Mastercard, Amex, UnionPay) and WeChat Pay.
+* Policy Issuance    : Policy certificates are emailed instantly upon successful payment.
+
+
+Section 44: Eligibility Boundaries, Vaccine Rules & Excluded Residency
+--------------------------------------------------------------------------------
+* Eligible Travelers:
+  - Foreign short-term visitors traveling to Singapore.
+  - Must be fully vaccinated against COVID-19 (Children aged 12 and below are 
+    exempt from this requirement).
+* Strictly Excluded Persons:
+  - Singapore Citizens.
+  - Singapore Permanent Residents (PRs).
+  - Singapore Long-Term Pass Holders (Student Pass, Dependant's Pass, LTVP).
+  - Ministry of Manpower (MOM) In-Principle Approval (IPA) holders, including:
+    * Work Permit Holders on IPAs.
+    * Training Work Permit (TWP) Workers on IPAs.
+    * S-Pass / Employment Pass holders on IPAs.
+
+
+Section 45: Child & Adult Definitions, Policy Duration & Family Plans
+--------------------------------------------------------------------------------
+* Definition of an Adult: An individual aged 18 years or older as of last 
+  birthday at the start of coverage.
+* Definition of a Child: A dependent, unmarried, and unemployed child (including 
+  stepchildren and legally adopted children) aged between 3 months and under 18 years.
+* Child Coverage SOP: Children cannot purchase standalone policies; they must be 
+  accompanied by a parent. Select "Self+Child" on the booking portal.
+* Maximum Trip Duration: Up to a maximum limit of 90 consecutive calendar days per trip.
+
+
+Section 46: Policy Extensions, Upgrade Restrictions & Coverage Continuity
+--------------------------------------------------------------------------------
+* Prohibition on Duplicate Policies: Travelers CANNOT purchase a second policy 
+  online to extend coverage.
+* Formal Policy Extension SOP:
+  - Notify contactus@changiassure.com at least 7 days before policy expiry.
+  - Required Documents:
+    1. ICA Extension Approval Notice / SG Arrival Card approval.
+    2. Written statement explaining the reason for extension.
+  - Review SLA: Applications are evaluated case-by-case within 5 business days.
+* Plan Upgrades: Permitted ONLY before the scheduled trip start date.
+
+
+Section 47: Inbound Claims Submission, Assessment SLAs & Refund Policy
+--------------------------------------------------------------------------------
+* Claims Submission Portal: https://changiassure.changirecommends.com/claims
+* Submission Cut-Off: Submit within 30 days of the date of loss.
+* Cancellation & Refund Terms:
+  - Refunds take 7 to 14 business days via Singapore banking channels.
+  - Applicable ONLY if cancelling to buy a replacement ChangiAssure policy.
+  - Zero Refund Policy: No refund if a claim has been filed or if the refund 
+    amount is under SGD $5.00.
+
+
+================================================================================
+PART VIII: CHANGIASSURE OUTBOUND TRAVEL INSURANCE (FROM SINGAPORE)
+================================================================================
+
+Section 48: Pre-Departure Mandate, Trip Validity & Geographic Scope
+--------------------------------------------------------------------------------
+* Product Name       : ChangiAssure Outbound Travel Insurance (From Singapore).
+* Underwriting Insurer: HL Assurance Pte. Ltd.
+* Target Market      : Singapore residents and travelers embarking on outbound 
+                       journeys departing from Singapore.
+* STRICT PRE-DEPARTURE MANDATE:
+  - Policies are valid ONLY if purchased and paid for BEFORE departing Singapore territory.
+  - Changi / Seletar Airports: Cannot be purchased once past departure immigration gantries.
+  - Woodlands / Tuas Checkpoints: Cannot be purchased once past Singapore immigration gantries.
+  - Ferry / Cruise Terminals: Cannot be purchased once the vessel leaves Singapore waters.
+* Maximum Trip Duration: Up to 90 consecutive calendar days per journey.
+* Policy Corrections: Contact +65 6701 1185 immediately to correct errors; 
+  unreported incorrect details can invalidate claims.
+
+
+Section 49: Overseas & Post-Trip Medical Care Rules in Singapore
+--------------------------------------------------------------------------------
+* Overseas Emergency Treatment: Covers customary medical expenses and accidental hospitalization abroad.
+* Follow-Up Medical Care in Singapore (Initial Treatment Received Overseas):
+  - Follow-up treatments in Singapore are covered up to policy sub-limits for 
+    up to 30 days after return.
+* Seeking Treatment in Singapore When NO Treatment Was Received Overseas:
+  - Condition 1: Must visit a clinic/hospital in Singapore within 3 days (72 hours) of return.
+  - Condition 2: Continued treatment is covered for up to 30 days from that 
+    first Singapore consultation.
+* Dental Treatment Coverage: Dental expenses abroad are covered ONLY if caused 
+  by accidental bodily injury. Routine dental treatments are excluded.
+
+
+Section 50: Medical Exclusions, Pregnancy Rules & Sanctioned Countries
+--------------------------------------------------------------------------------
+* Pre-Existing Conditions: Strictly excluded. Treatments related to illnesses 
+  or injuries diagnosed/treated before the trip are not covered.
+* Pregnancy Exclusions: Pregnancy, childbirth, miscarriage, and related maternal 
+  care are strictly excluded.
+* Medical Tourism Exclusion: Traveling against medical advice or specifically 
+  to seek medical care abroad is excluded.
+* Sanctioned / Excluded Destinations (Zero Coverage):
+  1. Afghanistan
+  2. Cuba
+  3. Democratic Republic of the Congo
+  4. Iran
+  5. Iraq
+  6. Liberia
+  7. Libya
+  8. North Korea
+  9. Sudan
+  10. Somalia
+  11. Syria
+
+
+Section 51: Rateable Contribution (Double Insurance) & Extension Protocols
+--------------------------------------------------------------------------------
+* Rateable Contribution (Double Insurance): If another policy covers the same loss, 
+  ChangiAssure / HL Assurance pays only its proportionate rateable share.
+  - Exception: Does not apply to Family Plan packages.
+* Extension Protocol: Email contactus@changiassure.com at least 7 days before 
+  expiry with your travel extension reasons. Handled within 5 business days.
+* Foreign-Language Documents: Non-English documents must be submitted as certified 
+  true copies with an official English translation.
+* Refund Terms: 7 to 14 business days; requires purchasing a replacement policy. 
+  No refunds if claims have been made or if the amount is under SGD $5.00.
+
+
+Section 52: Mandatory Claims Documentation Matrix by Benefit Category
+--------------------------------------------------------------------------------
+* Core Documents Required for ALL Claims:
+  1. Completed ChangiAssure Claim Form.
+  2. Flight and travel itineraries.
+  3. Boarding passes, e-tickets, and passport stamps showing exit/entry dates.
+  4. Submission Deadline: Within 30 days of return via changiassure.changirecommends.com/claims
+
+* Benefit-Specific Supplementary Documents:
+Benefit Category         | Mandatory Evidentiary Documents Required
+-------------------------+-----------------------------------------------------------------
+1. Medical, Injury,      | - Formal medical summary, discharge report, or doctor memo.
+   Dental & Death        | - Original itemized medical receipts and tax invoices.
+                         | - Police traffic accident report (for vehicle accidents).
+                         | - Death claims: Death certificate, autopsy report, proof of kinship.
+-------------------------+-----------------------------------------------------------------
+2. Baggage & Personal    | - Police report lodged within 24 hours (for theft or robbery).
+   Effects (Theft/Damage)| - Carrier Property Irregularity Report (PIR) if airline-related.
+                         | - Check-in baggage tags issued by the airline.
+                         | - Airline settlement or formal rejection letter.
+                         | - Clear photos of damaged items.
+                         | - Original purchase receipts proving ownership and value.
+-------------------------+-----------------------------------------------------------------
+3. Money & Travel        | - Police report lodged within 24 hours at place of loss.
+   Documents (Theft)     | - Receipts for emergency passport and visa replacement fees.
+                         | - Transit receipts incurred while replacing lost documents.
+-------------------------+-----------------------------------------------------------------
+4. Baggage Delay Abroad  | - Airline Baggage Delay Report / PIR.
+                         | - Baggage tags issued at check-in.
+                         | - Carrier delivery acknowledgement note stating delivery date & time.
+-------------------------+-----------------------------------------------------------------
+5. Trip Cancellation or  | - Physician memo certifying traveler was unfit to travel.
+   Trip Curtailment      | - Death certificate and proof of kinship (if family bereavement).
+                         | - Original booking receipts and tax invoices.
+                         | - Airline/hotel written notice confirming non-refundable forfeitures.
+                         | - Additional transport/hotel invoices incurred (curtailment).
+-------------------------+-----------------------------------------------------------------
+6. Travel Delay, Flight  | - Official carrier statement confirming delay duration and cause.
+   Diversion, Overbooking|
+-------------------------+-----------------------------------------------------------------
+7. Home Burglary While   | - Singapore police report lodged within 24 hours of discovery.
+   Traveling Abroad      | - Original purchase receipts for stolen valuables.
+                         | - Photos showing evidence of forced entry into the residence.
+-------------------------+-----------------------------------------------------------------
+8. Third-Party Personal  | - Never admit liability or offer payments without insurer consent.
+   Liability             | - Forward all third-party legal correspondence immediately.
+                         | - Copy of police report (if applicable).
+-------------------------+-----------------------------------------------------------------
+
+
+================================================================================
+PART IX: JAPAN RAIL (JR) PASS (PHYSICAL MCO & ELECTRONIC EO)
+================================================================================
+
+Section 53: Product Overview, Pass Durations & Car Classes (Ordinary vs Green)
+--------------------------------------------------------------------------------
+* Product Name       : Japan Rail Pass (JR Pass) - Nationwide & Regional.
+* Rail Network Scope : Provides unlimited travel across the 6 Japan Railways Group 
+                       (JR Group) networks (JR Hokkaido, JR East, JR Central, 
+                       JR West, JR Shikoku, and JR Kyushu).
+* Itinerary Guidance :
+  - Single-Region Trips: A regional pass (e.g., JR Hokkaido, JR Kansai) is 
+    recommended if travel is confined to one area.
+  - Multi-Region Trips : The Nationwide Pass is recommended for long-distance travel 
+    across multiple Japanese regions.
+* Pass Formats:
+  1. Nationwide Pass Durations: 7, 14, or 21 consecutive calendar days.
+  2. Flexible Regional Passes : Certain regional passes offer flexible use days 
+     (e.g., 4 selected days of travel within a 6-day window).
+* Carriage Class Tiers:
+  - Ordinary Car (Standard Class): Economy seating (2-3 layout on Shinkansen).
+  - Green Car (First Class - "Green Pass"): Premium carriage marked with a green 
+    four-leaf clover icon. Features larger reclining seats, generous legroom, 
+    audio controls, and dedicated luggage space. Highly recommended during peak 
+    holiday seasons (May Golden Week, August Obon, September Silver Week).
+
+
+Section 54: Eligibility Criteria, Dual Nationality & Third-Party Purchases
+--------------------------------------------------------------------------------
+* Eligibility Mandate:
+  - Open strictly to foreign passport holders visiting Japan under the official 
+    immigration status of "Temporary Visitor" (Short-Term Tourist Stay).
+  - Passports MUST receive the physical "Temporary Visitor" entry stamp or sticker 
+    upon arrival. Entering via automated biometric gates without obtaining this 
+    stamp invalidates the pass, and no refunds will be granted.
+* Ineligible Travelers:
+  - Japanese citizens (unless holding documented 10+ year permanent residency abroad).
+  - Non-Japanese visitors entering on work, student, military, diplomatic, or cultural visas.
+* Dual Nationality Rules: Dual citizens (including Japanese dual nationals) MUST 
+  enter Japan using their foreign, non-Japanese passport with a Temporary Visitor stamp.
+* Third-Party Purchases: Customers may purchase passes on behalf of others provided 
+  the traveler's name matches their passport exactly and they meet JR tourist criteria.
+* Non-Transferability: Passes are strictly personal and non-transferable. The 
+  traveler must be physically present at the JR Office in Japan to exchange the voucher.
+
+
+Section 55: Physical MCO vs. Electronic EO Booking & Fulfillment Workflows
+--------------------------------------------------------------------------------
+* Product Format Differentiation:
+  - Customers must check whether their pass is tagged as an "Electronic EO" or is 
+    a standard Physical Exchange Order (Physical MCO).
+
+1. Electronic Exchange Order (Electronic EO):
+   - Product Tag: Specifically labeled as "(Electronic EO)" in the product listing.
+   - Issuance SLA: Available for digital download directly from the customer's 
+     Changi Recommends account 2 days after order completion and payment.
+   - Airport Collection: CANNOT be picked up as a physical voucher at airport counters. 
+     The customer downloads and prints/saves the digital voucher.
+
+2. Physical Exchange Order (Physical MCO):
+   - Applicable Passes: Nationwide JR Passes and regional passes not tagged as Electronic EO.
+   - Format: Secure paper voucher printed and issued in Singapore before departure.
+   - Digital Copy Warning: Electronic copies, invoices, or screenshots are NOT accepted 
+     by JR offices in Japan. The original physical paper voucher is mandatory.
+   - Airport Collection: Pick up 24/7 at Changi Recommends Departure Hall counters 
+     across Terminals 1, 2, 3, and 4 (Public Area).
+
+
+Section 56: Collection Rescheduling, 6-Month Extensions & Amendment Fees
+--------------------------------------------------------------------------------
+* Booking Name Accuracy: Traveler names must match their passport details exactly. 
+  Changi Recommends is not liable for incorrect details entered during booking.
+* Name Correction & Reissuance Fee:
+  - Corrections requested before departure are reviewed at Changi Recommends' discretion.
+  - Surcharge: An administrative processing fee of SGD $50.00 per pass applies.
+  - Processing Hours: Monday to Friday, 9:00 AM – 6:00 PM SGT (excluding Singapore 
+    Public Holidays) via call@changirecommends.com.sg.
+* Changing Collection Date or Terminal:
+  - One collection date/terminal change is permitted free of charge.
+  - Notice must be sent to call@changirecommends.com.sg at least 3 working days in advance.
+  - Late counter changes (< 3 working days) are subject to a SGD $50.00 fee per pass.
+* Postponed Travel: Collection dates can be postponed by up to 6 months. Any JR 
+  fare increases must be paid upon reissuance.
+
+
+Section 57: Japan Rail Office Exchange SOP, 30-Day Window & Calendar Days
+--------------------------------------------------------------------------------
+* Step 1: Arrive in Japan: Obtain the physical "Temporary Visitor" stamp at immigration.
+* Step 2: Visit a JR Ticket Office / Travel Service Center:
+  - Locations: Major airports (Narita, Haneda, Kansai, New Chitose, Fukuoka) and 
+    central train stations (Tokyo, Shinjuku, Kyoto, Shin-Osaka, Nagoya, Hiroshima).
+  - Submit: Original Physical MCO (or Electronic EO) and Original Passport.
+  - Fill out the brief application form.
+* Step 3: Select Activation Date:
+  - The traveler designates their preferred starting date when exchanging the voucher.
+  - The starting date must fall within 30 days of the exchange date.
+* Step 4: Validity Calculation (Full Calendar Days):
+  - Pass validity is calculated in full calendar days, NOT 24-hour periods.
+  - Example: Boarding a train at 9:00 AM on Day 1 and 8:00 AM on Day 2 counts as 
+    two separate full calendar days of usage.
+  - Consecutive Days: The validity period runs continuously from the starting date.
+
+
+Section 58: Rail Scope, Bullet Train Exclusions, Ferry & Local Bus Lines
+--------------------------------------------------------------------------------
+* Train Networks Fully Included:
+  - All JR Group rail lines nationwide: JR Hokkaido, JR East, JR Central, 
+    JR West, JR Shikoku, and JR Kyushu.
+  - Shinkansen lines: Hikari, Sakura, Kodama, Tsubame, Hayabusa, Komachi, Kagayaki, 
+    Hakutaka, Asama, Toki, and Tanigawa lines.
+  - Limited Express, Express, Rapid, and Local commuter trains.
+  - Tokyo Monorail line (Haneda Airport to Hamamatsucho Station).
+* Excluded Services:
+  - Nozomi (Tokaido/Sanyo) and Mizuho (Sanyo/Kyushu) Shinkansen trains (require 
+    purchasing a supplementary dedicated ticket).
+  - Private non-JR railway lines (Odakyu, Kintetsu, Tobu, Hankyu, etc.).
+  - City subways, municipal metros, and urban tram lines.
+  - Sleeper cars and private luxury compartments on overnight trains.
+  - Non-JR Tracks: If a JR train travels over shared private tracks, the non-JR 
+    track fare must be paid separately.
+* Eligible JR Local Bus Routes:
+  - Local routes operated by: JR Hokkaido Bus, JR Bus Tohoku, JR Bus Kanto, 
+    JR Tokai Bus, JR Shikoku, West Japan JR Bus, Chugoku JR Bus, and JR Kyushu Bus.
+  - Popular Included Routes:
+    * Samani <-> Erimo Misaki (Cape Erimo)
+    * Aomori Station <-> Aomori Airport
+    * Hachinohe / Aomori <-> Lake Towada
+    * Morioka <-> Ryusendo Cave
+    * Tateyama <-> Awa Shirahama
+    * Naganohara Kusatsuguchi <-> Kusatsu Onsen <-> Shirane Kazan
+    * Yokokawa <-> Karuizawa
+    * Kyoto Station <-> Ryoanji <-> Takao <-> Shuzan
+  - Bus Exclusion: Express highway buses (kousoku buses) are strictly EXCLUDED.
+* Ferry Route: Includes the JR West Miyajima Ferry (Miyajimaguchi to Miyajima Island). 
+  International ferries (such as to Busan, Korea) are excluded.
+
+
+Section 59: Station Entry, Free Seat Reservations & Wheelchair Bookings
+--------------------------------------------------------------------------------
+* Station Gantry Entry Procedure:
+  - The JR Pass does NOT work in automated ticket turnstiles.
+  - Travelers must walk through the staffed glass booth next to the gates, showing 
+    their physical pass to the station attendant for visual inspection.
+* Complimentary Seat Reservations:
+  - Pass holders with reserved seat privileges can reserve seats at SGD $0 / JPY 0 extra charge.
+  - How to Book: Present your pass at any Midori-no-Madoguchi ticket office or use 
+    designated reserved seat ticketing machines at JR stations.
+  - Tip: Book well in advance when traveling in groups to secure adjacent seats.
+* Commuter Peak Hours & Holiday Warnings:
+  - Daily Peak Commute: 07:00 – 09:00 Hrs and 18:00 – 20:00 Hrs.
+  - Public Holidays: Trains book out days in advance during Golden Week (late April/early May), 
+    Obon (mid-August), and New Year periods.
+* Wheelchair Accessibility SOP:
+  - Accessible seats are available on most Shinkansen and Limited Express trains.
+  - Advance Booking: Reserve at a Midori-no-Madoguchi counter starting at 10:00 AM, 
+    up to 1 month before travel.
+  - Boarding Restriction: If accessible seats are fully booked, travel on that train 
+    may not be possible.
+  - Equipment Rules: Wheelchairs must meet standard dimensions; electric wheelchairs 
+    with handle steering wheels are generally not permitted unless meeting strict JR criteria.
+
+
+Section 60: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
+--------------------------------------------------------------------------------
+* Onboard Dining & Smoking:
+  - Dining: Permitted on long-distance JR trains. Regional ekiben bento boxes 
+    (from ~1,000 Yen) can be eaten onboard.
+  - Smoking: Trains operate strict smoking and non-smoking cars. Smoking is allowed 
+    ONLY inside designated smoking cabins on equipped Shinkansen train sets.
+* Luggage Dimensions & Baggage Allowances:
+  - Standard Luggage: Total dimensions (Length + Width + Height) up to 160 cm 
+    do not require a reservation.
+  - Oversized Luggage (161 cm to 250 cm): Requires booking a designated "Seat with 
+    an Oversized Baggage Area" on Tokaido, Sanyo, and Kyushu Shinkansen lines.
+* Pet Transportation Policy:
+  - Small animals (small dogs, cats, pigeons) are permitted onboard for an extra fee.
+  - Carrier Limits: Must be in a carrier with total dimensions $\le 120\text{ cm}$ 
+    and total weight (including pet) $\le 10\text{ kg}$, causing no disturbance to passengers.
+* Child Fare Regulations:
+  - Age 0 to 5 (Infants): Travel free without a ticket on an adult's lap. If an 
+    individual seat is required, purchase a Child Pass.
+  - Age 6 to 11: Eligible for Child Pass (50% of adult fare).
+  - Age 12 and above: Must purchase an Adult Pass.
+* Lost or Stolen Pass Policy: Passes CANNOT be replaced or reissued if lost or 
+  stolen. Travelers must buy a new pass or regular tickets.
+* Cancellation & Refund Terms:
+  - Singapore Returns: Unused physical Exchange Orders can be returned within 
+    180 days of purchase if not turned in in Japan. A 10% administrative fee 
+    applies, with a 90-day processing window.
+  - Japan Returns: Physical passes can be refunded at a JR Pass office in Japan 
+    ONLY before the designated start date, subject to JR administrative deductions. 
+    No refunds are granted once the start date has passed.
+
+
+================================================================================
+PART X: MASTER DIRECTORY & AIRPORT COUNTER MAP
+================================================================================
+
+Section 61: 24/7 Hotlines, Self-Service Portals & Department Directories
+--------------------------------------------------------------------------------
+* Central Changi Recommends Customer Care:
+  - 24/7 Telephone Hotline    : +65 6701 1185 (SGT / UTC+08:00)
+  - General WhatsApp Support  : +65 8790 0737
+  - Support & Inquiries Email : call@changirecommends.com.sg
+  - Official Web Portal       : https://www.changirecommends.com
+
+* Self-Service Web Portals:
+  - ChangiWiFi Extension & Management : https://www.changirecommends.com/owifi_manage.aspx
+  - SIM & eSIM Live Balance Check     : https://www.changirecommends.com/esim_enquiry.aspx
+  - ChangiAssure Online Claims Portal : https://changiassure.changirecommends.com/claims
+  - Attractions & Rail Booking Engine : https://attractions.changirecommends.com
+
+* ChangiAssure Travel Insurance Channels:
+  - Travel Inconvenience Hotline (24/7) : +65 6701 1185
+  - General Insurance Inquiries Email   : contactus@changiassure.com
+  - Dedicated Claims Department Email   : claims@changiassure.com
+  - Claims Escalation WhatsApp          : +65 8051 8051
+  - 24/7 Emergency Medical / EMA Global : +65 6922 6009
+  - EMA Global Assistance Email         : operations@emaglobal.com.my
+
+* Limousine Travel Concierge:
+  - Dedicated WhatsApp Line : +65 9477 7051
+
+* Meet & Greet and PRM Mobility Support:
+  - Operations Phone / WhatsApp : +65 8051 9119
+  - Dedicated Concierge Email   : changimeetgreet@changirecommends.com.sg
+  - Online Booking Portal       : https://www.changirecommends.com/meetandgreet.aspx
+
+* Changi Transit Hotel Network:
+  - Central Reservations Phone  : +65 6701 1185
+  - Shared WhatsApp (Text Only) : +65 9477 6617
+  - Central Front Office Email  : TransitHotel@changirecommends.com.sg
+  - Terminal 1 Front Desk Phone : +65 6054 7330
+  - Terminal 2 Front Desk Phone : +65 9477 5621
+  - Terminal 3 Front Desk Phone : +65 9477 6709
+
+
+Section 62: Comprehensive Terminal Counter Map & Operational Hours
+--------------------------------------------------------------------------------
+Service Division       | Terminal Locations & Counter Information
+-----------------------+--------------------------------------------------------
+ChangiWiFi Collection  | Terminals 1, 2, 3, 4: Departure Halls (Public Area)
+                       | Transit Areas (Subject to available stock)
+ChangiWiFi Returns     | Terminals 1, 2, 3, 4: Arrival Halls ONLY (Public Area)
+Overseas SIM Cards     | Terminals 1, 2, 3, 4: Departure Halls (Public Area)
+Japan Rail Pass (MCO)  | Terminals 1, 2, 3, 4: Departure Halls (Public Area)
+Limousine Redemption   | Terminal 1: Arrival Hall, near Information Counter
+(24/7 Counters)        | Terminal 2: Arrival Hall, near Information Counter
+                       | Terminal 3: Arrival Hall, near Paris Baguette
+                       | Terminal 4: Arrival Hall, near Paris Baguette
+Transit Hotel Desks    | Terminal 1: Level 3, near Gate D40 (Airside Transit)
+                       | Terminal 2: Level 3, near Sunflower Garden (Airside Transit)
+                       | Terminal 3: Level 3, beside Movie Theatre (Airside Transit)
+================================================================================
