@@ -149,6 +149,7 @@
       font-family: ui-monospace, monospace;
       font-size: 0.72rem;
       font-weight: 600;
+      transition: all 0.2s ease;
     }
 
     main {
@@ -444,11 +445,13 @@
   <script>
     const GITHUB_KB_BASE_URL = "https://raw.githubusercontent.com/shafwan2204-source/knowledge-eureka/refs/heads/main/changi_recommends_travel_services_master_knowledge_base.txt";
     
-    // Resilient fallback chain mapping to your preferred UI labels
+    // Verified available models matching your API key list
     const MODEL_CHAIN = [
-      { id: "gemini-2.5-flash", label: "LM 3.6 Connected" },
-      { id: "gemini-2.0-flash", label: "LM 3.8 Connected" },
-      { id: "gemini-1.5-flash", label: "LM 3.5 Flash-Lite Connected" }
+      { id: "gemini-3.6-flash", label: "LM 3.6 Connected" },
+      { id: "gemini-3.8-flash", label: "LM 3.8 Connected" },
+      { id: "gemini-3.5-flash-lite", label: "LM 3.5 Flash-Lite Connected" },
+      { id: "gemini-3.1-flash-lite", label: "LM 3.1 Flash-Lite Connected" },
+      { id: "gemini-2.5-flash", label: "LM 2.5 Connected" }
     ];
 
     const TIMEOUT_LIMIT_MS = 45000;
@@ -622,7 +625,7 @@
     window.addEventListener('message', (e) => {
       if (e.data && e.data.type === 'SET_CREDENTIALS') {
         if (e.data.apiKey && e.data.apiKey.trim().length > 0) {
-          runtimeApiKey = e.data.apiKey;
+          runtimeApiKey = e.data.apiKey.trim();
           connDot.className = "dot connected";
           connText.textContent = "Connected";
           modelBadge.textContent = MODEL_CHAIN[0].label;
@@ -666,7 +669,9 @@
         controller.abort();
       }, TIMEOUT_LIMIT_MS);
 
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelIdentifier}:generateContent?key=${runtimeApiKey}`;
+      // Ensures the model name is properly prefixed with models/
+      const cleanModelName = modelIdentifier.replace(/^models\//, "");
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${cleanModelName}:generateContent?key=${runtimeApiKey}`;
       
       const systemInstructionText = `You are the dedicated, supportive, and formal personal assistant to customer support agents during their work shift.
 Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity and precision.
@@ -711,7 +716,7 @@ ${systemKnowledgeBase}`;
 
         if (!res.ok) {
           const errDetail = await res.json().catch(() => ({}));
-          console.error(`Gemini API Error (${modelIdentifier}):`, errDetail);
+          console.error(`Gemini API Error for ${cleanModelName}:`, errDetail);
           throw new Error(`API ${res.status}: ${res.statusText}`);
         }
 
@@ -750,12 +755,15 @@ ${systemKnowledgeBase}`;
 
       let responseReceived = false;
 
-      // Cascades through the active model chain
+      // 5-Tier Fallback Loop
       for (let i = 0; i < MODEL_CHAIN.length; i++) {
         const candidate = MODEL_CHAIN[i];
         modelBadge.textContent = candidate.label;
 
         try {
+          if (i > 0) {
+            assistantBubble.textContent = `Connecting via ${candidate.label.replace(' Connected', '')}...`;
+          }
           const reply = await executeGeminiCallWithTimeout(candidate.id, conversationLog);
           assistantBubble.textContent = reply;
           conversationLog.push({ role: 'model', parts: [{ text: reply }] });
