@@ -272,10 +272,40 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
+    /* Quick Chips Container */
+    .quick-chips-wrapper {
+      max-width: 820px;
+      margin: 0 auto 10px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .chip-btn {
+      background-color: #1a2029;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.76rem;
+      padding: 6px 12px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .chip-btn:hover {
+      background-color: #26161c;
+      border-color: var(--accent-red);
+      color: #fda4af;
+      transform: translateY(-1px);
+    }
+
     footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
-      padding: 16px 24px;
+      padding: 14px 24px;
       box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.25);
     }
 
@@ -372,6 +402,11 @@
   </main>
 
   <footer>
+    <!-- Randomized Quick Chips container -->
+    <div class="quick-chips-wrapper" id="quick-chips-container">
+      <!-- 5-6 dynamic chips generated per refresh -->
+    </div>
+
     <div class="input-box-wrapper">
       <textarea id="query-input" placeholder="Ask anything about travel routers, SIMs, bookings, or policies..." rows="1"></textarea>
       <button id="send-btn" class="send-btn" disabled>Send</button>
@@ -389,6 +424,38 @@
     let runtimeApiKey = "";
     let conversationLog = [];
 
+    // Bank of 28 distinct operational quick chips
+    const QUICK_CHIPS_BANK = [
+      "Japan eSIM APN setting?",
+      "Can non-guests use T1 pool & shower?",
+      "How is ChangiWiFi late return charged?",
+      "Loss penalty for router without insurance?",
+      "Where are ChangiWiFi return counters?",
+      "Difference between Deluxe and Classic Meet & Greet?",
+      "6-Seater Limousine luggage capacity?",
+      "Can ChangiWiFi access Google & WhatsApp in China?",
+      "How to set APN on iPhone for Overseas SIM?",
+      "Transit hotel minimum stay block hours?",
+      "Is child car seat provided for Limousine?",
+      "How to check data balance for eSIM?",
+      "T1 to T3 Skytrain journey duration?",
+      "Inbound Insurance coverage for COVID-19?",
+      "Can transit passengers enter city with transit hotel booking?",
+      "Changi Mobility Companion transit price?",
+      "FUP policy when ChangiWiFi reaches 500MB?",
+      "Peak hour surcharge for Limousine transfers?",
+      "How to extend ChangiWiFi rental online?",
+      "What is the cancellation policy for Meet & Greet?",
+      "Can Work Permit holders buy Inbound Insurance?",
+      "Does Overseas SIM support phone calls & SMS?",
+      "Korea eSIM APN setting?",
+      "Transit Hotel Terminal 2 front desk number?",
+      "Walking time from T1 to T2?",
+      "Refund policy for unused Overseas SIM?",
+      "Outbound Insurance pre-existing condition coverage?",
+      "Physical Exchange Order validity for JR Pass?"
+    ];
+
     const connDot = document.getElementById('conn-dot');
     const connText = document.getElementById('conn-text');
     const modelBadge = document.getElementById('model-badge');
@@ -399,6 +466,26 @@
     const chatStream = document.getElementById('chat-stream');
     const queryInput = document.getElementById('query-input');
     const sendBtn = document.getElementById('send-btn');
+    const chipsContainer = document.getElementById('quick-chips-container');
+
+    // Shuffle and pick 6 random chips on refresh
+    function renderRandomQuickChips() {
+      chipsContainer.innerHTML = "";
+      const shuffled = [...QUICK_CHIPS_BANK].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 6); // Pick 6 random chips
+
+      selected.forEach(promptText => {
+        const chip = document.createElement('button');
+        chip.className = 'chip-btn';
+        chip.textContent = promptText;
+        chip.addEventListener('click', () => {
+          queryInput.value = promptText;
+          validateInputState();
+          handleSend();
+        });
+        chipsContainer.appendChild(chip);
+      });
+    }
 
     function formatTime(date) {
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -464,7 +551,6 @@
       bubble.className = 'message-bubble';
       bubble.textContent = text;
 
-      // Add Text-Only Copy Button for Assistant replies
       if (sender === 'assistant') {
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-btn';
@@ -531,6 +617,7 @@
 
     function init() {
       initGreeting();
+      renderRandomQuickChips(); // Populates random chips on load/refresh
       loadKnowledgeBase();
       if (window.parent && window.parent !== window) {
         window.parent.postMessage({ type: 'REQUEST_CREDENTIALS' }, '*');
