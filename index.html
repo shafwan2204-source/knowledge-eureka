@@ -443,7 +443,7 @@
   <script>
     const GITHUB_KB_BASE_URL = "https://raw.githubusercontent.com/shafwan2204-source/knowledge-eureka/refs/heads/main/changi_recommends_travel_services_master_knowledge_base.txt";
     
-    // 3.5 Models first, then cascading down to other tiers with exact label matching
+    // Model fallback sequence: 3.5 models prioritized first
     const MODEL_CHAIN = [
       { id: "gemini-3.5-flash", label: "LM 3.5 Flash Connected" },
       { id: "gemini-3.5-flash-lite", label: "LM 3.5 Flash-Lite Connected" },
@@ -455,6 +455,8 @@
     ];
 
     const TIMEOUT_LIMIT_MS = 45000;
+    const MAX_HISTORY_TURNS = 6;
+    
     let systemKnowledgeBase = "";
     let runtimeApiKey = "";
     let conversationLog = [];
@@ -590,6 +592,7 @@
       return bubble;
     }
 
+    // Welcoming greeting without prior notification of constraints
     function initGreeting() {
       chatContainer.innerHTML = "";
       conversationLog = [];
@@ -663,6 +666,39 @@
 
     sendBtn.addEventListener('click', () => handleSend());
 
+    // Background validation of constraints
+    function validateUserQueryConstraints(text) {
+      const lower = text.toLowerCase();
+
+      // Constraint 1: Block pulling the entire knowledge base
+      const dumpKeywords = [
+        "whole knowledge base", "entire knowledge base", "all knowledge base", 
+        "full knowledge base", "print everything", "dump knowledge base", 
+        "show everything in knowledge", "display all sections", "show all kb",
+        "output the entire kb", "copy all knowledge"
+      ];
+      if (dumpKeywords.some(phrase => lower.includes(phrase))) {
+        return {
+          valid: false,
+          reason: "Notice: To conserve memory and bandwidth, browsing or dumping the entire knowledge base in a single turn is restricted. Please specify the exact product, rate, or troubleshooting topic you need."
+        };
+      }
+
+      // Constraint 2: Restrict inquiry to a maximum of 3 questions
+      const qMarks = (text.match(/\?/g) || []).length;
+      const numberedQuestions = (text.match(/(?:^|\n)\s*(?:\d+[\.\)]|[a-c][\.\)])\s+/gi) || []).length;
+      const estimatedQuestions = Math.max(qMarks, numberedQuestions);
+
+      if (estimatedQuestions > 3) {
+        return {
+          valid: false,
+          reason: "Notice: Please limit your inquiry to a maximum of 3 questions per message so I can give you a clear, thorough response."
+        };
+      }
+
+      return { valid: true };
+    }
+
     async function executeGeminiCallWithTimeout(modelIdentifier, contents) {
       const controller = new AbortController();
       const timeoutTimer = setTimeout(() => {
@@ -673,7 +709,12 @@
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${cleanModelName}:generateContent?key=${runtimeApiKey}`;
       
       const systemInstructionText = `You are the dedicated, supportive, and formal personal assistant to customer support agents during their work shift.
-Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity and precision.
+Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity, precision, and complete detail.
+
+STRICT TOKEN USAGE THRESHOLDS & BOUNDARIES:
+1. MAX 3 QUESTIONS: Address up to 3 questions asked in a single inquiry. If the user somehow submits more, answer only the first 3 and instruct them to submit the rest in a separate message.
+2. 35% TOKEN CAP / NO FULL KB DUMP: NEVER dump, reproduce, or summarize the full knowledge base. Always restrict your response strictly to the specific sections or products requested. Your generated response must remain focused and well within a 35% knowledge threshold (under 3,500 words).
+3. CONCISE AND ACTIONABLE: Answer directly and avoid unnecessary conversational filler.
 
 FORMATTING AND TYPOGRAPHY INSTRUCTIONS:
 - DO NOT use markdown symbols like ###, ##, **, __, or markdown tables.
@@ -697,8 +738,10 @@ CORE OPERATIONAL RULES:
 [KNOWLEDGE BASE CONTEXT]
 ${systemKnowledgeBase}`;
 
+      const trimmedContents = contents.slice(-MAX_HISTORY_TURNS);
+
       const payload = {
-        contents: contents,
+        contents: trimmedContents,
         systemInstruction: { parts: [{ text: systemInstructionText }] },
         generationConfig: { temperature: 0.2 }
       };
@@ -754,7 +797,7 @@ ${systemKnowledgeBase}`;
 
       let responseReceived = false;
 
-      // Cascades through 3.5 first, then falls back down the chain
+      // Cascade through 3.5 first, then fall back down the chain
       for (let i = 0; i < MODEL_CHAIN.length; i++) {
         const candidate = MODEL_CHAIN[i];
 
@@ -786,6 +829,16 @@ ${systemKnowledgeBase}`;
     async function handleSend() {
       const text = queryInput.value.trim();
       if (!text || !runtimeApiKey || isRequestActive) return;
+
+      const check = validateUserQueryConstraints(text);
+      if (!check.valid) {
+        appendMessageToDOM('agent', text);
+        appendMessageToDOM('assistant', check.reason);
+        queryInput.value = "";
+        queryInput.style.height = '48px';
+        validateInputState();
+        return;
+      }
 
       queryInput.value = "";
       queryInput.style.height = '48px';
