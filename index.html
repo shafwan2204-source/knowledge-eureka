@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changi Travel Concierge Operations Portal</title>
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --accent: #1e293b;
+      --accent-hover: #334155;
+      --user-msg: #0f172a;
+      --bot-msg: #ffffff;
+      --status-green: #10b981;
+      --status-red: #ef4444;
+      --status-amber: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Header Bar */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .status-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.8rem;
+    }
+
+    .indicator-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--status-red);
+      transition: background-color 0.3s ease;
+    }
+
+    .dot.connected {
+      background-color: var(--status-green);
+    }
+
+    .dot.syncing {
+      background-color: var(--status-amber);
+    }
+
+    .badge {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    /* Chat Area */
+    main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .message {
+      display: flex;
+      flex-direction: column;
+      max-width: 85%;
+      line-height: 1.55;
+      font-size: 0.92rem;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.agent {
+      align-self: flex-end;
+    }
+
+    .message.assistant {
+      align-self: flex-start;
+    }
+
+    .message-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .message.agent .message-meta {
+      text-align: right;
+    }
+
+    .message-bubble {
+      padding: 12px 16px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message.agent .message-bubble {
+      background: var(--user-msg);
+      color: #ffffff;
+      border-top-right-radius: 1px;
+    }
+
+    .message.assistant .message-bubble {
+      background: var(--bot-msg);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      border-top-left-radius: 1px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    /* Footer & Input Bar */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+
+    .input-box-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    textarea {
+      flex: 1;
+      resize: none;
+      height: 48px;
+      max-height: 140px;
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background-color: #fafbfc;
+      outline: none;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+
+    textarea:focus {
+      border-color: var(--accent);
+      background-color: #ffffff;
+    }
+
+    button {
+      padding: 0 20px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+
+    button:disabled {
+      background: var(--text-muted);
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="brand-title">Operations Support Terminal</div>
+      <div class="brand-sub">Changi Recommends Agent Knowledge Engine</div>
+    </div>
+    <div class="status-panel">
+      <div class="indicator-group">
+        <div id="conn-dot" class="dot"></div>
+        <span id="conn-text">Disconnected</span>
+      </div>
+      <div class="indicator-group">
+        <span class="badge" id="model-badge">Initializing...</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="chat-stream">
+    <div class="chat-container" id="chat-messages">
+      <div class="message assistant">
+        <div class="message-meta">Operations Assistant</div>
+        <div class="message-bubble">System online. Ready to support operational inquiries regarding Changi Recommends services.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="input-box-wrapper">
+      <textarea id="query-input" placeholder="Submit inquiry regarding WiFi, SIM, Transit Hotel, Limousine, or Insurance..." rows="1"></textarea>
+      <button id="send-btn" disabled>Send</button>
+    </div>
+  </footer>
+
+  <script>
+    const GITHUB_KB_URL = "https://raw.githubusercontent.com/shafwan2204-source/knowledge-eureka/refs/heads/main/changi_recommends_travel_services_master_knowledge_base.txt";
+    
+    // Model configuration with automatic fallback
+    const MODEL_PRIMARY = "gemini-3.5-flash";
+    const MODEL_FALLBACK = "gemini-3.8-flash";
+    let activeModel = MODEL_PRIMARY;
+
+    let systemKnowledgeBase = "";
+    let runtimeApiKey = "";
+    const conversationLog = [];
+
+    // UI Elements
+    const connDot = document.getElementById('conn-dot');
+    const connText = document.getElementById('conn-text');
+    const modelBadge = document.getElementById('model-badge');
+    const chatContainer = document.getElementById('chat-messages');
+    const chatStream = document.getElementById('chat-stream');
+    const queryInput = document.getElementById('query-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    function updateBadge(name) {
+      modelBadge.textContent = name;
+    }
+    updateBadge("Gemini 3.5");
+
+    // Fetch Knowledge Base from GitHub
+    async function loadKnowledgeBase() {
+      try {
+        const response = await fetch(GITHUB_KB_URL);
+        if (!response.ok) throw new Error("Status " + response.status);
+        systemKnowledgeBase = await response.text();
+      } catch (err) {
+        console.warn("Direct KB fetch failed. Using fallback context:", err);
+        systemKnowledgeBase = "Refer to official Changi Recommends guidelines.";
+      }
+    }
+
+    // Secure Handshake Listener for launcher.html
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'SET_CREDENTIALS') {
+        if (e.data.apiKey && e.data.apiKey.trim().length > 0) {
+          runtimeApiKey = e.data.apiKey;
+          connDot.className = "dot connected";
+          connText.textContent = "Connected";
+          validateInputState();
+        }
+      }
+    });
+
+    // Request key from launcher upon load
+    function initHandshake() {
+      loadKnowledgeBase();
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'REQUEST_CREDENTIALS' }, '*');
+      }
+    }
+    initHandshake();
+
+    function validateInputState() {
+      const ready = runtimeApiKey.length > 0 && queryInput.value.trim().length > 0;
+      sendBtn.disabled = !ready;
+    }
+
+    queryInput.addEventListener('input', () => {
+      validateInputState();
+      queryInput.style.height = 'auto';
+      queryInput.style.height = Math.min(queryInput.scrollHeight, 140) + 'px';
+    });
+
+    queryInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        if (!sendBtn.disabled) handleSend();
+      }
+    });
+
+    sendBtn.addEventListener('click', handleSend);
+
+    function appendMessage(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${sender}`;
+
+      const meta = document.createElement('div');
+      meta.className = 'message-meta';
+      meta.textContent = sender === 'agent' ? 'Agent' : 'Operations Assistant';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'message-bubble';
+      bubble.textContent = text;
+
+      msgDiv.appendChild(meta);
+      msgDiv.appendChild(bubble);
+      chatContainer.appendChild(msgDiv);
+      chatStream.scrollTop = chatStream.scrollHeight;
+      return bubble;
+    }
+
+    async function executeGeminiCall(modelName, contents) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${runtimeApiKey}`;
+      
+      const systemInstructionText = `You are the formal, operations-grade assistant for Changi Recommends customer service agents. 
+Maintain a strictly professional, clear, and direct persona. 
+Provide concise, accurate answers grounded strictly in the master knowledge base below.
+If details are absent or not defined in the knowledge base, state this plainly and advise escalating to the Team Lead or Operations Duty Manager.
+
+[MASTER KNOWLEDGE BASE CONTEXT]
+${systemKnowledgeBase}`;
+
+      const payload = {
+        contents: contents,
+        systemInstruction: {
+          parts: [{ text: systemInstructionText }]
+        },
+        generationConfig: {
+          temperature: 0.2
+        }
+      };
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        throw new Error(`API error ${res.status}: ${res.statusText}`);
+      }
+
+      const data = await res.json();
+      return data.candidates[0].content.parts[0].text;
+    }
+
+    async function handleSend() {
+      const text = queryInput.value.trim();
+      if (!text || !runtimeApiKey) return;
+
+      queryInput.value = "";
+      queryInput.style.height = '48px';
+      validateInputState();
+
+      appendMessage('agent', text);
+      conversationLog.push({ role: 'user', parts: [{ text: text }] });
+
+      const assistantBubble = appendMessage('assistant', "Formulating response...");
+
+      try {
+        // Attempt Primary Model (Gemini 3.5)
+        activeModel = MODEL_PRIMARY;
+        updateBadge("Gemini 3.5");
+        const reply = await executeGeminiCall(MODEL_PRIMARY, conversationLog);
+        assistantBubble.textContent = reply;
+        conversationLog.push({ role: 'model', parts: [{ text: reply }] });
+      } catch (primaryError) {
+        console.warn("Gemini 3.5 encounter error. Initiating fallback to Gemini 3.8...", primaryError);
+        
+        try {
+          // Fallback to Gemini 3.8
+          activeModel = MODEL_FALLBACK;
+          updateBadge("Gemini 3.8");
+          const fallbackReply = await executeGeminiCall(MODEL_FALLBACK, conversationLog);
+          assistantBubble.textContent = fallbackReply;
+          conversationLog.push({ role: 'model', parts: [{ text: fallbackReply }] });
+        } catch (fallbackError) {
+          console.error("Critical failure on model fallback:", fallbackError);
+          assistantBubble.textContent = "Service unavailable. An error occurred while communicating with the operations language model. Please consult your Team Lead or duty supervisor.";
+          updateBadge("Connection Failure");
+        }
+      } finally {
+        validateInputState();
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>
