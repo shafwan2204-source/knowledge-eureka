@@ -272,7 +272,6 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    /* Retry Box & Button */
     .retry-box {
       margin-top: 10px;
       display: flex;
@@ -300,30 +299,30 @@
       color: #ffffff;
     }
 
-    /* Quick Chips Container */
-    .quick-chips-wrapper {
+    /* Single Random Button Toolbar */
+    .prompt-toolbar {
       max-width: 820px;
       margin: 0 auto 10px auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
       align-items: center;
     }
 
-    .chip-btn {
+    .random-btn {
       background-color: #1a2029;
       border: 1px solid var(--border);
       color: var(--text-secondary);
-      font-size: 0.76rem;
-      padding: 6px 12px;
-      border-radius: 16px;
+      font-size: 0.78rem;
+      padding: 6px 14px;
+      border-radius: 6px;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       transition: all 0.2s ease;
-      white-space: nowrap;
       user-select: none;
     }
 
-    .chip-btn:hover {
+    .random-btn:hover {
       background-color: #26161c;
       border-color: var(--accent-red);
       color: #fda4af;
@@ -430,8 +429,12 @@
   </main>
 
   <footer>
-    <div class="quick-chips-wrapper" id="quick-chips-container">
-      <!-- Dynamic chips populated on refresh -->
+    <!-- Single Random Prompt Option -->
+    <div class="prompt-toolbar">
+      <button id="random-prompt-btn" class="random-btn" title="Trigger a random operational question">
+        <span>🎲</span>
+        <span>Random Inquiry</span>
+      </button>
     </div>
 
     <div class="input-box-wrapper">
@@ -445,7 +448,7 @@
     
     const MODEL_PRIMARY = "gemini-3.5-flash";
     const MODEL_FALLBACK = "gemini-3.8-flash";
-    const TIMEOUT_LIMIT_MS = 30000; // 30-second timeout limit
+    const TIMEOUT_LIMIT_MS = 30000;
     let activeModel = MODEL_PRIMARY;
 
     let systemKnowledgeBase = "";
@@ -453,7 +456,7 @@
     let conversationLog = [];
     let isRequestActive = false;
 
-    // Bank of operational quick chips
+    // Bank of operational quick queries
     const QUICK_CHIPS_BANK = [
       "Japan eSIM APN setting?",
       "Can non-guests use T1 pool & shower?",
@@ -495,26 +498,16 @@
     const chatStream = document.getElementById('chat-stream');
     const queryInput = document.getElementById('query-input');
     const sendBtn = document.getElementById('send-btn');
-    const chipsContainer = document.getElementById('quick-chips-container');
+    const randomBtn = document.getElementById('random-prompt-btn');
 
-    function renderRandomQuickChips() {
-      chipsContainer.innerHTML = "";
-      const shuffled = [...QUICK_CHIPS_BANK].sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, 6);
-
-      selected.forEach(promptText => {
-        const chip = document.createElement('button');
-        chip.className = 'chip-btn';
-        chip.textContent = promptText;
-        chip.addEventListener('click', () => {
-          if (isRequestActive) return;
-          queryInput.value = promptText;
-          validateInputState();
-          handleSend();
-        });
-        chipsContainer.appendChild(chip);
-      });
-    }
+    // Trigger one random prompt from the bank
+    randomBtn.addEventListener('click', () => {
+      if (isRequestActive) return;
+      const randomPrompt = QUICK_CHIPS_BANK[Math.floor(Math.random() * QUICK_CHIPS_BANK.length)];
+      queryInput.value = randomPrompt;
+      validateInputState();
+      handleSend();
+    });
 
     function formatTime(date) {
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -641,7 +634,6 @@
 
     function init() {
       initGreeting();
-      renderRandomQuickChips();
       loadKnowledgeBase();
       if (window.parent && window.parent !== window) {
         window.parent.postMessage({ type: 'REQUEST_CREDENTIALS' }, '*');
@@ -651,6 +643,7 @@
 
     function validateInputState() {
       sendBtn.disabled = isRequestActive || !(runtimeApiKey.length > 0 && queryInput.value.trim().length > 0);
+      randomBtn.disabled = isRequestActive;
     }
 
     queryInput.addEventListener('input', () => {
@@ -668,7 +661,6 @@
 
     sendBtn.addEventListener('click', () => handleSend());
 
-    // Execute Gemini API with AbortController for a 30s timeout limit
     async function executeGeminiCallWithTimeout(modelName, contents) {
       const controller = new AbortController();
       const timeoutTimer = setTimeout(() => {
@@ -727,7 +719,6 @@ ${systemKnowledgeBase}`;
       }
     }
 
-    // Attach inline "Try Again" retry action directly inside the error bubble
     function renderRetryOption(bubbleElement, failedPrompt) {
       const retryContainer = document.createElement('div');
       retryContainer.className = 'retry-box';
@@ -754,7 +745,6 @@ ${systemKnowledgeBase}`;
       assistantBubble.textContent = "Checking the notes for you...";
 
       try {
-        // Attempt Primary Model (LM 3.5) with 30s timeout
         activeModel = MODEL_PRIMARY;
         modelBadge.textContent = "LM 3.5 Connected";
         const reply = await executeGeminiCallWithTimeout(MODEL_PRIMARY, conversationLog);
@@ -763,7 +753,6 @@ ${systemKnowledgeBase}`;
       } catch (err) {
         console.warn("LM 3.5 attempt failed or timed out:", err);
 
-        // Attempt Fallback Model (LM 3.8) with 30s timeout
         try {
           activeModel = MODEL_FALLBACK;
           modelBadge.textContent = "LM 3.8 Connected";
@@ -780,7 +769,6 @@ ${systemKnowledgeBase}`;
             assistantBubble.textContent = "Service unavailable. An issue occurred while contacting the language model.";
           }
 
-          // Offer the Try Again button directly in the chat bubble
           renderRetryOption(assistantBubble, promptText);
         }
       } finally {
