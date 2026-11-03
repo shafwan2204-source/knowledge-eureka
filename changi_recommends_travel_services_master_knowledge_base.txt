@@ -1,7 +1,7 @@
 ================================================================================
 CHANGI RECOMMENDS TRAVEL SERVICES MASTER KNOWLEDGE BASE & SOP
 ================================================================================
-Document Version  : 8.8
+Document Version  : 9.1
 Author / Creator  : Shafwan
 Disclaimer        : Unofficial knowledge base created for hobby and learning
                     purposes. Designed to assist with daily operational context,
@@ -12,9 +12,10 @@ System Purpose    : Comprehensive Operations Manual & Retrieval-Augmented
                     Airport Concierge, Front Office & Automated Bot Workflows.
 System Scope      : Overseas Physical SIMs, Travel eSIMs, ChangiWiFi Routers,
                     Private Limousines, Meet & Greet Concierge, PRM Mobility 
-                    Companion, Changi Transit Hotels (T1, T2, T3), ChangiAssure 
-                    Inbound Insurance, ChangiAssure Outbound Insurance, and 
-                    Japan Rail (JR) Passes (Physical MCO & Electronic EO).
+                    Companion, Changi Transit Hotels (T1, T2, T3), Oasis PMS 
+                    Manual Booking SOP, Oasis PMS Cancellation SOP & OTA Warning, 
+                    ChangiAssure Inbound Insurance, ChangiAssure Outbound Insurance, 
+                    and Japan Rail (JR) Passes (Physical MCO & Electronic EO).
 Primary Operating : Singapore Changi Airport (SIN)
 Time Zone Base    : Singapore Time (SGT / UTC+08:00)
 Currency Standard : Singapore Dollar (SGD)
@@ -81,34 +82,36 @@ PART VI: CHANGI TRANSIT HOTEL NETWORK (CTH / CTS FRONT OFFICE)
   Section 42: Terminal 1 Swimming Pool, Gym & Non-Guest Shower Rates
   Section 43: Inter-Terminal Transit Logistics (Skytrain, Shuttles & Walking)
   Section 44: Comprehensive Hotel Operational FAQs
+  Section 45: Oasis PMS Manual Room Reservation & Booking SOP
+  Section 46: Oasis PMS Room Reservation Cancellation SOP & OTA Warning
 
 PART VII: CHANGIASSURE INBOUND TRAVEL INSURANCE (TO SINGAPORE)
-  Section 45: Underwriting Framework, Sales Portal & Payment Modes
-  Section 46: Eligibility Boundaries, Vaccine Rules & Excluded Residency
-  Section 47: Child & Adult Definitions, Policy Duration & Family Plans
-  Section 48: Policy Extensions, Upgrade Restrictions & Coverage Continuity
-  Section 49: Inbound Claims Submission, Assessment SLAs & Refund Policy
+  Section 47: Underwriting Framework, Sales Portal & Payment Modes
+  Section 48: Eligibility Boundaries, Vaccine Rules & Excluded Residency
+  Section 49: Child & Adult Definitions, Policy Duration & Family Plans
+  Section 50: Policy Extensions, Upgrade Restrictions & Coverage Continuity
+  Section 51: Inbound Claims Submission, Assessment SLAs & Refund Policy
 
 PART VIII: CHANGIASSURE OUTBOUND TRAVEL INSURANCE (FROM SINGAPORE)
-  Section 50: Pre-Departure Mandate, Trip Validity & Geographic Scope
-  Section 51: Overseas & Post-Trip Medical Care Rules in Singapore
-  Section 52: Medical Exclusions, Pregnancy Rules & Sanctioned Countries
-  Section 53: Rateable Contribution (Double Insurance) & Extension Protocols
-  Section 54: Mandatory Claims Documentation Matrix by Benefit Category
+  Section 52: Pre-Departure Mandate, Trip Validity & Geographic Scope
+  Section 53: Overseas & Post-Trip Medical Care Rules in Singapore
+  Section 54: Medical Exclusions, Pregnancy Rules & Sanctioned Countries
+  Section 55: Rateable Contribution (Double Insurance) & Extension Protocols
+  Section 56: Mandatory Claims Documentation Matrix by Benefit Category
 
 PART IX: JAPAN RAIL (JR) PASS (PHYSICAL MCO & ELECTRONIC EO)
-  Section 55: Product Overview, Pass Durations & Car Classes (Ordinary vs Green)
-  Section 56: Eligibility Criteria, Dual Nationality & Third-Party Purchases
-  Section 57: Physical MCO vs. Electronic EO Booking & Fulfillment Workflows
-  Section 58: Collection Rescheduling, 6-Month Extensions & Amendment Fees
-  Section 59: Japan Rail Office Exchange SOP, 30-Day Window & Calendar Days
-  Section 60: Rail Scope, Bullet Train Exclusions, Ferry & Local Bus Lines
-  Section 61: Station Entry, Free Seat Reservations & Wheelchair Bookings
-  Section 62: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
+  Section 57: Product Overview, Pass Durations & Car Classes (Ordinary vs Green)
+  Section 58: Eligibility Criteria, Dual Nationality & Third-Party Purchases
+  Section 59: Physical MCO vs. Electronic EO Booking & Fulfillment Workflows
+  Section 60: Collection Rescheduling, 6-Month Extensions & Amendment Fees
+  Section 61: Japan Rail Office Exchange SOP, 30-Day Window & Calendar Days
+  Section 62: Rail Scope, Bullet Train Exclusions, Ferry & Local Bus Lines
+  Section 63: Station Entry, Free Seat Reservations & Wheelchair Bookings
+  Section 64: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
 
 PART X: MASTER DIRECTORY & AIRPORT COUNTER MAP
-  Section 63: 24/7 Hotlines, Self-Service Portals & Department Directories
-  Section 64: Comprehensive Terminal Counter Map & Operational Hours
+  Section 65: 24/7 Hotlines, Self-Service Portals & Department Directories
+  Section 66: Comprehensive Terminal Counter Map & Operational Hours
 
 
 ================================================================================
@@ -938,7 +941,10 @@ B. Bookings, Payments & Identification:
    - How are reservations confirmed?
      Confirmation emails are issued by Changi Recommends or your booking agent.
    - How do I amend or cancel an OTA booking?
-     Contact your third-party booking agent directly under their terms.
+     CRITICAL RULE: Customers with reservations made through Online Travel Agents 
+     (OTAs such as Agoda, Booking.com, Trip.com, Expedia, etc.) MUST cancel or amend 
+     their bookings directly via the respective OTA platform. Changi Transit Hotel 
+     and Changi Recommends staff CANNOT cancel or refund OTA bookings directly.
    - What payment modes are accepted at the front desk?
      Major credit cards, debit cards, cash (SGD), and selected foreign currencies.
    - Why is a credit card guarantee required?
@@ -983,11 +989,93 @@ D. Luggage, Accessibility, Families & Pets:
      Information Counter.
 
 
+Section 45: Oasis PMS Manual Room Reservation & Booking SOP
+--------------------------------------------------------------------------------
+* System Purpose    : Step-by-step front office procedure for manually booking 
+                       or reserving a transit hotel room directly within the 
+                       Oasis Property Management System (PMS).
+* Prerequisites     : Valid staff login credentials with active front desk/agent 
+                       reservation permissions.
+
+* Step-by-Step Manual Booking Workflow:
+  1. System Authentication:
+     - Log in to the Oasis Property Management System (PMS) interface using 
+       authorized front desk credentials.
+  2. Access Reservation Module:
+     - Locate and click on the "Reservation" tab on the main navigation panel.
+  3. Initiate Booking Creation:
+     - Select "Make Reservation" from the reservation options.
+  4. Guest Profile Setup & Verification:
+     - Enter the guest's "Last Name" and "First Name" in the designated search/input fields.
+     - Profile Creation / Selection:
+       * If the guest is a first-time stayer, register and add them as a "New Customer".
+       * If the guest has a prior profile, search and select the "Existing Customer" record.
+     - Click "Submit" to associate the profile with the active booking screen.
+  5. Schedule, Timing & Duration Block:
+     - Select the scheduled "Arrival Date".
+     - Enter the expected "Begin Time" (check-in time).
+     - Select the applicable "Rate Tier" (defines the total block duration / 
+       number of reserved stay hours, e.g., 6-hour minimum block, 12-hour, or 24-hour).
+  6. Room Count Specification:
+     - Under the "#Room" field, input the exact quantity of rooms required for the reservation.
+  7. Guest Occupancy Configuration:
+     - Adult Field: Enter the total number of adult guests per room (e.g., input "1" 
+       for 1 adult per room, "2" for 2 adults per room, up to maximum allowed room occupancy).
+     - Child Field: Enter the number of accompanying children (aged 2 to 11) for each room.
+  8. Room Category Allocation:
+     - Select the appropriate "Room Type" from the dropdown corresponding to 
+       terminal inventory (Standard, Standard Twin, Deluxe, Deluxe Triple, Family Room).
+  9. Mandatory Rate Code Standard:
+     - In the "Rate Code" dropdown selection, ALWAYS ensure it is set to "BARH" 
+       (Best Available Rate - Hourly).
+
+
+Section 46: Oasis PMS Room Reservation Cancellation SOP & OTA Warning
+--------------------------------------------------------------------------------
+* System Purpose    : Step-by-step front desk protocol for searching and 
+                       processing a direct room cancellation within the Oasis 
+                       Property Management System (PMS).
+* Prerequisites     : Valid front office / agent login credentials with reservation 
+                       amendment and cancellation authorization.
+
+********************************************************************************
+* CRITICAL OPERATIONAL WARNING - ONLINE TRAVEL AGENT (OTA) BOOKINGS:
+* ------------------------------------------------------------------------------
+* DO NOT CANCEL OTA BOOKINGS DIRECTLY IN OASIS OR AT THE FRONT DESK.
+* OTA = Online Travel Agents (e.g., Agoda, Booking.com, Trip.com, Expedia, etc.).
+* If a customer who booked via an OTA requests a cancellation or refund:
+* 1. Inform the customer that their booking was made through an external third party.
+* 2. Direct the customer to cancel directly through their respective OTA app/portal.
+* 3. Do NOT process the cancellation or issue refunds on our end. Any changes must
+*    flow through the official OTA channel to preserve contractual and billing integrity.
+********************************************************************************
+
+* Step-by-Step Direct Booking Cancellation Workflow:
+  1. System Authentication:
+     - Log in to the Oasis Property Management System (PMS) with authorized credentials.
+  2. Navigate to Reservation Lookup:
+     - Click on the "Reservation" menu item on the main navigation bar.
+     - Select "Search Reservation" from the dropdown / sub-menu options.
+  3. Identify & Select Reservation:
+     - Locate the customer's direct booking by searching their Confirmation Number 
+       ("Conf#"), Guest Name, or Assigned Room.
+     - Verify that the booking is a direct reservation and NOT an OTA booking.
+     - Select the target reservation record to open the details view.
+     - Click the "Cancel" button.
+  4. Cancellation Record & Contact Field:
+     - In the "Contact" field, if no dedicated phone number/email is required or 
+       provided, enter a standard hyphen ("-") or input "na".
+     - Select the appropriate cancellation category from the "Reason" dropdown 
+       (e.g., flight reschedule, missed transit, guest request).
+  5. Commit Cancellation:
+     - Click "Submit" to finalize and update the room inventory status in Oasis.
+
+
 ================================================================================
 PART VII: CHANGIASSURE INBOUND TRAVEL INSURANCE (TO SINGAPORE)
 ================================================================================
 
-Section 45: Underwriting Framework, Sales Portal & Payment Modes
+Section 47: Underwriting Framework, Sales Portal & Payment Modes
 --------------------------------------------------------------------------------
 * Product Name         : ChangiAssure Inbound Travel Insurance (To Singapore).
 * Insurer / Underwriter: HL Assurance Pte. Ltd.
@@ -999,7 +1087,7 @@ Section 45: Underwriting Framework, Sales Portal & Payment Modes
 * Policy Issuance      : Policy certificates are emailed instantly upon successful payment.
 
 
-Section 46: Eligibility Boundaries, Vaccine Rules & Excluded Residency
+Section 48: Eligibility Boundaries, Vaccine Rules & Excluded Residency
 --------------------------------------------------------------------------------
 * Eligible Travelers:
   - Foreign short-term visitors traveling to Singapore.
@@ -1015,7 +1103,7 @@ Section 46: Eligibility Boundaries, Vaccine Rules & Excluded Residency
     * S-Pass / Employment Pass holders on IPAs.
 
 
-Section 47: Child & Adult Definitions, Policy Duration & Family Plans
+Section 49: Child & Adult Definitions, Policy Duration & Family Plans
 --------------------------------------------------------------------------------
 * Definition of an Adult: An individual aged 18 years or older as of last 
   birthday at the start of coverage.
@@ -1026,7 +1114,7 @@ Section 47: Child & Adult Definitions, Policy Duration & Family Plans
 * Maximum Trip Duration: Up to a maximum limit of 90 consecutive calendar days per trip.
 
 
-Section 48: Policy Extensions, Upgrade Restrictions & Coverage Continuity
+Section 50: Policy Extensions, Upgrade Restrictions & Coverage Continuity
 --------------------------------------------------------------------------------
 * Prohibition on Duplicate Policies: Travelers CANNOT purchase a second policy 
   online to extend coverage.
@@ -1039,7 +1127,7 @@ Section 48: Policy Extensions, Upgrade Restrictions & Coverage Continuity
 * Plan Upgrades: Permitted ONLY before the scheduled trip start date.
 
 
-Section 49: Inbound Claims Submission, Assessment SLAs & Refund Policy
+Section 51: Inbound Claims Submission, Assessment SLAs & Refund Policy
 --------------------------------------------------------------------------------
 * Claims Submission Portal: https://changiassure.changirecommends.com/claims
 * Submission Cut-Off: Submit within 30 days of the date of loss.
@@ -1054,7 +1142,7 @@ Section 49: Inbound Claims Submission, Assessment SLAs & Refund Policy
 PART VIII: CHANGIASSURE OUTBOUND TRAVEL INSURANCE (FROM SINGAPORE)
 ================================================================================
 
-Section 50: Pre-Departure Mandate, Trip Validity & Geographic Scope
+Section 52: Pre-Departure Mandate, Trip Validity & Geographic Scope
 --------------------------------------------------------------------------------
 * Product Name        : ChangiAssure Outbound Travel Insurance (From Singapore).
 * Underwriting Insurer: HL Assurance Pte. Ltd.
@@ -1070,7 +1158,7 @@ Section 50: Pre-Departure Mandate, Trip Validity & Geographic Scope
   unreported incorrect details can invalidate claims.
 
 
-Section 51: Overseas & Post-Trip Medical Care Rules in Singapore
+Section 53: Overseas & Post-Trip Medical Care Rules in Singapore
 --------------------------------------------------------------------------------
 * Overseas Emergency Treatment: Covers customary medical expenses and accidental hospitalization abroad.
 * Follow-Up Medical Care in Singapore (Initial Treatment Received Overseas):
@@ -1084,7 +1172,7 @@ Section 51: Overseas & Post-Trip Medical Care Rules in Singapore
   by accidental bodily injury. Routine dental treatments are excluded.
 
 
-Section 52: Medical Exclusions, Pregnancy Rules & Sanctioned Countries
+Section 54: Medical Exclusions, Pregnancy Rules & Sanctioned Countries
 --------------------------------------------------------------------------------
 * Pre-Existing Conditions: Strictly excluded. Treatments related to illnesses 
   or injuries diagnosed/treated before the trip are not covered.
@@ -1106,7 +1194,7 @@ Section 52: Medical Exclusions, Pregnancy Rules & Sanctioned Countries
   11. Syria
 
 
-Section 53: Rateable Contribution (Double Insurance) & Extension Protocols
+Section 55: Rateable Contribution (Double Insurance) & Extension Protocols
 --------------------------------------------------------------------------------
 * Rateable Contribution (Double Insurance): If another policy covers the same loss, 
   ChangiAssure / HL Assurance pays only its proportionate rateable share.
@@ -1119,7 +1207,7 @@ Section 53: Rateable Contribution (Double Insurance) & Extension Protocols
   No refunds if claims have been made or if the amount is under SGD $5.00.
 
 
-Section 54: Mandatory Claims Documentation Matrix by Benefit Category
+Section 56: Mandatory Claims Documentation Matrix by Benefit Category
 --------------------------------------------------------------------------------
 * Core Documents Required for ALL Claims:
   1. Completed ChangiAssure Claim Form.
@@ -1173,7 +1261,7 @@ Benefit Category         | Mandatory Evidentiary Documents Required
 PART IX: JAPAN RAIL (JR) PASS (PHYSICAL MCO & ELECTRONIC EO)
 ================================================================================
 
-Section 55: Product Overview, Pass Durations & Car Classes (Ordinary vs Green)
+Section 57: Product Overview, Pass Durations & Car Classes (Ordinary vs Green)
 --------------------------------------------------------------------------------
 * Product Name       : Japan Rail Pass (JR Pass) - Nationwide & Regional.
 * Rail Network Scope : Provides unlimited travel across the 6 Japan Railways Group 
@@ -1196,7 +1284,7 @@ Section 55: Product Overview, Pass Durations & Car Classes (Ordinary vs Green)
     holiday seasons (May Golden Week, August Obon, September Silver Week).
 
 
-Section 56: Eligibility Criteria, Dual Nationality & Third-Party Purchases
+Section 58: Eligibility Criteria, Dual Nationality & Third-Party Purchases
 --------------------------------------------------------------------------------
 * Eligibility Mandate:
   - Open strictly to foreign passport holders visiting Japan under the official 
@@ -1215,7 +1303,7 @@ Section 56: Eligibility Criteria, Dual Nationality & Third-Party Purchases
   traveler must be physically present at the JR Office in Japan to exchange the voucher.
 
 
-Section 57: Physical MCO vs. Electronic EO Booking & Fulfillment Workflows
+Section 59: Physical MCO vs. Electronic EO Booking & Fulfillment Workflows
 --------------------------------------------------------------------------------
 * Product Format Differentiation:
   - Customers must check whether their pass is tagged as an "Electronic EO" or is 
@@ -1237,7 +1325,7 @@ Section 57: Physical MCO vs. Electronic EO Booking & Fulfillment Workflows
      across Terminals 1, 2, 3, and 4 (Public Area).
 
 
-Section 58: Collection Rescheduling, 6-Month Extensions & Amendment Fees
+Section 60: Collection Rescheduling, 6-Month Extensions & Amendment Fees
 --------------------------------------------------------------------------------
 * Booking Name Accuracy: Traveler names must match their passport details exactly. 
   Changi Recommends is not liable for incorrect details entered during booking.
@@ -1254,7 +1342,7 @@ Section 58: Collection Rescheduling, 6-Month Extensions & Amendment Fees
   fare increases must be paid upon reissuance.
 
 
-Section 59: Japan Rail Office Exchange SOP, 30-Day Window & Calendar Days
+Section 61: Japan Rail Office Exchange SOP, 30-Day Window & Calendar Days
 --------------------------------------------------------------------------------
 * Step 1: Arrive in Japan: Obtain the physical "Temporary Visitor" stamp at immigration.
 * Step 2: Visit a JR Ticket Office / Travel Service Center:
@@ -1272,7 +1360,7 @@ Section 59: Japan Rail Office Exchange SOP, 30-Day Window & Calendar Days
   - Consecutive Days: The validity period runs continuously from the starting date.
 
 
-Section 60: Rail Scope, Bullet Train Exclusions, Ferry & Local Bus Lines
+Section 62: Rail Scope, Bullet Train Exclusions, Ferry & Local Bus Lines
 --------------------------------------------------------------------------------
 * Train Networks Fully Included:
   - All JR Group rail lines nationwide: JR Hokkaido, JR East, JR Central, 
@@ -1306,7 +1394,7 @@ Section 60: Rail Scope, Bullet Train Exclusions, Ferry & Local Bus Lines
   International ferries (such as to Busan, Korea) are excluded.
 
 
-Section 61: Station Entry, Free Seat Reservations & Wheelchair Bookings
+Section 63: Station Entry, Free Seat Reservations & Wheelchair Bookings
 --------------------------------------------------------------------------------
 * Station Gantry Entry Procedure:
   - The JR Pass does NOT work in automated ticket turnstiles.
@@ -1331,7 +1419,7 @@ Section 61: Station Entry, Free Seat Reservations & Wheelchair Bookings
     with handle steering wheels are generally not permitted unless meeting strict JR criteria.
 
 
-Section 62: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
+Section 64: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
 --------------------------------------------------------------------------------
 * Onboard Dining & Smoking:
   - Dining: Permitted on long-distance JR trains. Regional ekiben bento boxes 
@@ -1367,7 +1455,7 @@ Section 62: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
 PART X: MASTER DIRECTORY & AIRPORT COUNTER MAP
 ================================================================================
 
-Section 63: 24/7 Hotlines, Self-Service Portals & Department Directories
+Section 65: 24/7 Hotlines, Self-Service Portals & Department Directories
 --------------------------------------------------------------------------------
 * Central Changi Recommends Customer Care:
   - 24/7 Telephone Hotline    : +65 6701 1185 (SGT / UTC+08:00)
@@ -1406,7 +1494,7 @@ Section 63: 24/7 Hotlines, Self-Service Portals & Department Directories
   - Terminal 3 Front Desk Phone : +65 9477 6709
 
 
-Section 64: Comprehensive Terminal Counter Map & Operational Hours
+Section 66: Comprehensive Terminal Counter Map & Operational Hours
 --------------------------------------------------------------------------------
 Service Division       | Terminal Locations & Counter Information
 -----------------------+--------------------------------------------------------
