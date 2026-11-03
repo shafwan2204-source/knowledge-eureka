@@ -444,12 +444,13 @@
   <script>
     const GITHUB_KB_BASE_URL = "https://raw.githubusercontent.com/shafwan2204-source/knowledge-eureka/refs/heads/main/changi_recommends_travel_services_master_knowledge_base.txt";
     
+    // Explicit Gemini 3.5 (default) and Gemini 3.8 (fallback) model targets
     const MODEL_PRIMARY = "gemini-3.5-flash";
     const MODEL_FALLBACK = "gemini-3.8-flash";
+
     const TIMEOUT_LIMIT_MS = 30000;
-    const MAX_HISTORY_TURNS = 6; // Keep only last 6 messages to preserve context and optimize tokens
+    const MAX_HISTORY_TURNS = 6;
     
-    let activeModel = MODEL_PRIMARY;
     let systemKnowledgeBase = "";
     let runtimeApiKey = "";
     let conversationLog = [];
@@ -586,7 +587,6 @@
       return bubble;
     }
 
-    // Welcoming greeting with no mention of rules or limits
     function initGreeting() {
       chatContainer.innerHTML = "";
       conversationLog = [];
@@ -660,11 +660,9 @@
 
     sendBtn.addEventListener('click', () => handleSend());
 
-    // Client-side guard checks to prevent token wastage
     function validateUserQueryConstraints(text) {
       const lower = text.toLowerCase();
 
-      // Guard 1: Block attempts to dump the entire knowledge base
       const dumpKeywords = [
         "whole knowledge base", "entire knowledge base", "all knowledge base", 
         "full knowledge base", "print everything", "dump knowledge base", 
@@ -677,7 +675,6 @@
         };
       }
 
-      // Guard 2: Limit user to a max of 3 questions per single prompt
       const qMarks = (text.match(/\?/g) || []).length;
       const numberedQuestions = (text.match(/(?:^|\n)\s*(?:\d+[\.\)]|[a-c][\.\)])\s+/gi) || []).length;
       const estimatedQuestions = Math.max(qMarks, numberedQuestions);
@@ -692,14 +689,14 @@
       return { valid: true };
     }
 
-    // Execute Gemini API with AbortController for a 30s timeout and full answer capability
-    async function executeGeminiCallWithTimeout(modelName, contents) {
+    // Call REST endpoint using target model identifier
+    async function executeGeminiCallWithTimeout(modelIdentifier, contents) {
       const controller = new AbortController();
       const timeoutTimer = setTimeout(() => {
         controller.abort();
       }, TIMEOUT_LIMIT_MS);
 
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${runtimeApiKey}`;
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelIdentifier}:generateContent?key=${runtimeApiKey}`;
       
       const systemInstructionText = `You are the dedicated, supportive, and formal personal assistant to customer support agents during their work shift.
 Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity, precision, and complete detail.
@@ -728,7 +725,6 @@ CORE OPERATIONAL RULES:
 [KNOWLEDGE BASE CONTEXT]
 ${systemKnowledgeBase}`;
 
-      // Keep recent turns to optimize token usage while ensuring full answers
       const trimmedContents = contents.slice(-MAX_HISTORY_TURNS);
 
       const payload = {
@@ -736,7 +732,6 @@ ${systemKnowledgeBase}`;
         systemInstruction: { parts: [{ text: systemInstructionText }] },
         generationConfig: { 
           temperature: 0.2
-          // maxOutputTokens removed to allow full, detailed answers
         }
       };
 
@@ -750,7 +745,12 @@ ${systemKnowledgeBase}`;
 
         clearTimeout(timeoutTimer);
 
-        if (!res.ok) throw new Error(`API error ${res.status}`);
+        if (!res.ok) {
+          const errDetail = await res.json().catch(() => ({}));
+          console.error(`Gemini API Error for ${modelIdentifier}:`, errDetail);
+          throw new Error(`API ${res.status}: ${res.statusText}`);
+        }
+        
         const data = await res.json();
         return cleanMarkdownSymbols(data.candidates[0].content.parts[0].text);
       } catch (err) {
@@ -785,23 +785,23 @@ ${systemKnowledgeBase}`;
       assistantBubble.textContent = "Checking the notes for you...";
 
       try {
-        activeModel = MODEL_PRIMARY;
+        // Attempt Primary Model: Gemini 3.5 (LM 3.5 Connected)
         modelBadge.textContent = "LM 3.5 Connected";
         const reply = await executeGeminiCallWithTimeout(MODEL_PRIMARY, conversationLog);
         assistantBubble.textContent = reply;
         conversationLog.push({ role: 'model', parts: [{ text: reply }] });
       } catch (err) {
-        console.warn("LM 3.5 attempt failed or timed out:", err);
+        console.warn(`Primary model (${MODEL_PRIMARY}) failed or timed out:`, err);
 
+        // Fallback to Gemini 3.8 (LM 3.8 Connected)
         try {
-          activeModel = MODEL_FALLBACK;
           modelBadge.textContent = "LM 3.8 Connected";
-          assistantBubble.textContent = "LM 3.5 did not respond. Re-routing to LM 3.8...";
+          assistantBubble.textContent = "Primary model unavailable. Re-routing to fallback...";
           const fallbackReply = await executeGeminiCallWithTimeout(MODEL_FALLBACK, conversationLog);
           assistantBubble.textContent = fallbackReply;
           conversationLog.push({ role: 'model', parts: [{ text: fallbackReply }] });
         } catch (fallbackErr) {
-          console.error("Both models timed out or encountered an error:", fallbackErr);
+          console.error(`Both models (${MODEL_PRIMARY} and ${MODEL_FALLBACK}) failed:`, fallbackErr);
 
           if (fallbackErr.name === 'AbortError' || err.name === 'AbortError') {
             assistantBubble.textContent = "Request timed out (exceeded 30 seconds limit). The assistant took too long to formulate a response.";
