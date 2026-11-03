@@ -304,7 +304,6 @@
       margin: 0 auto 10px auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
 
     .random-btn {
@@ -327,11 +326,6 @@
       border-color: var(--accent-red);
       color: #fda4af;
       transform: translateY(-1px);
-    }
-
-    .guideline-tip {
-      font-size: 0.72rem;
-      color: var(--text-muted);
     }
 
     footer {
@@ -439,11 +433,10 @@
         <span>🎲</span>
         <span>Random Inquiry</span>
       </button>
-      <span class="guideline-tip">Limit: Max 3 questions per inquiry</span>
     </div>
 
     <div class="input-box-wrapper">
-      <textarea id="query-input" placeholder="Ask up to 3 specific questions regarding routers, SIMs, hotels, or policies..." rows="1"></textarea>
+      <textarea id="query-input" placeholder="Ask anything about travel routers, SIMs, bookings, or policies..." rows="1"></textarea>
       <button id="send-btn" class="send-btn" disabled>Send</button>
     </div>
   </footer>
@@ -454,7 +447,7 @@
     const MODEL_PRIMARY = "gemini-3.5-flash";
     const MODEL_FALLBACK = "gemini-3.8-flash";
     const TIMEOUT_LIMIT_MS = 30000;
-    const MAX_HISTORY_TURNS = 6; // Keep only last 6 messages to optimize token usage
+    const MAX_HISTORY_TURNS = 6; // Keep only last 6 messages to preserve context and optimize tokens
     
     let activeModel = MODEL_PRIMARY;
     let systemKnowledgeBase = "";
@@ -593,10 +586,11 @@
       return bubble;
     }
 
+    // Welcoming greeting with no mention of rules or limits
     function initGreeting() {
       chatContainer.innerHTML = "";
       conversationLog = [];
-      appendMessageToDOM('assistant', "Hello! I'm your personal assistant for your shift today. Feel free to ask up to 3 operational questions, rates, or troubleshooting queries per inquiry—I'm here to help you get through them smoothly.");
+      appendMessageToDOM('assistant', "Hello! I'm your personal assistant for your shift today. Feel free to throw any operational questions, rates, or troubleshooting queries my way—I'm here to help you get through them smoothly.");
     }
 
     async function loadKnowledgeBase() {
@@ -670,7 +664,7 @@
     function validateUserQueryConstraints(text) {
       const lower = text.toLowerCase();
 
-      // Guard 1: Block requests to dump or read the whole knowledge base
+      // Guard 1: Block attempts to dump the entire knowledge base
       const dumpKeywords = [
         "whole knowledge base", "entire knowledge base", "all knowledge base", 
         "full knowledge base", "print everything", "dump knowledge base", 
@@ -679,11 +673,11 @@
       if (dumpKeywords.some(phrase => lower.includes(phrase))) {
         return {
           valid: false,
-          reason: "Notice: To conserve memory and bandwidth, browsing the entire knowledge base in a single prompt is restricted. Please specify the exact product, rate, or troubleshooting topic you need."
+          reason: "Notice: To conserve bandwidth and ensure precision, please specify the exact product, rate, or troubleshooting topic you need."
         };
       }
 
-      // Guard 2: Count questions (question marks + numbered question lines)
+      // Guard 2: Limit user to a max of 3 questions per single prompt
       const qMarks = (text.match(/\?/g) || []).length;
       const numberedQuestions = (text.match(/(?:^|\n)\s*(?:\d+[\.\)]|[a-c][\.\)])\s+/gi) || []).length;
       const estimatedQuestions = Math.max(qMarks, numberedQuestions);
@@ -691,14 +685,14 @@
       if (estimatedQuestions > 3) {
         return {
           valid: false,
-          reason: "Notice: Please limit your inquiry to a maximum of 3 questions per message. Splitting questions ensures accurate, concise operational answers."
+          reason: "Notice: Please limit your inquiry to a maximum of 3 questions per message so I can give you a clear, thorough response."
         };
       }
 
       return { valid: true };
     }
 
-    // Execute Gemini API with AbortController for 30s timeout and optimized payload
+    // Execute Gemini API with AbortController for a 30s timeout and full answer capability
     async function executeGeminiCallWithTimeout(modelName, contents) {
       const controller = new AbortController();
       const timeoutTimer = setTimeout(() => {
@@ -708,15 +702,11 @@
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${runtimeApiKey}`;
       
       const systemInstructionText = `You are the dedicated, supportive, and formal personal assistant to customer support agents during their work shift.
-Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity and precision.
+Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity, precision, and complete detail.
 
-TOKEN OPTIMIZATION & STRICT SCOPE ENFORCEMENT:
-- Answer ONLY the specific questions asked. Keep answers concise, direct, and actionable.
-- DO NOT summarize unasked sections of the knowledge base.
-- If the user asks more than 3 distinct questions, politely answer ONLY the first 3 questions and instruct them to submit the rest in a separate message.
-- If the user asks to dump, reveal, or summarize the ENTIRE knowledge base, strictly refuse and ask them to specify the exact product or policy they need.
-
-FORMATTING AND TYPOGRAPHY INSTRUCTIONS:
+ANSWER GUIDELINES:
+- Provide comprehensive, complete, and thoroughly detailed answers to all questions asked.
+- Answer ONLY the specific questions asked by the agent.
 - DO NOT use markdown symbols like ###, ##, **, __, or markdown tables.
 - Write clean, human-readable plain text.
 - For sections or headings, use neat UPPERCASE titles or clear line breaks instead of ### or **.
@@ -738,15 +728,15 @@ CORE OPERATIONAL RULES:
 [KNOWLEDGE BASE CONTEXT]
 ${systemKnowledgeBase}`;
 
-      // Slice to keep only the recent turns to dramatically reduce token consumption
+      // Keep recent turns to optimize token usage while ensuring full answers
       const trimmedContents = contents.slice(-MAX_HISTORY_TURNS);
 
       const payload = {
         contents: trimmedContents,
         systemInstruction: { parts: [{ text: systemInstructionText }] },
         generationConfig: { 
-          temperature: 0.2,
-          maxOutputTokens: 1024 // Caps output length to prevent runaway generation
+          temperature: 0.2
+          // maxOutputTokens removed to allow full, detailed answers
         }
       };
 
@@ -832,7 +822,6 @@ ${systemKnowledgeBase}`;
       const text = queryInput.value.trim();
       if (!text || !runtimeApiKey || isRequestActive) return;
 
-      // Run threshold and token optimization validation
       const check = validateUserQueryConstraints(text);
       if (!check.valid) {
         appendMessageToDOM('agent', text);
