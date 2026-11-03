@@ -83,8 +83,39 @@
     .status-panel {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-size: 0.8rem;
+    }
+
+    .action-btn {
+      background: #1a202c;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: ui-monospace, monospace;
+      font-size: 0.73rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .action-btn:hover {
+      border-color: var(--accent-red);
+      color: #fda4af;
+      background: #241318;
+    }
+
+    .action-btn.refreshing .spin-icon {
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .indicator-group {
@@ -118,42 +149,6 @@
       font-family: ui-monospace, monospace;
       font-size: 0.72rem;
       font-weight: 600;
-    }
-
-    .kb-sync-button {
-      background: #1a202c;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      padding: 3px 9px;
-      border-radius: 4px;
-      font-family: ui-monospace, monospace;
-      font-size: 0.72rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      user-select: none;
-    }
-
-    .kb-sync-button:hover {
-      border-color: var(--accent-red);
-      color: #fda4af;
-      background: #241318;
-    }
-
-    .kb-sync-button .refresh-icon {
-      display: inline-block;
-      font-size: 0.78rem;
-    }
-
-    .kb-sync-button.refreshing .refresh-icon {
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
 
     main {
@@ -315,9 +310,16 @@
       <div class="brand-sub">Changi Recommends Agent Knowledge Engine</div>
     </div>
     <div class="status-panel">
-      <button id="kb-sync-btn" class="kb-sync-button" title="Auto-refreshes every 3 minutes. Click to force sync immediately.">
-        <span class="refresh-icon">↻</span>
-        <span id="kb-sync-text">KB: Initializing...</span>
+      <!-- Manual KB Sync Button -->
+      <button id="kb-sync-btn" class="action-btn" title="Click to manually refresh the Knowledge Base from GitHub">
+        <span class="spin-icon">↻</span>
+        <span id="kb-sync-text">KB: Checking...</span>
+      </button>
+
+      <!-- Manual Chat Clear Button -->
+      <button id="clear-chat-btn" class="action-btn" title="Clear current conversation history">
+        <span>🗑</span>
+        <span>Clear Chat</span>
       </button>
 
       <div class="indicator-group">
@@ -332,7 +334,7 @@
 
   <main id="chat-stream">
     <div class="chat-container" id="chat-messages">
-      <!-- Chat bubbles render here -->
+      <!-- Chat bubbles -->
     </div>
   </main>
 
@@ -359,6 +361,7 @@
     const modelBadge = document.getElementById('model-badge');
     const kbSyncBtn = document.getElementById('kb-sync-btn');
     const kbSyncText = document.getElementById('kb-sync-text');
+    const clearChatBtn = document.getElementById('clear-chat-btn');
     const chatContainer = document.getElementById('chat-messages');
     const chatStream = document.getElementById('chat-stream');
     const queryInput = document.getElementById('query-input');
@@ -368,30 +371,32 @@
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
-    // Persist conversation so launcher updates don't wipe agent chats
-    function saveHistory() {
-      sessionStorage.setItem('cr_agent_chat_log', JSON.stringify(conversationLog));
+    function appendMessageToDOM(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${sender}`;
+
+      const meta = document.createElement('div');
+      meta.className = 'message-meta';
+      meta.textContent = sender === 'agent' ? 'Agent' : 'Operations Assistant';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'message-bubble';
+      bubble.textContent = text;
+
+      msgDiv.appendChild(meta);
+      msgDiv.appendChild(bubble);
+      chatContainer.appendChild(msgDiv);
+      chatStream.scrollTop = chatStream.scrollHeight;
+      return bubble;
     }
 
-    function restoreHistory() {
-      const saved = sessionStorage.getItem('cr_agent_chat_log');
-      if (saved) {
-        try {
-          conversationLog = JSON.parse(saved);
-          chatContainer.innerHTML = "";
-          conversationLog.forEach(msg => {
-            appendMessageToDOM(msg.role === 'user' ? 'agent' : 'assistant', msg.parts[0].text);
-          });
-          return;
-        } catch(e) {
-          console.warn("Could not parse saved history:", e);
-        }
-      }
-      // Initial default greeting if brand new session
+    function initGreeting() {
+      chatContainer.innerHTML = "";
+      conversationLog = [];
       appendMessageToDOM('assistant', "System online. Ready to support operational inquiries regarding Changi Recommends travel services.");
     }
 
-    // Fetch Knowledge Base with anti-cache query
+    // Manual Knowledge Base Fetch (No automatic timers)
     async function loadKnowledgeBase() {
       kbSyncBtn.classList.add('refreshing');
       kbSyncText.textContent = "KB: Fetching...";
@@ -406,7 +411,7 @@
         const now = new Date();
         const timeString = formatTime(now);
         kbSyncText.textContent = `KB: ${timeString}`;
-        kbSyncBtn.title = `Auto-refreshes every 3 mins. Last synchronized at ${timeString}. Total chars: ${systemKnowledgeBase.length.toLocaleString()}`;
+        kbSyncBtn.title = `Knowledge base loaded at ${timeString}. Total chars: ${systemKnowledgeBase.length.toLocaleString()}. Click to re-sync.`;
       } catch (err) {
         console.warn("Direct KB fetch failed:", err);
         kbSyncText.textContent = "KB: Sync Failed";
@@ -415,13 +420,11 @@
       }
     }
 
-    // Manual reload click
+    // Buttons
     kbSyncBtn.addEventListener('click', () => loadKnowledgeBase());
+    clearChatBtn.addEventListener('click', () => initGreeting());
 
-    // Auto-refresh knowledge base every 3 minutes (180,000 ms)
-    setInterval(loadKnowledgeBase, 180000);
-
-    // Handshake reception from launcher.html
+    // Secure Handshake
     window.addEventListener('message', (e) => {
       if (e.data && e.data.type === 'SET_CREDENTIALS') {
         if (e.data.apiKey && e.data.apiKey.trim().length > 0) {
@@ -434,7 +437,7 @@
     });
 
     function init() {
-      restoreHistory();
+      initGreeting();
       loadKnowledgeBase();
       if (window.parent && window.parent !== window) {
         window.parent.postMessage({ type: 'REQUEST_CREDENTIALS' }, '*');
@@ -460,25 +463,6 @@
     });
 
     sendBtn.addEventListener('click', handleSend);
-
-    function appendMessageToDOM(sender, text) {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `message ${sender}`;
-
-      const meta = document.createElement('div');
-      meta.className = 'message-meta';
-      meta.textContent = sender === 'agent' ? 'Agent' : 'Operations Assistant';
-
-      const bubble = document.createElement('div');
-      bubble.className = 'message-bubble';
-      bubble.textContent = text;
-
-      msgDiv.appendChild(meta);
-      msgDiv.appendChild(bubble);
-      chatContainer.appendChild(msgDiv);
-      chatStream.scrollTop = chatStream.scrollHeight;
-      return bubble;
-    }
 
     async function executeGeminiCall(modelName, contents) {
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${runtimeApiKey}`;
@@ -518,7 +502,6 @@ ${systemKnowledgeBase}`;
 
       appendMessageToDOM('agent', text);
       conversationLog.push({ role: 'user', parts: [{ text: text }] });
-      saveHistory();
 
       const assistantBubble = appendMessageToDOM('assistant', "Formulating response...");
 
@@ -541,7 +524,6 @@ ${systemKnowledgeBase}`;
           modelBadge.textContent = "Failure";
         }
       } finally {
-        saveHistory();
         validateInputState();
         chatStream.scrollTop = chatStream.scrollHeight;
       }
