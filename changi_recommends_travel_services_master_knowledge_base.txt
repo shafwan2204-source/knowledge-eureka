@@ -1,7 +1,7 @@
 ================================================================================
 CHANGI RECOMMENDS TRAVEL SERVICES MASTER KNOWLEDGE BASE & SOP
 ================================================================================
-Document Version  : 9.1
+Document Version  : 9.3
 Author / Creator  : Shafwan
 Disclaimer        : Unofficial knowledge base created for hobby and learning
                     purposes. Designed to assist with daily operational context,
@@ -15,7 +15,9 @@ System Scope      : Overseas Physical SIMs, Travel eSIMs, ChangiWiFi Routers,
                     Companion, Changi Transit Hotels (T1, T2, T3), Oasis PMS 
                     Manual Booking SOP, Oasis PMS Cancellation SOP & OTA Warning, 
                     ChangiAssure Inbound Insurance, ChangiAssure Outbound Insurance, 
-                    and Japan Rail (JR) Passes (Physical MCO & Electronic EO).
+                    Japan Rail (JR) Passes (Physical MCO & Electronic EO),
+                    Xplore SG Walking Tours & River Cruise Experiences, and
+                    Standard CRM Case Logging Templates.
 Primary Operating : Singapore Changi Airport (SIN)
 Time Zone Base    : Singapore Time (SGT / UTC+08:00)
 Currency Standard : Singapore Dollar (SGD)
@@ -109,9 +111,23 @@ PART IX: JAPAN RAIL (JR) PASS (PHYSICAL MCO & ELECTRONIC EO)
   Section 63: Station Entry, Free Seat Reservations & Wheelchair Bookings
   Section 64: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
 
-PART X: MASTER DIRECTORY & AIRPORT COUNTER MAP
-  Section 65: 24/7 Hotlines, Self-Service Portals & Department Directories
-  Section 66: Comprehensive Terminal Counter Map & Operational Hours
+PART X: XPLORE SG GUIDED WALKING TOURS & RIVER CRUISE
+  Section 65: Product Overview, Tour Types & Tier Comparison (1-Hr vs 3-Hr)
+  Section 66: Pricing, Payment Channels, SG Culture Pass & EZ-Link Inclusions
+  Section 67: Daily Schedule, Meeting Location & Step-by-Step Directions
+  Section 68: Tour Extension Protocol ($35 Add-On) & Guide Licensing
+  Section 69: Weather Handling, Rescheduling SOP & Strict Cancellation Policy
+  Section 70: Private Group Tours (5-15 Pax) & Operational FAQs
+
+PART XI: CRM SYSTEM CASE LOGGING TEMPLATES & AGENT WORKFLOWS
+  Section 71: Operational Purpose & Case Logging Standards
+  Section 72: Physical SIM & Travel eSIM Logging Template
+  Section 73: ChangiWiFi & Changi SG WiFi Logging Template
+  Section 74: Changi Transit Hotel Network Logging Template
+
+PART XII: MASTER DIRECTORY & AIRPORT COUNTER MAP
+  Section 75: 24/7 Hotlines, Self-Service Portals & Department Directories
+  Section 76: Comprehensive Terminal Counter Map & Operational Hours
 
 
 ================================================================================
@@ -1452,10 +1468,225 @@ Section 64: Onboard Etiquette, Luggage Rules, Pets & 180-Day Refund Policy
 
 
 ================================================================================
-PART X: MASTER DIRECTORY & AIRPORT COUNTER MAP
+PART X: XPLORE SG GUIDED WALKING TOURS & RIVER CRUISE
 ================================================================================
 
-Section 65: 24/7 Hotlines, Self-Service Portals & Department Directories
+Section 65: Product Overview, Tour Types & Tier Comparison (1-Hr vs 3-Hr)
+--------------------------------------------------------------------------------
+* Product Name       : Xplore SG Walking Tour & Singapore River Cruise.
+* Operational Focus  : Licensed, on-foot cultural walking experiences uncovering 
+                       Singapore's heritage, iconic shophouses, ethnic enclaves, 
+                       and modern waterfront landmarks.
+* Tour Types & Features:
+
+Feature                 | 1-Hour Walking Tour            | 3-Hour Full Experience
+------------------------+--------------------------------+---------------------------------
+Duration & Operating Hrs| 3:00 PM – 4:00 PM (1 Hour)     | 3:00 PM – 6:00 PM (3 Hours)
+Arrival Standby Time    | Arrive by 2:45 PM              | Arrive by 2:45 PM
+Meeting Point           | Bugis MRT Station, Exit B      | Bugis MRT Station, Exit B
+Ending Location         | Kampong Glam                   | Clarke Quay (via River Cruise)
+Key Itinerary Stops     | 1. Haji Lane                   | 1. Haji Lane
+                        | 2. Arab Street                 | 2. Arab Street
+                        | 3. Sultan Mosque               | 3. Sultan Mosque
+                        | 4. Kampong Glam                | 4. Kampong Glam
+                        |                                | 5. Clarke Quay (Cruise Boarding)
+                        |                                | 6. Merlion Park (Pass By)
+                        |                                | 7. Marina Bay Sands (Pass By)
+River Cruise Ticket     | NOT included                   | INCLUDED (Singapore River Cruise)
+Public Transport Card   | Available as product bundle    | FREE Xplore SG EZ-Link Card
+                        | (e.g. Tourist Pass Plus / SIM) | with SGD $5.00 Preloaded Value
+Pricing / Eligibility   | Bundled with selected products | SGD $59.00 per person
+                        | (No standalone ticket refunds) | (SG Culture Pass Eligible)
+
+
+Section 66: Pricing, Payment Channels, SG Culture Pass & EZ-Link Inclusions
+--------------------------------------------------------------------------------
+* 3-Hour Tour Retail Price: SGD $59.00 Nett per person.
+  - SG Culture Pass: Fully eligible for redemption / purchase under SG Culture Pass.
+  - Package Inclusions:
+    1. Licensed English / Mandarin tour guide throughout the journey.
+    2. Singapore River Cruise boarding pass at Clarke Quay.
+    3. Complimentary physical Xplore SG EZ-Link Card with SGD $5.00 stored value.
+* 1-Hour Tour Eligibility:
+  - Complimentary inclusion when purchasing selected bundles from Changi Recommends 
+    counters or website (e.g., Singapore Tourist Pass Plus EZ-Link card or prepaid travel SIM bundle).
+* Sales & Payment Channels:
+  - Online Purchase: Exclusively via Changi Recommends web portals.
+  - Counter Purchase: Changi Recommends arrival counters across Terminals 1, 2, 3, and 4.
+  - Accepted Payments: Visa, Mastercard, UnionPay, American Express, and debit cards.
+* EZ-Link Card Collection & Redemption:
+  - Collect at any Changi Recommends airport arrival counter by presenting the booking email confirmation.
+
+
+Section 67: Daily Schedule, Meeting Location & Step-by-Step Directions
+--------------------------------------------------------------------------------
+* Frequency & Daily Timing:
+  - Frequency: 1 tour conducted daily.
+  - Tour Timing: 3:00 PM – 6:00 PM (1-Hour tour concludes at 4:00 PM; 3-Hour concludes at 6:00 PM).
+  - Mandatory Standby: Participants MUST arrive at the meeting point by 2:45 PM (15 minutes prior).
+* Designated Meeting Location:
+  - Landmark: Bugis MRT Station (East-West Line EW12 / Downtown Line DT14), Exit B.
+  - Specific Spot: Street level, directly in front of the public bus stop.
+* Step-by-Step Wayfinding to Meeting Point:
+  1. Arrive at Bugis MRT Station via East-West Line (Green) or Downtown Line (Blue).
+  2. Locate the Station Passenger Service / Control Centre.
+  3. Follow signs directing to "Exit B".
+  4. Take the upward escalator directly to Street Level.
+  5. Exit the station onto the street pavement; look for the local tour guide holding 
+     a placard displaying the "Xplore SG Walking Tour" logo in front of the bus stop.
+
+
+Section 68: Tour Extension Protocol ($35 Add-On) & Guide Licensing
+--------------------------------------------------------------------------------
+* On-the-Spot Tour Extension (1-Hour to 3-Hour):
+  - Any 1-Hour tour participant can extend to the full 3-Hour tour experience 
+    (including the Clarke Quay transfer and Singapore River Cruise).
+  - Procedure: Inform the tour guide directly during the 1-Hour walking segment.
+  - Extension Fee: SGD $35.00 Nett per person, payable directly to the tour guide.
+* Tour Guide Qualifications:
+  - All Xplore SG tour guides are officially licensed by the Singapore Tourism Board (STB).
+  - Tour Delivery Languages: Guides primarily conduct the tour in English and are fluent in Mandarin.
+
+
+Section 69: Weather Handling, Rescheduling SOP & Strict Cancellation Policy
+--------------------------------------------------------------------------------
+* Inclement Weather Policy (Rain or Shine):
+  - Tours proceed as scheduled during rain or drizzles.
+  - Participants are strongly advised to bring an umbrella and light rain gear.
+  - Optional Weather Reschedule: Guests reluctant to walk in wet weather can contact 
+    support to reschedule to an alternative available date.
+* Rescheduling Standard Operating Procedure:
+  - To reschedule a tour date, contact the Xplore SG coordinator via WhatsApp / Call at:
+    +65 8032 2341 (or email call@changirecommends.com.sg).
+  - The team will provide available dates for selection.
+* Strict Cancellation & Refund Terms:
+  - Once booked and confirmed, tickets are strictly NON-REFUNDABLE and CANNOT be cancelled.
+  - Rescheduling to a future open date is permitted upon request.
+
+
+Section 70: Private Group Tours (5-15 Pax) & Operational FAQs
+--------------------------------------------------------------------------------
+* Private Tour Arrangements:
+  - Group Size Limits: Minimum 5 participants; maximum 15 participants per private group.
+  - Flexible Scheduling: Custom start timings and alternative time slots can be arranged.
+  - Booking & Inquiries: Contact +65 8032 2341 to book and confirm private slots.
+* Operational FAQs & Recommendations:
+  - Advance Booking: Not mandatory for standard daily tours (available daily 3:00 PM – 6:00 PM), 
+    though advance reservation is recommended to secure slots.
+  - What to Bring: Bottled water for hydration, umbrella / portable fan, wallet (for souvenirs 
+    at Kampong Glam), camera or smartphone for photography.
+  - Food & Beverage: Not provided. Guests may bring personal snacks and water; waste 
+    must be disposed of properly in public litter bins.
+  - Attraction Photo Stops: Guides pause at each landmark for photo opportunities. 
+    Note: Merlion Park and Marina Bay Sands are viewed from the river cruise boat (pass by).
+  - Inter-Location Transport: There is NO private bus charter. Transfer between 
+    Kampong Glam and Clarke Quay is completed via public transport escorted by the guide.
+  - Hotel Transfers: Hotel pickup and drop-off are NOT included.
+  - Route Customization: Standard public tour itineraries are fixed and non-customizable.
+  - Age & Mobility Suitability:
+    * Suitable for children and elderly participants capable of continuous walking.
+    * Those with mobility challenges may find the on-foot pace demanding.
+    * Children under 12 years of age MUST be accompanied by a paying adult.
+  - Dress Code: Casual, light, breathable clothing with comfortable walking shoes.
+
+
+================================================================================
+PART XI: CRM SYSTEM CASE LOGGING TEMPLATES & AGENT WORKFLOWS
+================================================================================
+
+Section 71: Operational Purpose & Case Logging Standards
+--------------------------------------------------------------------------------
+* Objective          : Standardize customer interaction records, escalations, 
+                       and incident tickets inside the Changi Recommends CRM.
+* Mandatory Practice : Agents must copy, populate, and submit the designated 
+                       case template into the internal CRM case notes immediately 
+                       upon receiving an inquiry, fault report, or escalation.
+* Quality Standards  :
+  - Order & Case IDs : Ensure Order Numbers and CRM Case Numbers are captured accurately.
+  - Contact Details  : Double-check email addresses and phone numbers (including country codes).
+  - Case Details     : Detail the issue clearly (e.g., error codes, APN mismatches, 
+                       arrival delays, device behaviors).
+  - Resolution Log   : Record all troubleshooting steps taken, advice given, 
+                       or department handed over to.
+
+
+Section 72: Physical SIM & Travel eSIM Logging Template
+--------------------------------------------------------------------------------
+* Use Case: Inquiries, activation failures, balance checks, APN configuration, 
+  and replacement requests for Overseas Physical SIMs and Travel eSIMs.
+
+--- START OF TEMPLATE (COPY BELOW) ---
+Category of Inbound : 
+Case Number : 
+Order Number : 
+Package : 
+ICCID : 
+Name : 
+Email Address : 
+Contact : 
+Country : 
+Escalation date : 
+Case Details : Customer enquire for 
+Resolution : 
+Agent's name : 
+--- END OF TEMPLATE ---
+
+
+Section 73: ChangiWiFi & Changi SG WiFi Logging Template
+--------------------------------------------------------------------------------
+* Use Case: Pocket Wi-Fi router bookings, collection/return inquiries, overseas 
+  troubleshooting, rental extensions, hardware loss, and SG WiFi domestic units.
+
+--- START OF TEMPLATE (COPY BELOW) ---
+Category of Inbound : 
+Case Number : 
+Order Number : 
+S/N : 
+Sim number (SG Wifi): 
+Name : 
+Email Address : 
+Contact : 
+Country : 
+Escalation date : 
+Case Details : 
+Resolution : 
+Agent's name : 
+--- END OF TEMPLATE ---
+* Note on SG WiFi: For domestic Singapore units, record the internal SIM number 
+  in the designated field if applicable; for overseas routers, mark as "N/A".
+
+
+Section 74: Changi Transit Hotel Network Logging Template
+--------------------------------------------------------------------------------
+* Use Case: Room booking inquiries, amendments, Oasis PMS direct reservation logs, 
+  flight delay extensions, and non-guest facility inquiries (T1 pool/shower).
+
+--- START OF TEMPLATE (COPY BELOW) ---
+Category of Inbound : 
+Case Number : 
+Order Number : 
+Name: 
+Contact : 
+Changi Transit Hotel : 
+Check-in Date & Time: 
+Check-out Date & Time: 
+Length of Stay (Hours): 
+Number of Guests (Adults / Children): 
+Room Type: 
+Escalation date : 
+Case Details : 
+Resolution : 
+Agent's name : 
+--- END OF TEMPLATE ---
+* Operational Reminder: If the reservation originates from an OTA (Agoda, Booking.com, etc.), 
+  record "OTA - [Platform Name]" under Order Number and follow Section 46 OTA protocols.
+
+
+================================================================================
+PART XII: MASTER DIRECTORY & AIRPORT COUNTER MAP
+================================================================================
+
+Section 75: 24/7 Hotlines, Self-Service Portals & Department Directories
 --------------------------------------------------------------------------------
 * Central Changi Recommends Customer Care:
   - 24/7 Telephone Hotline    : +65 6701 1185 (SGT / UTC+08:00)
@@ -1468,6 +1699,13 @@ Section 65: 24/7 Hotlines, Self-Service Portals & Department Directories
   - SIM & eSIM Live Balance Check     : https://www.changirecommends.com/esim_enquiry.aspx
   - ChangiAssure Online Claims Portal : https://changiassure.changirecommends.com/claims
   - Attractions & Rail Booking Engine : https://attractions.changirecommends.com
+
+* Xplore SG Walking Tours Hotline & Socials:
+  - Tour Support / Rescheduling Phone : +65 8032 2341 (WhatsApp / Call)
+  - Tour Support Email                : call@changirecommends.com.sg
+  - Official Facebook                 : facebook.com/xploresg
+  - Official Instagram                : @xploresgwalkingtours
+  - Inquiries Counter                 : Changi Recommends Arrival Counters (T1, T2, T3, T4)
 
 * ChangiAssure Travel Insurance Channels:
   - Travel Inconvenience Hotline (24/7) : +65 6701 1185
@@ -1494,7 +1732,7 @@ Section 65: 24/7 Hotlines, Self-Service Portals & Department Directories
   - Terminal 3 Front Desk Phone : +65 9477 6709
 
 
-Section 66: Comprehensive Terminal Counter Map & Operational Hours
+Section 76: Comprehensive Terminal Counter Map & Operational Hours
 --------------------------------------------------------------------------------
 Service Division       | Terminal Locations & Counter Information
 -----------------------+--------------------------------------------------------
@@ -1503,6 +1741,7 @@ ChangiWiFi Collection  | Terminals 1, 2, 3, 4: Departure Halls (Public Area)
 ChangiWiFi Returns     | Terminals 1, 2, 3, 4: Arrival Halls ONLY (Public Area)
 Overseas SIM Cards     | Terminals 1, 2, 3, 4: Departure Halls (Public Area)
 Japan Rail Pass (MCO)  | Terminals 1, 2, 3, 4: Departure Halls (Public Area)
+Xplore SG EZ-Link Card | Terminals 1, 2, 3, 4: Arrival Halls (Public Area)
 Limousine Redemption   | Terminal 1: Arrival Hall, near Information Counter
 (24/7 Counters)        | Terminal 2: Arrival Hall, near Information Counter
                        | Terminal 3: Arrival Hall, near Paris Baguette
