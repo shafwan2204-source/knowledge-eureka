@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changi Travel Concierge Operations Portal</title>
+  <title>Operations Assistant Console</title>
   <style>
     :root {
       --bg-main: #111418;
@@ -202,10 +202,16 @@
       align-self: flex-start;
     }
 
+    .message-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
     .message-meta {
       font-size: 0.72rem;
       color: var(--text-muted);
-      margin-bottom: 5px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-weight: 600;
@@ -214,6 +220,34 @@
     .message.agent .message-meta {
       text-align: right;
       color: #fda4af;
+    }
+
+    /* Text-Only Copy Button */
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.70rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent-red);
+      color: #fda4af;
+      background: #241318;
+    }
+
+    .copy-btn.copied {
+      border-color: var(--status-green);
+      color: var(--status-green);
+      background: rgba(16, 185, 129, 0.1);
     }
 
     .message-bubble {
@@ -306,8 +340,8 @@
 
   <header>
     <div>
-      <div class="brand-title">Operations Support Terminal</div>
-      <div class="brand-sub">Changi Recommends Agent Knowledge Engine</div>
+      <div class="brand-title">Operations Assistant</div>
+      <div class="brand-sub">Hobby Workspace & Knowledge Navigator</div>
     </div>
     <div class="status-panel">
       <!-- Manual KB Sync Button -->
@@ -327,20 +361,20 @@
         <span id="conn-text">Disconnected</span>
       </div>
       <div class="indicator-group">
-        <span class="badge" id="model-badge">Gemini 3.5</span>
+        <span class="badge" id="model-badge">Connecting...</span>
       </div>
     </div>
   </header>
 
   <main id="chat-stream">
     <div class="chat-container" id="chat-messages">
-      <!-- Chat bubbles -->
+      <!-- Chat bubbles render here -->
     </div>
   </main>
 
   <footer>
     <div class="input-box-wrapper">
-      <textarea id="query-input" placeholder="Submit inquiry regarding WiFi, SIM, Transit Hotel, Limousine, or Insurance..." rows="1"></textarea>
+      <textarea id="query-input" placeholder="Ask anything about travel routers, SIMs, bookings, or policies..." rows="1"></textarea>
       <button id="send-btn" class="send-btn" disabled>Send</button>
     </div>
   </footer>
@@ -371,19 +405,68 @@
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
+    // Pure Text-Only Clipboard Copy
+    async function copyToClipboardAsPlainText(text, buttonElement) {
+      if (!text) return;
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          // Fallback textarea method for iframe / legacy cross-origin contexts
+          const tempTextArea = document.createElement("textarea");
+          tempTextArea.value = text;
+          tempTextArea.style.position = "fixed";
+          tempTextArea.style.left = "-9999px";
+          tempTextArea.style.top = "-9999px";
+          document.body.appendChild(tempTextArea);
+          tempTextArea.focus();
+          tempTextArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(tempTextArea);
+        }
+
+        buttonElement.classList.add("copied");
+        buttonElement.innerHTML = "<span>✓</span> Copied";
+        setTimeout(() => {
+          buttonElement.classList.remove("copied");
+          buttonElement.innerHTML = "<span>📋</span> Copy";
+        }, 1800);
+      } catch (err) {
+        console.error("Text-only copy failed: ", err);
+      }
+    }
+
     function appendMessageToDOM(sender, text) {
       const msgDiv = document.createElement('div');
       msgDiv.className = `message ${sender}`;
 
+      const headerRow = document.createElement('div');
+      headerRow.className = 'message-header-row';
+
       const meta = document.createElement('div');
       meta.className = 'message-meta';
-      meta.textContent = sender === 'agent' ? 'Agent' : 'Operations Assistant';
+      meta.textContent = sender === 'agent' ? 'You' : 'Assistant';
+      headerRow.appendChild(meta);
 
       const bubble = document.createElement('div');
       bubble.className = 'message-bubble';
       bubble.textContent = text;
 
-      msgDiv.appendChild(meta);
+      // Add Text-Only Copy Button for Assistant replies
+      if (sender === 'assistant') {
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.innerHTML = '<span>📋</span> Copy';
+        copyBtn.title = 'Copy response as plain unformatted text';
+        copyBtn.addEventListener('click', () => {
+          // Strictly extracts the unformatted innerText
+          copyToClipboardAsPlainText(bubble.innerText, copyBtn);
+        });
+        headerRow.appendChild(copyBtn);
+      }
+
+      msgDiv.appendChild(headerRow);
       msgDiv.appendChild(bubble);
       chatContainer.appendChild(msgDiv);
       chatStream.scrollTop = chatStream.scrollHeight;
@@ -393,10 +476,10 @@
     function initGreeting() {
       chatContainer.innerHTML = "";
       conversationLog = [];
-      appendMessageToDOM('assistant', "System online. Ready to support operational inquiries regarding Changi Recommends travel services.");
+      appendMessageToDOM('assistant', "Hello! I'm your personal assistant for your shift today. Feel free to throw any operational questions, rates, or troubleshooting queries my way—I'm here to help you get through them smoothly.");
     }
 
-    // Manual Knowledge Base Fetch (No automatic timers)
+    // Manual Knowledge Base Fetch
     async function loadKnowledgeBase() {
       kbSyncBtn.classList.add('refreshing');
       kbSyncText.textContent = "KB: Fetching...";
@@ -420,17 +503,17 @@
       }
     }
 
-    // Buttons
     kbSyncBtn.addEventListener('click', () => loadKnowledgeBase());
     clearChatBtn.addEventListener('click', () => initGreeting());
 
-    // Secure Handshake
+    // Secure Handshake receiver from launcher.html
     window.addEventListener('message', (e) => {
       if (e.data && e.data.type === 'SET_CREDENTIALS') {
         if (e.data.apiKey && e.data.apiKey.trim().length > 0) {
           runtimeApiKey = e.data.apiKey;
           connDot.className = "dot connected";
           connText.textContent = "Connected";
+          modelBadge.textContent = "LM 3.5 Connected";
           validateInputState();
         }
       }
@@ -467,12 +550,23 @@
     async function executeGeminiCall(modelName, contents) {
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${runtimeApiKey}`;
       
-      const systemInstructionText = `You are the formal, operations-grade assistant for Changi Recommends customer service agents. 
-Maintain a strictly professional, clear, and direct persona. 
-Provide concise, accurate answers grounded strictly in the master knowledge base below.
-If details are absent or not defined in the knowledge base, state this plainly and advise escalating to the Team Lead or Operations Duty Manager.
+      const systemInstructionText = `You are the dedicated, supportive, and formal personal assistant to customer support agents during their work shift.
+Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity and precision.
 
-[MASTER KNOWLEDGE BASE CONTEXT]
+CORE FORMATTING AND OPERATIONAL RULES:
+1. FIRST LINE REQUIREMENT: You MUST always start your answer with your calculated confidence level on its own line:
+   **Confidence Level: [X]%**
+   (Base this percentage from 0% to 100% strictly on how completely, directly, and unambiguously the question is answered by the knowledge base context below).
+
+2. ESCALATION RULE: If your confidence level is strictly BELOW 71% (i.e. 0% to 70%), you MUST immediately advise the agent to consult with their Team Lead or Manager on duty before advising the customer.
+
+3. KNOWLEDGE BOUNDARY: Ground your answers strictly on the knowledge base provided below. If details are missing or unclear, state this honestly to the agent.
+
+4. MANDATORY DISCLAIMER: You MUST conclude EVERY response to the agent with this exact disclaimer block:
+   ***
+   *Disclaimer: Answers from AI may not be accurate. Always double check with official sources or duty leads.*
+
+[KNOWLEDGE BASE CONTEXT]
 ${systemKnowledgeBase}`;
 
       const payload = {
@@ -503,25 +597,25 @@ ${systemKnowledgeBase}`;
       appendMessageToDOM('agent', text);
       conversationLog.push({ role: 'user', parts: [{ text: text }] });
 
-      const assistantBubble = appendMessageToDOM('assistant', "Formulating response...");
+      const assistantBubble = appendMessageToDOM('assistant', "Checking the notes for you...");
 
       try {
         activeModel = MODEL_PRIMARY;
-        modelBadge.textContent = "Gemini 3.5";
+        modelBadge.textContent = "LM 3.5 Connected";
         const reply = await executeGeminiCall(MODEL_PRIMARY, conversationLog);
         assistantBubble.textContent = reply;
         conversationLog.push({ role: 'model', parts: [{ text: reply }] });
       } catch (err) {
-        console.warn("Primary model failure, triggering fallback:", err);
+        console.warn("LM 3.5 unavailable, routing to fallback:", err);
         try {
           activeModel = MODEL_FALLBACK;
-          modelBadge.textContent = "Gemini 3.8";
+          modelBadge.textContent = "LM 3.8 Connected";
           const fallbackReply = await executeGeminiCall(MODEL_FALLBACK, conversationLog);
           assistantBubble.textContent = fallbackReply;
           conversationLog.push({ role: 'model', parts: [{ text: fallbackReply }] });
         } catch (fErr) {
-          assistantBubble.textContent = "Service unavailable. An error occurred while communicating with the model. Please consult your Team Lead or supervisor.";
-          modelBadge.textContent = "Failure";
+          assistantBubble.textContent = "I'm having trouble retrieving that right now due to a network or service issue. Please double-check directly with your Team Lead or supervisor.";
+          modelBadge.textContent = "Disconnected";
         }
       } finally {
         validateInputState();
