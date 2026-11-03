@@ -184,7 +184,7 @@
       display: flex;
       flex-direction: column;
       max-width: 85%;
-      line-height: 1.55;
+      line-height: 1.6;
       font-size: 0.92rem;
       animation: fadeIn 0.2s ease-in-out;
     }
@@ -222,7 +222,6 @@
       color: #fda4af;
     }
 
-    /* Text-Only Copy Button */
     .copy-btn {
       background: transparent;
       border: 1px solid var(--border);
@@ -368,7 +367,7 @@
 
   <main id="chat-stream">
     <div class="chat-container" id="chat-messages">
-      <!-- Chat bubbles render here -->
+      <!-- Chat messages render here -->
     </div>
   </main>
 
@@ -405,6 +404,19 @@
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
+    // Clean formatting: strips markdown symbols (#, *, `, _) so text is clean to read and copy
+    function cleanMarkdownSymbols(text) {
+      if (!text) return "";
+      return text
+        .replace(/^#+\s*/gm, '')              // Remove markdown headings (#, ##, ###)
+        .replace(/\*\*([^*]+)\*\*/g, '$1')    // Remove bold asterisks (**text**)
+        .replace(/\*([^*]+)\*/g, '$1')        // Remove italic asterisks (*text*)
+        .replace(/`([^`]+)`/g, '$1')          // Remove code backticks (`code`)
+        .replace(/^[ \t]*[-*]\s+/gm, '• ')     // Clean standard bullet points
+        .replace(/\n{3,}/g, '\n\n')           // Normalize excessive blank lines
+        .trim();
+    }
+
     // Pure Text-Only Clipboard Copy
     async function copyToClipboardAsPlainText(text, buttonElement) {
       if (!text) return;
@@ -413,7 +425,6 @@
         if (navigator.clipboard && window.isSecureContext) {
           await navigator.clipboard.writeText(text);
         } else {
-          // Fallback textarea method for iframe / legacy cross-origin contexts
           const tempTextArea = document.createElement("textarea");
           tempTextArea.value = text;
           tempTextArea.style.position = "fixed";
@@ -433,7 +444,7 @@
           buttonElement.innerHTML = "<span>📋</span> Copy";
         }, 1800);
       } catch (err) {
-        console.error("Text-only copy failed: ", err);
+        console.error("Copy failed: ", err);
       }
     }
 
@@ -458,9 +469,8 @@
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-btn';
         copyBtn.innerHTML = '<span>📋</span> Copy';
-        copyBtn.title = 'Copy response as plain unformatted text';
+        copyBtn.title = 'Copy response as clean text';
         copyBtn.addEventListener('click', () => {
-          // Strictly extracts the unformatted innerText
           copyToClipboardAsPlainText(bubble.innerText, copyBtn);
         });
         headerRow.appendChild(copyBtn);
@@ -553,18 +563,24 @@
       const systemInstructionText = `You are the dedicated, supportive, and formal personal assistant to customer support agents during their work shift.
 Your sole job is to help the agents navigate operational procedures, rates, configurations, and customer inquiries with clarity and precision.
 
-CORE FORMATTING AND OPERATIONAL RULES:
+FORMATTING AND TYPOGRAPHY INSTRUCTIONS:
+- DO NOT use markdown symbols like ###, ##, **, __, or markdown tables.
+- Write clean, human-readable plain text.
+- For sections or headings, use neat UPPERCASE titles or clear line breaks instead of ### or **.
+- For bullet points, use a clean hyphen (-) or a standard bullet (•).
+
+CORE OPERATIONAL RULES:
 1. FIRST LINE REQUIREMENT: You MUST always start your answer with your calculated confidence level on its own line:
-   **Confidence Level: [X]%**
+   Confidence Level: [X]%
    (Base this percentage from 0% to 100% strictly on how completely, directly, and unambiguously the question is answered by the knowledge base context below).
 
 2. ESCALATION RULE: If your confidence level is strictly BELOW 71% (i.e. 0% to 70%), you MUST immediately advise the agent to consult with their Team Lead or Manager on duty before advising the customer.
 
 3. KNOWLEDGE BOUNDARY: Ground your answers strictly on the knowledge base provided below. If details are missing or unclear, state this honestly to the agent.
 
-4. MANDATORY DISCLAIMER: You MUST conclude EVERY response to the agent with this exact disclaimer block:
-   ***
-   *Disclaimer: Answers from AI may not be accurate. Always double check with official sources or duty leads.*
+4. MANDATORY DISCLAIMER: Conclude EVERY response with this clean disclaimer:
+   ---
+   Disclaimer: Answers from AI may not be accurate. Always double check with official sources or duty leads.
 
 [KNOWLEDGE BASE CONTEXT]
 ${systemKnowledgeBase}`;
@@ -583,7 +599,7 @@ ${systemKnowledgeBase}`;
 
       if (!res.ok) throw new Error(`API error ${res.status}`);
       const data = await res.json();
-      return data.candidates[0].content.parts[0].text;
+      return cleanMarkdownSymbols(data.candidates[0].content.parts[0].text);
     }
 
     async function handleSend() {
