@@ -400,13 +400,11 @@
       <div class="brand-sub">Hobby Workspace & Knowledge Navigator</div>
     </div>
     <div class="status-panel">
-      <!-- Manual KB Sync Button -->
       <button id="kb-sync-btn" class="action-btn" title="Click to manually refresh the Knowledge Base from GitHub">
         <span class="spin-icon">↻</span>
         <span id="kb-sync-text">KB: Checking...</span>
       </button>
 
-      <!-- Manual Chat Clear Button -->
       <button id="clear-chat-btn" class="action-btn" title="Clear current conversation history">
         <span>🗑</span>
         <span>Clear Chat</span>
@@ -445,13 +443,15 @@
   <script>
     const GITHUB_KB_BASE_URL = "https://raw.githubusercontent.com/shafwan2204-source/knowledge-eureka/refs/heads/main/changi_recommends_travel_services_master_knowledge_base.txt";
     
-    // Verified available models matching your API key list
+    // 3.5 Models first, then cascading down to other tiers with exact label matching
     const MODEL_CHAIN = [
-      { id: "gemini-3.6-flash", label: "LM 3.6 Connected" },
-      { id: "gemini-3.8-flash", label: "LM 3.8 Connected" },
+      { id: "gemini-3.5-flash", label: "LM 3.5 Flash Connected" },
       { id: "gemini-3.5-flash-lite", label: "LM 3.5 Flash-Lite Connected" },
+      { id: "gemini-3.6-flash", label: "LM 3.6 Flash Connected" },
+      { id: "gemini-3.8-flash", label: "LM 3.8 Flash Connected" },
       { id: "gemini-3.1-flash-lite", label: "LM 3.1 Flash-Lite Connected" },
-      { id: "gemini-2.5-flash", label: "LM 2.5 Connected" }
+      { id: "gemini-flash-latest", label: "LM Flash Latest Connected" },
+      { id: "gemini-2.5-flash", label: "LM 2.5 Flash Connected" }
     ];
 
     const TIMEOUT_LIMIT_MS = 45000;
@@ -669,7 +669,6 @@
         controller.abort();
       }, TIMEOUT_LIMIT_MS);
 
-      // Ensures the model name is properly prefixed with models/
       const cleanModelName = modelIdentifier.replace(/^models\//, "");
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${cleanModelName}:generateContent?key=${runtimeApiKey}`;
       
@@ -755,16 +754,16 @@ ${systemKnowledgeBase}`;
 
       let responseReceived = false;
 
-      // 5-Tier Fallback Loop
+      // Cascades through 3.5 first, then falls back down the chain
       for (let i = 0; i < MODEL_CHAIN.length; i++) {
         const candidate = MODEL_CHAIN[i];
-        modelBadge.textContent = candidate.label;
 
         try {
           if (i > 0) {
             assistantBubble.textContent = `Connecting via ${candidate.label.replace(' Connected', '')}...`;
           }
           const reply = await executeGeminiCallWithTimeout(candidate.id, conversationLog);
+          modelBadge.textContent = candidate.label;
           assistantBubble.textContent = reply;
           conversationLog.push({ role: 'model', parts: [{ text: reply }] });
           responseReceived = true;
@@ -775,7 +774,7 @@ ${systemKnowledgeBase}`;
       }
 
       if (!responseReceived) {
-        assistantBubble.textContent = "Service unavailable. An issue occurred while contacting the language model.";
+        assistantBubble.textContent = "Service unavailable. All configured model tiers returned errors or timed out. Please click Try Again or consult your Team Lead.";
         renderRetryOption(assistantBubble, promptText);
       }
 
